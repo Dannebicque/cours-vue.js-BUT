@@ -36,34 +36,42 @@ Si on souhaite ajouter des liens dans notre application, et définir une partie 
 
 Dans le code ci-dessus, on a ajouté deux liens, qui pointent vers les URL `/` et `/about` (ligne 4 et 5). On a également ajouté une balise `<router-view>` (ligne 6), qui sera remplacée par le contenu de la page correspondant à l'URL.
 
-Pour que cela fonctionne, il faut ajouter le code suivant dans le fichier `src/main.js` (attention certaines parties sont déjà présentes) :
+Pour que cela fonctionne, il faut déclarer nos routes. On pourra le faire directement dans le `main.js`, mais la recommandation est plutôt de constuire nos routes dans un repértoire dédié et un ou plusieurs fichiers, par exemple `src/router/index.js`.
+
+```javascript
+import { createRouter, createWebHistory } from 'vue-router'
+
+import Home from '../views/Home.vue'
+import About from '../views/About.vue'
+
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/',
+      component: Home
+    },
+    {
+      path: '/about',
+      component: About
+    }
+  ]
+})
+
+export default router
+```
+
+Il faut ensuite importer ce fichier dans le `main.js` (ce fichier dois déjà ressembler à quelque chose de similaire):
 
 ```javascript
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 
-// 1. On défini le contenu des routes. Ici simplement avec une template basique, mais on pourrait importer des composants.
-const Home = { template: '<div>Home</div>' }
-const About = { template: '<div>About</div>' }
+import './assets/main.css'
 
-// 2. Définir pour chaque route, le chemin et le composant associé
-const routes = [
-  { path: '/', component: Home },
-  { path: '/about', component: About },
-]
+const app = createApp(App)
 
-// 3. Créer l'instance du router et passer les options de `routes`
-const router = VueRouter.createRouter({
-  // 4. Provide the history implementation to use. We are using the hash history for simplicity here.
-  history: VueRouter.createWebHashHistory(),
-  routes, // short for `routes: routes`
-})
-
-// 5. Create and mount the root instance.
-const app = Vue.createApp({})
-// Make sure to _use_ the router instance to make the
-// whole app router-aware.
 app.use(router)
 
 app.mount('#app')
