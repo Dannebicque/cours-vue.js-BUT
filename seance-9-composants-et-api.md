@@ -163,7 +163,7 @@ Où username est une variable javascript.
 
 ### Récupérer le paramètre
 
-On peut accéder aux paramètres de la route, ou à l'objet router depuis n'importe quel composant, en utilisant les fonctions `useRouter` et `useRoute` :
+On peut accéder aux paramètres de la route, ou à l'objet router depuis n'importe quel composant, en utilisant la fonction `useRoute` :
 
 Par exemple :
 
@@ -172,12 +172,8 @@ import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
-const username = ref()
-
-onMounted(() => {
-    // Pour récupérer un paramètre de l'URL (on verra cela par la suite)
-    username.value = route.params.username
-})
+// Pour récupérer un paramètre de l'URL
+const username = route.params.username
 ```
 
 ### A faire
