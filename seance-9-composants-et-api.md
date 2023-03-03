@@ -92,13 +92,68 @@ Ce projet contient le nécessaire pour utiliser les routes, n'hésitez pas à re
 
 ## Routes nommées
 
-...
+Pour des raisons pratiques et pour éviter de manipuler des URL dans le code, on peut définir des routes nommées.
+
+```javascript
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/user', component: User, name: 'user' },
+]
+```
+
+On peut ensuite utiliser ces routes nommées dans le code :
+
+```html
+  <router-link :to="{name: 'user'}">
+    Utilisateur
+  </router-link>
+```
 
 ### A faire
 
 * Créer une route `/about` qui affiche un message a propos, dans une vue `About.vue`, et qui se nomme "about" (à créer dans le répertoire `src/views`). Ajoutez un lien vers cette page en utilisant son nom.
 
 ## Routes avec paramètres
+
+Il est possible de passer des paramètres à nos routes.
+
+```javascript
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/user/:username', component: User, name: 'user' },
+]
+```
+
+Pour passer le paramètre lors de la mise en place du lien, on peut soit passer par la route nommée (le plus pratique), soit construire l'URL avec une variable.
+
+### Avec une route nommée
+
+```html
+  <router-link :to="{name: 'user', params: {username: 'david'}}">
+    Utilisateur
+  </router-link>
+
+<!-- ou avec une variable -->
+
+  <router-link :to="{name: 'user', params: {username: username}}">
+    Utilisateur
+  </router-link>
+  ```
+
+### Avec une URL
+
+```html
+  <router-link :to="`/user/${username}`">
+    Utilisateur
+  </router-link>
+```
+
+Où username est une variable javascript.
+
+### Récupérer le paramètre
 
 On peut accéder aux paramètres de la route, ou à l'objet router depuis n'importe quel composant, en utilisant les fonctions `useRouter` et `useRoute` :
 
