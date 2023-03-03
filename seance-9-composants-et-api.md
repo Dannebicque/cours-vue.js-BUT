@@ -168,9 +168,8 @@ On peut accéder aux paramètres de la route, ou à l'objet router depuis n'impo
 Par exemple :
 
 ```javascript
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 
-const router = useRouter()
 const route = useRoute()
 
 const username = ref()
@@ -179,15 +178,6 @@ onMounted(() => {
     // Pour récupérer un paramètre de l'URL (on verra cela par la suite)
     username.value = route.params.username
 })
-
-goToDashboard() {
-    //pour faire une redirection
-    if (isAuthenticated) {
-    router.push('/dashboard')
-    } else {
-    router.push('/login')
-    }
-}
 ```
 
 ### A faire
