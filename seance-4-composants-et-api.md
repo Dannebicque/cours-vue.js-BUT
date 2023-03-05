@@ -230,15 +230,13 @@ Pour la suite, nous allons utiliser axios. Mais libre à vous d'utiliser la mét
 
 #### Création d'un composant
 
-Créons un composant qui va récupérer des données depuis une API et les afficher dans la page.
+Dans une vue ou un composant, nous pouvons récupérer les données de l'API et les afficher dans le template.
 
 {% code lineNumbers="true" %}
 ```javascript
 <template>
   <div>
-    <h1>API</h1>
     <p>{{ data }}</p>
-    <p>{{ data.title }}</p>
   </div>
 </template>
 
@@ -256,39 +254,16 @@ onMounted(async () => {
 ```
 {% endcode %}
 
-#### Utilisation du composant
-
-Nous allons maintenant utiliser ce composant dans notre application.
-
-{% code lineNumbers="true" %}
-```javascript
-
-<template>
-  <div>
-    <h1>App</h1>
-    <API />
-  </div>
-</template>
-
-<script setup>
-import API from './components/API.vue'
-</script>
-```
-{% endcode %}
-
 #### Explications
 
-Dans le composant API, nous avons déclaré une variable `data` qui est initialisée à une chaîne de caractères vide. Nous avons ensuite utilisé le hook `onMounted` pour récupérer les données depuis l'API et les stocker dans la variable `data`.
+Nous avons déclaré une variable `data` qui est initialisée à une chaîne de caractères vide. Nous avons ensuite utilisé le hook `onMounted` pour récupérer les données depuis l'API et les stocker dans la variable `data`.
 
-Dans le composant App, nous avons importé le composant API et nous l'avons ajouté dans la liste des composants utilisés.
-
-A partir de là, `data` est accessible dans le template du composant App, et donc dans le template du composant API. Cette variable contient toutes les données retournées par l'API, et il est donc possible de l'afficher dans le template de manière plus fine.
+A partir de là, `data` est accessible dans le template. Cette variable contient toutes les données retournées par l'API, et il est donc possible de l'afficher dans le template de manière plus fine.
 
 {% code lineNumbers="true" %}
 ```javascript
 <template>
   <div>
-    <h1>API</h1>
     <p>{{ data.title }}</p>
   </div>
 </template>
