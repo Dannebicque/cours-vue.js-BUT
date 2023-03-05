@@ -68,6 +68,10 @@ Les props sont des attributs personnalisés que nous pouvons passer à nos compo
 Imaginons que nous avons une application présentant des articles dans un blog. Nous aurions un composant parent affichant chaque article. Un article serait alors un composant enfant. Nous pourrions avoir une structure de composants comme celle-ci :
 
 ```javascript
+<script setup>
+import Article from './Article.vue'
+</script>
+
 <template>
   <h1>Mon Blog</h1>
   <Article />
@@ -75,10 +79,6 @@ Imaginons que nous avons une application présentant des articles dans un blog. 
   <Article />
   <Article />
 </template>
-
-<script setup>
-import Article from './Article.vue'
-</script>
 ```
 
 Nous aurions ici 4 articles (on pourrait faire une boucle...), mais comment faire pour que chaque article soit différent ? Nous devons définir une "props" pour notre composant enfant `Article`, afin qu'il puisse recevoir des données. Nous pouvons définir une prop en utilisant l'attribut `props` de notre composant enfant :
@@ -105,6 +105,10 @@ console.log(props.title)
 {% endhint %}
 
 ```javascript
+<script setup>
+import Article from './Article.vue'
+</script>
+
 <template>
   <h1>Mon Blog</h1>
   <Article title="Mon premier article" />
@@ -112,10 +116,6 @@ console.log(props.title)
   <Article title="Mon troisième article" />
   <Article title="Mon quatrième article" />
 </template>
-
-<script setup>
-import Article from './Article.vue'
-</script>
 ```
 
 Un composant peut avoir autant de props que vous voulez, et par défaut, n'importe quelle valeur peut être passée à une prop. Nous pouvons définir des valeurs et un type par défaut pour les props :
@@ -234,12 +234,6 @@ Dans une vue ou un composant, nous pouvons récupérer les données de l'API et 
 
 {% code lineNumbers="true" %}
 ```javascript
-<template>
-  <div>
-    <p>{{ data }}</p>
-  </div>
-</template>
-
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
@@ -251,6 +245,12 @@ onMounted(async () => {
   data.value = response.data
 })
 </script>
+
+<template>
+  <div>
+    <p>{{ data }}</p>
+  </div>
+</template>
 ```
 {% endcode %}
 
@@ -262,12 +262,6 @@ A partir de là, `data` est accessible dans le template. Cette variable contient
 
 {% code lineNumbers="true" %}
 ```javascript
-<template>
-  <div>
-    <p>{{ data.title }}</p>
-  </div>
-</template>
-
 <script setup>
 import { onMounted, ref } from 'vue'
 import axios from 'axios'
@@ -279,6 +273,12 @@ onMounted(async () => {
   data.value = response.data
 })
 </script>
+
+<template>
+  <div>
+    <p>{{ data.title }}</p>
+  </div>
+</template>
 ```
 {% endcode %}
 
