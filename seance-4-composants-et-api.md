@@ -1,10 +1,12 @@
-# Séance 6 : Composants et API
+# Séance 4 : Composants et API
+
+## Composants
 
 {% hint style="info" %}
 Cette séance est une adaptation/traduction des parties suivantes de la documentation officielle de Vue.js : [Components Basics](https://vuejs.org/guide/essentials/component-basics.html), et les parties suivantes sur les [Props](https://vuejs.org/guide/components/props.html) et les [Events](https://vuejs.org/guide/components/events.html).
 {% endhint %}
 
-## Principes
+### Principes
 
 Les composants nous permettent de fractionner l'UI en morceaux indépendants et réutilisables, sur lesquels nous pouvons réfléchir de manière isolée. Il est courant pour une application d'être organisée en un arbre de composants imbriqués.
 
@@ -59,7 +61,7 @@ Une fois un composant importé, vous pouvez l'utiliser autant de fois que néces
 Dans les SFC, il est recommandé d'utiliser des noms de balise en casse Pascal (PascalCase) pour les composants enfants afin de les différencier des éléments HTML natifs. Bien que les noms des balises HTML natifs soient insensibles à la casse, les SFC de Vue sont un format compilé, donc nous pouvons y utiliser des noms de balise sensibles à la casse. Nous pouvons également utiliser /> pour fermer une balise.
 {% endhint %}
 
-## Props (passer des données à nos composants enfants)
+### Props (passer des données à nos composants enfants)
 
 Les props sont des attributs personnalisés que nous pouvons passer à nos composants enfants. Ils permettent de passer des données d'un composant parent à un composant enfant.
 
@@ -133,104 +135,203 @@ defineProps({
 </template>
 ```
 
-## Exercice
+### Exercice sur les composants
 
-### Exercice 1
+Définissez un composant nommé "CardPays" qui affiche le nom et la capitale d'un pays. Vous devrez passer le nom et la capitale du pays en tant que props.
 
-En considérant par exemple la liste d'article suivante :
-
-```javascript
-const posts = ref([
-  { id: 1, title: 'My journey with Vue', texte: 'Message de mon article' },
-  { id: 2, title: 'Blogging with Vue', texte: 'Deuxième message de mon article' },
-  { id: 3, title: 'Why Vue is so fun', texte: 'Encore un autre message de mon article' }
-])
-```
-
-1. Créez un composant `Post` qui affiche le titre et le texte d'un article.
-2. Créez un composant `PostList` qui affiche une liste d'articles, en utilisant une boucle pour afficher les Post et passer les éléments.
+Dans la page Pays, vous devrez afficher 3 cartes pays, avec les valeurs de votre choix.
 
 {% hint style="info" %}
 Remarque : comme nous allons essayer de passer le contenu d'une variable dans une ou plusieurs props, nous devons passer par un v-bind sur les props (comme pour n'importe quel attribut).
 {% endhint %}
 
-### Exercice 2
 
-Il est possible de passer des props d'un composant à un autre. En reprenant l'exemple ci-dessous, définissez un composant pour un bouton "Lire Plus" (et le composant associé LirePlus) sur votre article qui n'affichera qu'un résumé. Passé depuis le composant Post, l'id de l'article au composant LirePlus.
+## Cycle de vie et premiers pas avec les API
 
-## Écouter des événements
+{% hint style="info" %}
+Cette séance est la traduction/adaptation de la documentation officielle se trouvant ici : [https://vuejs.org/guide/essentials/lifecycle.html](https://vuejs.org/guide/essentials/lifecycle.html)
+{% endhint %}
 
-Les props permettent donc de communiquer du parent vers l'enfant. Mais comment communiquer de l'enfant vers le parent ?
+Chaque instance d'un composant Vue passe par une série d'étapes d'initialisation lorsqu'elle est créée - par exemple, il faut paramétrer l'observation des données, compiler le template, monter l'instance sur le DOM, et le mettre à jour lorsque les données changent. En cours de route, des fonctions appelées hooks du cycle de vie sont également exécutées, donnant la possibilité à l'utilisateur d'ajouter son propre code à des étapes spécifiques.
 
-Les composants enfants peuvent émettre des événements, qui peuvent être écoutés par le composant parent.
+Ci-dessous figure le diagramme du cycle de vie d'une instance.
 
-Reprennons l'exemple de la documentation.
+<figure><img src="https://fr.vuejs.org/assets/lifecycle.6903e504.png" alt=""><figcaption><p>Cycle de vie d'un composant Vue</p></figcaption></figure>
 
-Par exemple, on peut décider d'ajouter une fonctionnalité d'accessibilité permettant d'agrandir le texte des articles du blog, tout en laissant la taille par défaut sur le reste de la page.
+Chaque case rouge est un moment où il est possible d'intéragir avec le composant.
 
-Dans le parent, nous développons cette fonctionnalité en ajoutant une variable `postFontSize` (qui doit être réactive) :
+### Enregistrement des hooks du cycle de vie
 
+Par exemple, le hook `onMounted` peut être utilisé pour exécuter du code après que le composant ait terminé son rendu initial et créer les nœuds du DOM (sur la case route `mounted` du schéma ci-dessus):
+
+{% code lineNumbers="true" %}
 ```javascript
-const posts = ref([
-  /* ... */
-])
+<script setup>
+import { onMounted } from 'vue'
 
-const postFontSize = ref(1)
+onMounted(() => {
+  console.log(`the component is now mounted.`)
+})
+</script>
 ```
+{% endcode %}
 
-Qui pourra être utilisée dans le template afin de contrôler la taille de police de tous les articles du blog :
+Il y a également d'autres hooks qui peuvent être appelés à différentes étapes du cycle de vie de l'instance, dont les plus couramment utilisés sont onMounted, onUpdated, et onUnmounted.
 
+Il peut être intéressant d'utiliser ce hook pour effectuer des actions lorsque le composant est monté, mis à jour ou démonté. Par exemple, onMounted peut être utilisé pour récupérer des données depuis une API, et onUnmounted pour annuler les abonnements aux événements.
+
+### Accès aux données depuis un appel API
+
+{% hint style="info" %}
+**Les appels API peuvent se faire à chaque fois que nécessaire, dans des méthodes, dans des hooks, ...**
+
+Il est possible d'utiliser la méthode fetch pour récupérer des données depuis une API, qui est native à JavaScript. (voir [https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API](https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API)). Il existe également la librairie axios qui permet de faire des appels API plus facilement, et qui est très utilisée dans le monde Vue.js (et les framework frot en général). (voir [https://axios-http.com/fr/docs/intro](https://axios-http.com/fr/docs/intro))
+{% endhint %}
+
+### Exemple d'utilisation de fetch
+
+{% code lineNumbers="true" %}
 ```javascript
-<div :style="{ fontSize: postFontSize + 'em' }">
-  <BlogPost
-    v-for="post in posts"
-    :key="post.id"
-    :title="post.title"
-   />
-</div>
+<script setup>
+import { onMounted } from 'vue'
+
+onMounted(async () => {
+  const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  const data = await response.json()
+  console.log(data)
+})
+</script>
 ```
+{% endcode %}
 
-Maintenant ajoutons un bouton dans le template du composant `<BlogPost>` :
+### Exemple d'utilisation de axios
 
+Axios n'étant pas natif, il faut d'abord l'installer avec la commande `npm install axios` ou `yarn add axios`.
+
+{% code lineNumbers="true" %}
 ```javascript
-<!-- BlogPost.vue, omitting <script> -->
+<script setup>
+import { onMounted } from 'vue'
+import axios from 'axios'
+
+onMounted(async () => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  console.log(response.data)
+})
+</script>
+```
+{% endcode %}
+
+{% hint style="info" %}
+Pour la suite, nous allons utiliser axios. Mais libre à vous d'utiliser la méthode que vous préférez. Le code et la logique seront sensiblement identiques
+{% endhint %}
+
+### Utilisation de l'API
+
+#### Création d'un composant
+
+Créons un composant qui va récupérer des données depuis une API et les afficher dans la page.
+
+{% code lineNumbers="true" %}
+```javascript
 <template>
-  <div class="blog-post">
-    <h4>{{ title }}</h4>
-    <button>Enlarge text</button>
+  <div>
+    <h1>API</h1>
+    <p>{{ data }}</p>
+    <p>{{ data.title }}</p>
   </div>
 </template>
+
+<script setup>
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+
+let data = ref('')
+
+onMounted(async () => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1') //cette URL est une démonstration, vous devez adapter l'URL à votre besoin. La récupération se fait ici en GET, mais il est possible de faire des requêtes POST, PUT, DELETE, ...
+  data.value = response.data
+})
+</script>
 ```
+{% endcode %}
 
-Pour le moment le bouton ne fait rien. Nous voulons que le clique communique au parent qu'il doit agrandir le texte de tous les articles. Pour résoudre ce problème, les composants fournissent un système personnalisé d'événements. Le parent peut choisir d'écouter n'importe quel événement de l'instance du composant enfant grâce à `v-on` ou `@`, nous l'avons déjà vue dans une précédente partie :
+#### Utilisation du composant
 
+Nous allons maintenant utiliser ce composant dans notre application.
+
+{% code lineNumbers="true" %}
 ```javascript
-<BlogPost
-  ...
-  @enlarge-text="postFontSize += 0.1"
- />
-```
 
-Ensuite le composant enfant peut émettre lui-même un événement en appelant la méthode intégrée `$emit`, et en lui passant le nom de l'événement :
-
-```javascript
-<!-- BlogPost.vue, en omettant <script> -->
 <template>
-  <div class="blog-post">
-    <h4>{{ title }}</h4>
-    <button @click="$emit('enlarge-text')">Enlarge text</button>
+  <div>
+    <h1>App</h1>
+    <API />
   </div>
 </template>
+
+<script setup>
+import API from './components/API.vue'
+</script>
+```
+{% endcode %}
+
+#### Explications
+
+Dans le composant API, nous avons déclaré une variable `data` qui est initialisée à une chaîne de caractères vide. Nous avons ensuite utilisé le hook `onMounted` pour récupérer les données depuis l'API et les stocker dans la variable `data`.
+
+Dans le composant App, nous avons importé le composant API et nous l'avons ajouté dans la liste des composants utilisés.
+
+A partir de là, `data` est accessible dans le template du composant App, et donc dans le template du composant API. Cette variable contient toutes les données retournées par l'API, et il est donc possible de l'afficher dans le template de manière plus fine.
+
+{% code lineNumbers="true" %}
+```javascript
+<template>
+  <div>
+    <h1>API</h1>
+    <p>{{ data.title }}</p>
+  </div>
+</template>
+
+<script setup>
+import { onMounted, ref } from 'vue'
+import axios from 'axios'
+
+let data = ref('')
+
+onMounted(async () => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
+  data.value = response.data
+})
+</script>
+```
+{% endcode %}
+
+Ce code ne fonctionne que si votre réponse json contient une entrée `title`. Ce qui est le cas dans l'exemple ici qui renvoi la réponse suivante :
+
+```javascript
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
 ```
 
-Grâce à l'écouteur `@enlarge-text="postFontSize += 0.1"`, le parent va recevoir l'événement et mettre à jour la valeur de `postFontSize`.
+### Exercice
 
-## Exercice
+Dans la vue Pays, ajoutez la méthode onMounted pour récupérer les données de l'API et les afficher dans le template.
 
-### Exercice 1
+{% hint style="info" %}
 
-Intégrez cet exemple à votre projet précédent avec vos articles.
+Vous pouvez utiliser l'API suivante : ['https://restcountries.com/v3.1/all']('https://restcountries.com/v3.1/all')
 
-### Exercice 2
+{% endhint %}
 
-??
+* Dans un premier temps affichez simplement la réponse dans votre template ``{{ data }}`` si votre variable se nomme `data`.
+
+* Dans un deuxième temps faites une simple boucle pour afficher le nom de chaque pays. `{{ pays.name.common }}` si votre variable dans la boucle se nomme `pays`.
+
+* Dans un troisième temps, utilisez le composant `CardPays` pour afficher les données de chaque pays, et passez en props la variable contenant toutes les données du pays.
+
+* Modifiez le composant `CardPays` pour afficher les données de la props, et notamment l'image du drapeau et le nom du pays.
