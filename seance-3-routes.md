@@ -85,10 +85,13 @@ Sur le reste de cette ressource nous allons concervoir une petite application in
 
 ### Création du projet
 
-Pour vous faciliter le départ (vous pourriez aussi installé un nouveau projet comme vue en séance 1 et supprimer les éléments inutiles), un fichier vide, pré-configué est disponible sur ce lien : [Projet vide](projet vide).
+Pour vous faciliter le départ (vous pourriez aussi installé un nouveau projet comme vue en séance 1 et supprimer les éléments inutiles), un fichier vide, pré-configué est disponible sur ce lien : \[Projet vide]\(projet vide).
 
-* Téléchargez le fichier zip
-* Dézippé le dans le dossier de votre choix
+* Téléchargez le fichier zip:&#x20;
+
+{% file src=".gitbook/assets/mmi-world-main.zip" %}
+
+* Dézippez le dans le dossier de votre choix
 * executez la commande `npm install` ou `yarn install` pour installer les dépendances
 * Testez le projet avec la commande `npm run dev` ou `yarn dev`
 
@@ -149,7 +152,7 @@ Pour passer le paramètre lors de la mise en place du lien, on peut soit passer 
   <router-link :to="{name: 'user', params: {username: username}}">
     Utilisateur
   </router-link>
-  ```
+```
 
 ### Avec une URL
 
