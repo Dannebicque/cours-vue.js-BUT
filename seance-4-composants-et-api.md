@@ -215,7 +215,8 @@ import axios from 'axios'
 
 onMounted(async () => {
   const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
-  console.log(response.data)
+  const data = response.data
+  console.log(data)
 })
 </script>
 ```
