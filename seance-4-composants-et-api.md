@@ -145,7 +145,6 @@ Dans la page Pays, vous devrez afficher 3 cartes pays, avec les valeurs de votre
 Remarque : comme nous allons essayer de passer le contenu d'une variable dans une ou plusieurs props, nous devons passer par un v-bind sur les props (comme pour n'importe quel attribut).
 {% endhint %}
 
-
 ## Cycle de vie et premiers pas avec les API
 
 {% hint style="info" %}
@@ -298,15 +297,10 @@ Ce code ne fonctionne que si votre réponse json contient une entrée `title`. C
 Dans la vue Pays, ajoutez la méthode onMounted pour récupérer les données de l'API et les afficher dans le template.
 
 {% hint style="info" %}
-
-Vous pouvez utiliser l'API suivante : ['https://restcountries.com/v3.1/all']('https://restcountries.com/v3.1/all')
-
+Vous pouvez utiliser l'API suivante : [https://restcountries.com/v3.1/all](https://restcountries.com/v3.1/all)
 {% endhint %}
 
-* Dans un premier temps affichez simplement la réponse dans votre template ``{{ data }}`` si votre variable se nomme `data`.
-
+* Dans un premier temps affichez simplement la réponse dans votre template `{{ data }}` si votre variable se nomme `data`.
 * Dans un deuxième temps faites une simple boucle pour afficher le nom de chaque pays. `{{ pays.name.common }}` si votre variable dans la boucle se nomme `pays`.
-
 * Dans un troisième temps, utilisez le composant `CardPays` pour afficher les données de chaque pays, et passez en props la variable contenant toutes les données du pays.
-
 * Modifiez le composant `CardPays` pour afficher les données de la props, et notamment l'image du drapeau et le nom du pays.
