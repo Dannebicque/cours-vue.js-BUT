@@ -1,4 +1,4 @@
-# Séance 5 - Evenements et formulaires
+# Séance 6 - Evenements et formulaires
 
 {% hint style="info" %}
 Cette partie est une traduction/adaptation de la documentation officielle située : [https://fr.vuejs.org/guide/essentials/forms.html](https://fr.vuejs.org/guide/essentials/forms.html)
