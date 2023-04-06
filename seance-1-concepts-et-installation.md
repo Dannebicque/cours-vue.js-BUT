@@ -44,7 +44,7 @@ La première commande accède au répertoire, la deuxième installe toute les d�
 
 Vous devriez voir un message vous proposant l'url de votre projet "compilé". Ouvrez-là et vous devriez avoir une page similaire à celle ci-dessous :
 
-<figure><img src=".gitbook/assets/Capture d’écran 2023-02-05 à 18.35.51 (1).png" alt=""><figcaption><p>Page d'accueil suite à la première installation d'un projet Vue.js</p></figcaption></figure>
+<figure><img src=".gitbook/assets/Capture d’écran 2023-02-05 à 18.35.51.png" alt=""><figcaption><p>Page d'accueil suite à la première installation d'un projet Vue.js</p></figcaption></figure>
 
 ## Premier exemple
 
