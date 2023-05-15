@@ -10,7 +10,6 @@
 * [Séance 7 : ApiPlatform](seance-7-api-platform.md)
 * [Séance 8 : VueJs et ApiPlatform (1)](seance-8-vuejs-apiplatform-1.md)
 * [Séance 9 : VueJs et ApiPlatform (2)](seance-9-vuejs-apiplatform-1.md)
-* [Séance 9 : Exercice complet](seance-7-api-axios-fetch.md)
 * [Séance 10 : TP Noté](seance-10-tp-note.md)
 * [Quelques sources](quelques-sources.md)
 * [LP](lp.md)
