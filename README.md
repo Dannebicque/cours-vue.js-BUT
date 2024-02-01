@@ -1,5 +1,11 @@
 # Présentation
 
+
+
+{% hint style="info" %}
+Le support de cours est ici : [https://presentations.davidannebicque.fr/vuejs](https://presentations.davidannebicque.fr/vuejs)
+{% endhint %}
+
 ## Quels sont les problèmes du développement front "classique" ?
 
 * Chaque page web HTML est codée intégralement, et peu réutilisable pour d'autres pages (hors include en php).
