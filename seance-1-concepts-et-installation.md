@@ -113,7 +113,7 @@ const reseau = 13
 
 * **node\_module** : contient toutes les dépendances de notre projet. Il est créé par la commande `npm install`. Il ne faut rien modifier dans ce dossier, et ne jamais le gérer avec git. Son équivalent dans Symfony est vendor.
 * **public** : c'est le repertoire "public", qui contient les éléments type images, favicon, les fichiers uploadés par vos utilisateurs, ... Il a le même rôle que "public" dans symfony.
-* **src** : c'est note répertoire de travail, la très grande majorité de notre code se trouvera dans ce dossier.
+* **src** : c'est notre répertoire de travail, la très grande majorité de notre code se trouvera dans ce dossier.
 * **index.html** : c'est le fichier html de base qui est affiché dans le navigateur et qui va intégrer nos composants Vue.js. Sa syntaxe est décrite par la suite.
 * **package.json** (et son package-lock.json), sont la liste des dépendants installées, c'est l'équivalent du composer.json pour le back.
 * **vite.config.js** : c'est l'automatisateur de tâches (comme gulp ou webpack, Vue.js 3 recommande l'usage de [Vite](https://vitejs.dev/) qui est plus rapide et performant). Nous reviendrons sur ce fichier en BUT3. Il récupère tous les éléments du dossier src/, va les traduires en du JavaScript compréhensible par les navigateurs et en faire un seul et unique point d'entrée.
