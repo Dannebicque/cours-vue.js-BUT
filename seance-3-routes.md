@@ -26,7 +26,7 @@ Si on souhaite ajouter des liens dans notre application, et définir une partie 
 
 ```html
 <template>
-  <div id="app">
+  <div>
     <h1>Mon application</h1>
     <router-link to="/">Accueil</router-link>
     <router-link to="/about">A propos</router-link>
