@@ -23,7 +23,7 @@ Il existe deux solutions pour construire des composants en Vue.js :
 
 ### Utilisation d'un composant
 
-Afin d'utiliser un composant dit enfant dans un composant dit parent, nous devons l'importer. En supposant que nous ayons placé notre composant `compteur` dans un fichier nommé `ButtonCounter.vue`, le composant apparaîtra comme l'export par défaut du fichier. Pour l'important dans le parent, nous pourrions avoir la syntaxe suivante (nous l'avons déjà rencontré dans les parties précédentes du cours) :
+Afin d'utiliser un composant dit enfant dans un composant dit parent, nous devons l'importer. En supposant que nous ayons placé notre composant `compteur` dans un fichier nommé `ButtonCounter.vue`, le composant apparaîtra comme l'export par défaut du fichier. Pour l'importer dans le parent, nous pourrions avoir la syntaxe suivante (nous l'avons déjà rencontré dans les parties précédentes du cours) :
 
 ```javascript
 <script setup>
@@ -155,7 +155,7 @@ Chaque instance d'un composant Vue passe par une série d'étapes d'initialisati
 
 Ci-dessous figure le diagramme du cycle de vie d'une instance.
 
-<figure><img src="https://fr.vuejs.org/assets/lifecycle.6903e504.png" alt=""><figcaption><p>Cycle de vie d'un composant Vue</p></figcaption></figure>
+<figure><img src="https://vuejs.org/assets/lifecycle.DLmSwRQE.png" alt=""><figcaption><p>Cycle de vue d'un composant (vuejs.org)</p></figcaption></figure>
 
 Chaque case rouge est un moment où il est possible d'intéragir avec le composant.
 
@@ -184,7 +184,7 @@ Il peut être intéressant d'utiliser ce hook pour effectuer des actions lorsque
 {% hint style="info" %}
 **Les appels API peuvent se faire à chaque fois que nécessaire, dans des méthodes, dans des hooks, ...**
 
-Il est possible d'utiliser la méthode fetch pour récupérer des données depuis une API, qui est native à JavaScript. (voir [https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API](https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API)). Il existe également la librairie axios qui permet de faire des appels API plus facilement, et qui est très utilisée dans le monde Vue.js (et les framework frot en général). (voir [https://axios-http.com/fr/docs/intro](https://axios-http.com/fr/docs/intro))
+Il est possible d'utiliser la méthode fetch pour récupérer des données depuis une API, qui est native à JavaScript. (voir [https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API](https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API)). Il existe également la librairie axios qui permet de faire des appels API plus facilement, et qui est très utilisée dans le monde Vue.js (et les frameworks front en général). (voir [https://axios-http.com/fr/docs/intro](https://axios-http.com/fr/docs/intro))
 {% endhint %}
 
 ### Exemple d'utilisation de fetch
