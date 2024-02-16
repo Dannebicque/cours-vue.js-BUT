@@ -25,6 +25,7 @@ Il existe deux solutions pour construire des composants en Vue.js :
 
 Afin d'utiliser un composant dit enfant dans un composant dit parent, nous devons l'importer. En supposant que nous ayons placé notre composant `compteur` dans un fichier nommé `ButtonCounter.vue`, le composant apparaîtra comme l'export par défaut du fichier. Pour l'importer dans le parent, nous pourrions avoir la syntaxe suivante (nous l'avons déjà rencontré dans les parties précédentes du cours) :
 
+{% code title="App.vue (par exemple)" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import ButtonCounter from './ButtonCounter.vue'
@@ -35,9 +36,11 @@ import ButtonCounter from './ButtonCounter.vue'
   <ButtonCounter />
 </template>
 ```
+{% endcode %}
 
 Précisons de nouveau que nous utilisons ici la méthode par "composition" de Vue.js 3, cette solution "simplifie" le code. Pour information avec la solution par "options" de Vue.js 2, nous aurions écrit :
 
+{% code title="App.vue (par exemple)" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script>
 import ButtonCounter from './ButtonCounter.vue'
@@ -54,6 +57,7 @@ export default {
   <ButtonCounter />
 </template>
 ```
+{% endcode %}
 
 Une fois un composant importé, vous pouvez l'utiliser autant de fois que nécessaire. Chaque composant reste indépendant des autres, et si nous ajoutons 2 composants `ButtonCounter` dans le même parent, ils seront indépendants l'un de l'autre et chacun aura ses valeurs propres.
 
@@ -67,6 +71,7 @@ Les props sont des attributs personnalisés que nous pouvons passer à nos compo
 
 Imaginons que nous avons une application présentant des articles dans un blog. Nous aurions un composant parent affichant chaque article. Un article serait alors un composant enfant. Nous pourrions avoir une structure de composants comme celle-ci :
 
+{% code title="App.vue (par exemple)" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import Article from './Article.vue'
@@ -80,9 +85,11 @@ import Article from './Article.vue'
   <Article />
 </template>
 ```
+{% endcode %}
 
 Nous aurions ici 4 articles (on pourrait faire une boucle...), mais comment faire pour que chaque article soit différent ? Nous devons définir une "props" pour notre composant enfant `Article`, afin qu'il puisse recevoir des données. Nous pouvons définir une prop en utilisant l'attribut `props` de notre composant enfant :
 
+{% code title="Article.vue" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 defineProps(['title'])
@@ -92,6 +99,7 @@ defineProps(['title'])
   <h4>{{ title }}</h4>
 </template>
 ```
+{% endcode %}
 
 Dans ce code, nous définissons qu'il y a une prop `title` qui sera passée à notre composant enfant. Nous pouvons ensuite utiliser cette prop dans le template de notre composant enfant. Nous pouvons maintenant passer des données à notre composant enfant :
 
@@ -104,6 +112,7 @@ console.log(props.title)
 ```
 {% endhint %}
 
+{% code title="App.vue (par exemple)" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import Article from './Article.vue'
@@ -117,9 +126,11 @@ import Article from './Article.vue'
   <Article title="Mon quatrième article" />
 </template>
 ```
+{% endcode %}
 
 Un composant peut avoir autant de props que vous voulez, et par défaut, n'importe quelle valeur peut être passée à une prop. Nous pouvons définir des valeurs et un type par défaut pour les props :
 
+{% code title="Article.vue" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 defineProps({
@@ -134,6 +145,7 @@ defineProps({
   <h4>{{ title }}</h4>
 </template>
 ```
+{% endcode %}
 
 ### Exercice sur les composants
 
@@ -142,7 +154,7 @@ Définissez un composant nommé "CardPays" qui affiche le nom et la capitale d'u
 Dans la page Pays, vous devrez afficher 3 cartes pays, avec les valeurs de votre choix.
 
 {% hint style="info" %}
-Remarque : comme nous allons essayer de passer le contenu d'une variable dans une ou plusieurs props, nous devons passer par un v-bind sur les props (comme pour n'importe quel attribut).
+Remarque : Si nous devons passer le contenu d'une variable dans une ou plusieurs props, nous devons passer par un v-bind sur les props (comme pour n'importe quel attribut).
 {% endhint %}
 
 ## Cycle de vie et premiers pas avec les API
@@ -163,7 +175,7 @@ Chaque case rouge est un moment où il est possible d'intéragir avec le composa
 
 Par exemple, le hook `onMounted` peut être utilisé pour exécuter du code après que le composant ait terminé son rendu initial et créer les nœuds du DOM (sur la case route `mounted` du schéma ci-dessus):
 
-{% code lineNumbers="true" %}
+{% code title="Un composant" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import { onMounted } from 'vue'
@@ -189,7 +201,7 @@ Il est possible d'utiliser la méthode fetch pour récupérer des données depui
 
 ### Exemple d'utilisation de fetch
 
-{% code lineNumbers="true" %}
+{% code title="Un composant" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import { onMounted } from 'vue'
@@ -207,7 +219,7 @@ onMounted(async () => {
 
 Axios n'étant pas natif, il faut d'abord l'installer avec la commande `npm install axios` ou `yarn add axios`.
 
-{% code lineNumbers="true" %}
+{% code title="Un composant" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import { onMounted } from 'vue'
@@ -232,7 +244,7 @@ Pour la suite, nous allons utiliser axios. Mais libre à vous d'utiliser la mét
 
 Dans une vue ou un composant, nous pouvons récupérer les données de l'API et les afficher dans le template.
 
-{% code lineNumbers="true" %}
+{% code title="Un composant" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import { onMounted, ref } from 'vue'
@@ -260,7 +272,7 @@ Nous avons déclaré une variable `data` qui est initialisée à une chaîne de 
 
 A partir de là, `data` est accessible dans le template. Cette variable contient toutes les données retournées par l'API, et il est donc possible de l'afficher dans le template de manière plus fine.
 
-{% code lineNumbers="true" %}
+{% code title="Un composant" lineNumbers="true" fullWidth="true" %}
 ```javascript
 <script setup>
 import { onMounted, ref } from 'vue'
