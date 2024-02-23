@@ -207,8 +207,12 @@ Il est possible d'utiliser la méthode fetch pour récupérer des données depui
 import { onMounted } from 'vue'
 
 onMounted(async () => {
-  const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-  const data = await response.json()
+  const data = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(data => {
+      return data
+  })
+
   console.log(data)
 })
 </script>
@@ -226,17 +230,14 @@ import { onMounted } from 'vue'
 import axios from 'axios'
 
 onMounted(async () => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
-  const data = response.data
+  const data = await axios.get('https://jsonplaceholder.typicode.com/todos/1').then((response) => {
+    return response.data
+  })
   console.log(data)
 })
 </script>
 ```
 {% endcode %}
-
-{% hint style="info" %}
-Pour la suite, nous allons utiliser axios. Mais libre à vous d'utiliser la méthode que vous préférez. Le code et la logique seront sensiblement identiques
-{% endhint %}
 
 ### Utilisation de l'API
 
@@ -248,19 +249,26 @@ Dans une vue ou un composant, nous pouvons récupérer les données de l'API et 
 ```javascript
 <script setup>
 import { onMounted, ref } from 'vue'
-import axios from 'axios'
 
 let data = ref('')
 
 onMounted(async () => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1') //cette URL est une démonstration, vous devez adapter l'URL à votre besoin. La récupération se fait ici en GET, mais il est possible de faire des requêtes POST, PUT, DELETE, ...
-  data.value = response.data
+  data.value = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(data => {
+      return data
+  })
+  
+   //cette URL est une démonstration, vous devez adapter l'URL à votre besoin. La récupération se fait ici en GET, mais il est possible de faire des requêtes POST, PUT, DELETE, ...
 })
 </script>
 
 <template>
-  <div>
+  <div v-if="data">
     <p>{{ data }}</p>
+  </div>
+  <div v-else>
+    <p>Chargement...</p>
   </div>
 </template>
 ```
@@ -276,19 +284,24 @@ A partir de là, `data` est accessible dans le template. Cette variable contient
 ```javascript
 <script setup>
 import { onMounted, ref } from 'vue'
-import axios from 'axios'
 
 let data = ref('')
 
 onMounted(async () => {
-  const response = await axios.get('https://jsonplaceholder.typicode.com/todos/1')
-  data.value = response.data
+  data.value = await fetch('https://jsonplaceholder.typicode.com/todos/1')
+  .then(response => response.json())
+  .then(data => {
+      return data
+  })
 })
 </script>
 
 <template>
-  <div>
+  <div v-if="data">
     <p>{{ data.title }}</p>
+  </div>
+  <div v-else>
+    <p>Chargement...</p>
   </div>
 </template>
 ```
