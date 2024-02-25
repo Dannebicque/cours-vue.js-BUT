@@ -1,4 +1,4 @@
-# Séance 8 : VueJs et ApiPlatform (1/2)
+# Séance 10 : VueJs et ApiPlatform (1/2)
 
 ## Afficher les fournisseurs
 

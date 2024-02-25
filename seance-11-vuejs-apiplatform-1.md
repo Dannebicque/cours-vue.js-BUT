@@ -1,4 +1,4 @@
-# Séance 9 : VueJs et ApiPlatform (2/2)
+# Séance 11 : VueJs et ApiPlatform (2/2)
 
 ## Supprimer un fournisseur
 
