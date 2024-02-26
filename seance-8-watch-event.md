@@ -1,5 +1,4 @@
-# Séance 8
- : Watch et évents
+# Séance 8 : Watch et évents
 
 ## Watch
 
@@ -52,9 +51,9 @@ La première permet de retourner la variable à surveiller, et la seconde est la
 
 ### Exercice 1
 
-* Dans le composant Pays.vue, ajouter un checkbox avec un v-model associé qui va déterminer si les images des drapeaux sont affichées ou non.
-* Passer cette valeur aux composants enfants (CardPays.vue) pour qu'il puisse afficher ou non les images des drapeaux en fonction de la valeur du checkbox.
-* Utiliser la propriété **watch** pour surveiller les changements de cette valeur dans le composant CardPays.vue.
+* Dans le composant **Pays.vue**, ajouter un checkbox avec un v-model associé qui va déterminer si les images des drapeaux sont affichées ou non.
+* Passer cette valeur aux composants enfants (**CardPays.vue**) pour qu'il puisse afficher ou non les images des drapeaux en fonction de la valeur du checkbox.
+* Utiliser la propriété **watch** pour surveiller les changements de cette valeur dans le composant **CardPays.vue**.
 
 ## Événements
 
@@ -116,9 +115,9 @@ Dans cet exemple, le composant parent écoute l'événement `increment` émis pa
 
 ### Exercice 2
 
-* Dans le composant CardPays.vue, ajouter un checkbox afin de pouvoir sélectionner un pays.
+* Dans le composant **CardPays.vue**, ajouter un checkbox afin de pouvoir sélectionner un pays.
 * Lorsque le checkbox est coché, émettre un événement pour indiquer au composant parent que le pays est sélectionné.
-* Dans le composant Pays.vue, écouter cet événement et afficher le nombre de pays selectionnés.
+* Dans le composant **Pays.vue**, écouter cet événement et afficher le nombre de pays selectionnés.
 * Gérer le cas où je déselectionne un pays.
-* Dans le composant Pays.vue, écouter cet événement et afficher un message indiquant que le pays est sélectionné.
+* Dans le composant **Pays.vue**, écouter cet événement et afficher un message indiquant que le pays est sélectionné.
   
