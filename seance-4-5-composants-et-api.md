@@ -1,4 +1,4 @@
-# Séance 4 : Composants et API
+# Séance 4 et 5 : Composants et API
 
 ## Composants
 

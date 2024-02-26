@@ -1,4 +1,4 @@
-# Séance 5 : Routes et API
+# Séance 6 : Routes et API
 
 Sur cette séance nous allons réexploiter les éléments vus précédement pour mettre en place un lien sur chaque pays pour arriver sur une fiche détaillée.
 
