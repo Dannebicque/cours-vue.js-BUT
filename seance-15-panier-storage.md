@@ -1,1 +1,0 @@
-# Séance 15 : Exemple d'un panier + LocalStorage
