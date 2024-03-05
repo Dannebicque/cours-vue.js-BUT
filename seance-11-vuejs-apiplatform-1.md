@@ -102,6 +102,7 @@ async function modifier(_fournisseur_) {
 
 Il faut modifier la méthode associée au bouton "Ajouter" pour qu'elle fasse une requête HTTP PUT si un id est passé, et une requête HTTP POST si aucun id n'est passé.
 
+{% code lineNumbers="true" %}
 ```javascript
 async function ajouter() {
     //on prépare les données à envoyer
@@ -125,7 +126,29 @@ async function ajouter() {
     ...le code d'ajout vu précédemment...
   }
 }
+
+//ou avec Axios pour la modificication
+
+
+async function ajouter() {
+    //on prépare les données à envoyer
+  const dataPost = JSON.stringify({
+    libelle: libelle.value,
+    adresse: {
+      rue: rue.value,
+      ...
+    },
+  })
+
+  if (id.value !== '') {
+    await axios.put(`http://symfony.mmi-troyes.fr:8313/api/fournisseurs/${lid.value}`, { libelle: libelle.value })
+  } else {
+    ...le code d'ajout vu précédemment...
+  }
+}
+
 ```
+{% endcode %}
 
 ### Exercice
 
