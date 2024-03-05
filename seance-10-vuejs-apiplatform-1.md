@@ -1,4 +1,4 @@
-# Séance 10 : VueJs et ApiPlatform (1/2)
+# Séance 10 : VueJs et ApiPlatform (1)
 
 ## Afficher les fournisseurs
 
@@ -16,7 +16,7 @@ Vous allez maintenant ajouter un formulaire pour ajouter un nouveau fournisseur.
 
 Pour des raisons de simplicités, nous allons utiliser un formulaire HTML classique, et non un formulaire avec VueJs. Pour cela, vous allez créer un formulaire HTML dans la vue `Fournisseurs.vue`. Ce formulaire contiendra un champ `input` pour le libellé du fournisseur, et un bouton pour envoyer le formulaire.
 
-On associera un v-model sur le champ input pour récupérer la valeur du champ (nommé libelle). On ajoutera un `@click` sur le formulaire pour intercepter l'événement de clic sur le bouton du formulaire (on pourrait le faire avec un `@submit`). 
+On associera un v-model sur le champ input pour récupérer la valeur du champ (nommé libelle). On ajoutera un `@click` sur le formulaire pour intercepter l'événement de clic sur le bouton du formulaire (on pourrait le faire avec un `@submit`).
 
 La méthode appelée (`ajouter` par exemple) devra récupérer la valeur du champ libellé, et appeler l'API pour ajouter le fournisseur.
 
@@ -56,10 +56,8 @@ Pour cela, une fois le fournisseur ajouté, il faudrait actualiser la liste des 
 
 Pour éviter de copier/coller du code et de le dupliquer, on va écrire une fonction qui récupère la liste des fournisseurs, et qui sera appelée par la méthode `onMounted` et par la méthode qui ajoute un fournisseur, et peut être à d'autres instants.
 
-Avec VueJs3 et le mode composition, la déclaration d'une fonction est un peu différente du javascript classique.
-
 ```javascript
-const getFournisseurs = async () => {
+async function getFournisseurs {
     // code pour récupérer la liste des fournisseurs
 }
 ```
