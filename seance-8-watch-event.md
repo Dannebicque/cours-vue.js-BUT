@@ -63,7 +63,7 @@ C'est là qu'interviennent les **événements**. Un composant enfant peut émett
 
 ### Émettre un événement
 
-Pour émettre un événement, on utilise la fonction `emit`. 
+Pour émettre un événement, on utilise la fonction `emit`.
 
 ```javascript
 
@@ -73,7 +73,7 @@ const emit = defineEmits(['emitEvent'])
 
 const count = ref(0)
 
-const increment = () => {
+function increment() {
     count.value++
     emit('emitEvent', count.value)
 }
@@ -96,7 +96,7 @@ Pour écouter un événement, on utilise la syntaxe `v-on` ou `@` pour les évé
 ```html
 <template>
   <div>
-    <button @increment="increment">Increment</button>
+    <p @increment="increment">Increment</p>
   </div>
 </template>
 
@@ -105,7 +105,7 @@ import { ref } from 'vue'
 
 const count = ref(0)
 
-const increment = (value) => {
+function increment(value) {
     count.value = value
 }
 </script>
@@ -120,4 +120,3 @@ Dans cet exemple, le composant parent écoute l'événement `increment` émis pa
 * Dans le composant **Pays.vue**, écouter cet événement et afficher le nombre de pays selectionnés.
 * Gérer le cas où je déselectionne un pays.
 * Dans le composant **Pays.vue**, écouter cet événement et afficher un message indiquant que le pays est sélectionné.
-  
