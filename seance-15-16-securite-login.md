@@ -25,4 +25,4 @@ Le travail à faire est le suivant :
     * Un bouton permettra d'ajouter la carte dans un panier fictif qui sera affiché sur toutes les pages
 * La page détaillée d'une carte comprendra les éléments.
   * Le choix d'une langue affichera le nom de la carte dans la langue choisie (et uniquement celle ci)
-* Afficher un panier des cartes selectionnées
+* Afficher un panier des cartes sélectionnées
