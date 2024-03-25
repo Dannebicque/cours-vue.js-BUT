@@ -65,8 +65,8 @@ C'est là qu'interviennent les **événements**. Un composant enfant peut émett
 
 Pour émettre un événement, on utilise la fonction `emit`.
 
+{% code title="ComposantEmeteur.vue" lineNumbers="true" %}
 ```javascript
-
 <script setup>
 import { ref } from 'vue'
 const emit = defineEmits(['emitEvent'])
@@ -76,27 +76,39 @@ const count = ref(0)
 function increment() {
     count.value++
     emit('emitEvent', count.value)
+    // ou sans paramètre
+    // emit('emitEvent')
 }
 
 </script>
 ```
+{% endcode %}
 
 Dans l'exemple ci-dessus l'événement `increment` est émis avec la valeur de `count` comme paramètre. Il est émis à chaque fois que la fonction `increment` est appelée.
 
 Il est aussi possible de passer un événement depuis la partie template du composant, par exemple sur un bouton ou un input.
 
-```html
-<button @click="$emit('increment', count)">Increment</button>
+sans paramètre :&#x20;
+
+```javascript
+<button @click="$emit('emitEvent')">Increment</button>
+```
+
+avec un paramètre :
+
+```javascript
+<button @click="$emit('emitEvent', count)">Increment</button>
 ```
 
 ### Écouter un événement
 
 Pour écouter un événement, on utilise la syntaxe `v-on` ou `@` pour les événements.
 
+{% code title="ComposantParent.vue" lineNumbers="true" %}
 ```html
 <template>
   <div>
-    <p @increment="increment">Increment</p>
+    <ComposantEmeteur @emitEvent="increment">Increment</ComposantEmeteur>
   </div>
 </template>
 
@@ -110,8 +122,9 @@ function increment(value) {
 }
 </script>
 ```
+{% endcode %}
 
-Dans cet exemple, le composant parent écoute l'événement `increment` émis par le composant enfant. Lorsque l'événement est émis, la fonction `increment` est appelée avec la valeur passée par l'événement.
+Dans cet exemple, le composant parent écoute l'événement `emitEvent` émis par le composant enfant. Lorsque l'événement est émis, la fonction `increment` est appelée avec la valeur passée par l'événement.
 
 ### Exercice 2
 
