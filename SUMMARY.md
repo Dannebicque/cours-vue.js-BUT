@@ -12,6 +12,7 @@
 * [Séance 9 : ApiPlatform](seance-9-api-platform.md)
 * [Séance 10 : VueJs et ApiPlatform (1)](seance-10-vuejs-apiplatform-1.md)
 * [Séance 11 : VueJs et ApiPlatform (2)](seance-11-vuejs-apiplatform-1.md)
+* [Mini projet : Site e-commerce](mini-projet-site-e-commerce.md)
 * [Séance 13 : Routes imbriquées // Animations et transitions](seance-13-routes-imbriquees.md)
 * [Séance 15-16 : Pour réviser](seance-15-16-securite-login.md)
 * [Séance 18 : TP Noté](seance-18-tp-note.md)
