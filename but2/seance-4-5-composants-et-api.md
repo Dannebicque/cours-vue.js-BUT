@@ -1,4 +1,4 @@
-# Séance 4 et 5 : Composants et API
+# Séance 4-5 : Composants et API
 
 ## Composants
 
@@ -10,7 +10,7 @@ Cette séance est une adaptation/traduction des parties suivantes de la document
 
 Les composants nous permettent de fractionner l'UI en morceaux indépendants et réutilisables, sur lesquels nous pouvons réfléchir de manière isolée. Il est courant pour une application d'être organisée en un arbre de composants imbriqués.
 
-<figure><img src=".gitbook/assets/components.7fbb3771.png" alt=""><figcaption><p>Schéma de principe des composants</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/components.7fbb3771.png" alt=""><figcaption><p>Schéma de principe des composants</p></figcaption></figure>
 
 Cette approche est très similaire à celle des éléments HTML, mais Vue.js implémente son propre modèle de composant, nous permettant d'encapsuler du contenu et de la logique au sein de chaque composant. Les composants peuvent être réutilisés dans d'autres composants, et ils peuvent être composés de manière récursive pour créer des applications complexes.
 
@@ -196,7 +196,7 @@ Il peut être intéressant d'utiliser ce hook pour effectuer des actions lorsque
 {% hint style="info" %}
 **Les appels API peuvent se faire à chaque fois que nécessaire, dans des méthodes, dans des hooks, ...**
 
-Il est possible d'utiliser la méthode fetch pour récupérer des données depuis une API, qui est native à JavaScript. (voir [https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API](https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API)). Il existe également la librairie axios qui permet de faire des appels API plus facilement, et qui est très utilisée dans le monde Vue.js (et les frameworks front en général). (voir [https://axios-http.com/fr/docs/intro](https://axios-http.com/fr/docs/intro))
+Il est possible d'utiliser la méthode fetch pour récupérer des données depuis une API, qui est native à JavaScript. (voir [https://developer.mozilla.org/fr/docs/Web/API/Fetch\_API](https://developer.mozilla.org/fr/docs/Web/API/Fetch_API)). Il existe également la librairie axios qui permet de faire des appels API plus facilement, et qui est très utilisée dans le monde Vue.js (et les frameworks front en général). (voir [https://axios-http.com/fr/docs/intro](https://axios-http.com/fr/docs/intro))
 {% endhint %}
 
 ### Exemple d'utilisation de fetch

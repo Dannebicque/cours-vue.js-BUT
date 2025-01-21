@@ -1,4 +1,4 @@
-# Séance 9 : Un peu de back ...
+# Séance 9 : ApiPlatform
 
 Sur cette séance on va installer ApiPlatform, sur un projet symfony qui va nous permettre d'exposer une API REST sur nos entités et ainsi pouvoir accéder et manipuler les données depuis notre application VueJS.
 
@@ -30,15 +30,15 @@ Pour installer ApiPlatform, il faut d'ajouter le bundle :
 composer require api
 ```
 
-A ce stade, vous pouvez lancer votre projet et vérifier que tout fonctionne bien. Pour cela rendez vous sur l'url : [http://localhost:8000/api](http://localhost:8000/api) /!\ Evidemment vous devez adapter l'url en fonction de votre configuration. **Il faut  ajouter /api à la fin de l'url de base de votre projet.**
+A ce stade, vous pouvez lancer votre projet et vérifier que tout fonctionne bien. Pour cela rendez vous sur l'url : [http://localhost:8000/api](http://localhost:8000/api) /!\ Evidemment vous devez adapter l'url en fonction de votre configuration. **Il faut ajouter /api à la fin de l'url de base de votre projet.**
 
 Vous devriez avoir la vue ci-dessous.
 
-<figure><img src=".gitbook/assets/api1.png" alt=""><figcaption><p>Apercu de l'interface d'APIPlatform</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/api1.png" alt=""><figcaption><p>Apercu de l'interface d'APIPlatform</p></figcaption></figure>
 
 A ce stade aucune de nos entités n'est exposée. Il faut donc pour chacune préciser si elle est exposée, et éventuellement configurer précisément comment elle est exposée (les champs, les droits, ...).
 
-Pour exposer une entité, il faut ajouter l'attribut #[ApiResource()] au dessus de la classe. Par exemple :
+Pour exposer une entité, il faut ajouter l'attribut #\[ApiResource()] au dessus de la classe. Par exemple :
 
 ```php
 <?php
@@ -59,16 +59,16 @@ class Fournisseur
 
 C'est la configuration minimale. Si vous actualisez votre page, vous devriez voir apparaître l'entité Fournisseur dans la liste des ressources exposées.
 
-<figure><img src=".gitbook/assets/api2.png" alt=""><figcaption><p>Apercu de l'interface d'APIPlatform avec l'entité Fournisseur exposée</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/api2.png" alt=""><figcaption><p>Apercu de l'interface d'APIPlatform avec l'entité Fournisseur exposée</p></figcaption></figure>
 
 Sur cette page vous avez toutes les possibilités offertes par ApiPlatform. Vous pouvez tester les différentes routes, et voir les données retournées. Par défaut vous avez les actions suivantes :
 
-- GET /fournisseurs : récupère la liste des fournisseurs
-- POST /fournisseurs : crée un nouveau fournisseur (implique d'envoyer les données associées)
-- GET /fournisseurs/{id} : récupère un fournisseur en fonction de son id
-- PUT /fournisseurs/{id} : remplace un fournisseur en fonction de son id (implique d'envoyer les données associées) par les nouvelles données
-- DELETE /fournisseurs/{id} : supprime un fournisseur en fonction de son id
-- PATCH /fournisseurs/{id} : modifie un fournisseur en fonction de son id (implique d'envoyer les données associées)
+* GET /fournisseurs : récupère la liste des fournisseurs
+* POST /fournisseurs : crée un nouveau fournisseur (implique d'envoyer les données associées)
+* GET /fournisseurs/{id} : récupère un fournisseur en fonction de son id
+* PUT /fournisseurs/{id} : remplace un fournisseur en fonction de son id (implique d'envoyer les données associées) par les nouvelles données
+* DELETE /fournisseurs/{id} : supprime un fournisseur en fonction de son id
+* PATCH /fournisseurs/{id} : modifie un fournisseur en fonction de son id (implique d'envoyer les données associées)
 
 ## Tester l'API
 
@@ -76,13 +76,13 @@ On peut utiliser l'interface proposée par API Platform pour regarder le comport
 
 Pour ce semestre on va rester dans l'interface proposée par API Platform.
 
-### Premier test 
+### Premier test
 
 * Déroulez le menu avec le premier GET /fournisseurs, et cliquez sur "Try It out", puis "Execute"
 
 Vous devriez avoir la réponse ci-dessous :
 
-<figure><img src=".gitbook/assets/api3.png" alt=""><figcaption><p>Résultat du Get</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/api3.png" alt=""><figcaption><p>Résultat du Get</p></figcaption></figure>
 
 Par défaut, API Platform propose un format enrichi du [JSON (Json-LD)](https://fr.wikipedia.org/wiki/JSON-LD), qui contient des informations supplémentaires :
 
@@ -142,7 +142,6 @@ console.log(fournisseur['hydra:member'][0].libelle);
   * l'URL pour obtenir les informations d'un fournisseur,
   * l'URL pour ajouter un fournisseur
   * l'URL pour modifier un fournisseur.
-
 * A vous de jouer encore
   * Ajoutez l'entité Article dans Api Platform.
   * Testez les différentes URL pour obtenir les articles, un article, ajouter un article, modifier un article, supprimer un article.
