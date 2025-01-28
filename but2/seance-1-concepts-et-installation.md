@@ -378,3 +378,26 @@ L'utilisation dans la partie template se fait en considérant moyenne comme une 
 {% hint style="info" %}
 Cela ne concerne que l'approche par "composition" de Vue.js 3. La source de cette partie est la traduction de la documentation ici : [https://vuejs.org/guide/essentials/reactivity-fundamentals.html](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
 {% endhint %}
+
+La réactivité est l'une des fonctionnalités les plus puissantes de Vue.js. Elle permet de déclarer des dépendances entre les données de l'application et les éléments du DOM, et de mettre à jour automatiquement le DOM lorsque les données changent.
+
+Exemple, nous souhaitons avoir une partie de notre page qui s'affiche ou se masque en fonction d'une variable. Nous pourrions écrire le code suivant :
+
+```html
+<template>
+  <button @click="isVisible = !isVisible">
+    Toggle
+  </button>
+  <p v-if="isVisible">
+    Now you see me
+  </p>
+</template>
+
+<script setup>
+const isVisible = ref(true)
+</script>
+```
+
+Dans cet exemple, nous utilisons la directive `v-if` pour afficher ou masquer un élément en fonction de la valeur de `isVisible`. Lorsque le bouton est cliqué, la valeur de `isVisible` est inversée, ce qui entraîne la mise à jour de l'élément du DOM.
+
+
