@@ -24,10 +24,18 @@ Vous pouvez utiliser la directive `v-else` pour indiquer un bloc "sinon" lié à
 
 {% code lineNumbers="true" %}
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const awesome = ref(true) //déclaration et initialisation de la variable
+</script>
+
+<template>
 <button @click="awesome = !awesome">Basculer</button>
 
 <h1 v-if="awesome">Vue est magnifique!</h1>
 <h1 v-else>Oh non 😢</h1>
+</template>
 ```
 {% endcode %}
 

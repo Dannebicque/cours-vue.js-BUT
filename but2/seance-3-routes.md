@@ -89,7 +89,7 @@ Pour vous faciliter le départ (vous pourriez aussi installé un nouveau projet 
 
 * Téléchargez le fichier zip:&#x20;
 
-{% file src=".gitbook/assets/mmi-world-main.zip" %}
+{% file src="../.gitbook/assets/mmi-world-main.zip" %}
 
 * Dézippez le dans le dossier de votre choix
 * executez la commande `npm install` ou `yarn install` pour installer les dépendances
@@ -183,4 +183,9 @@ const username = route.params.username
 
 * Ajoutez une route `/pays` qui affiche une vue `Pays.vue` (à créer dans le répertoire `src/views`). Ajoutez un lien vers cette page.
 * Dans la vue `Pays.vue`, faire une boucle sur 10 pays fictifs (nommés pays 1, pays 2, ...), et afficher un lien vers une page de détail de chaque pays (`/fiche-pays/:id`), en utilisant le nom de la route. Ajoutez la vue associée `FichePays.vue` (à créer dans le répertoire `src/views`).
-* Dans la vue `FichePays.vue`, affichez la valeur du parmètre dans la page.
+* Dans la vue `FichePays.vue`, affichez la valeur du paramètre dans la page.
+
+{% embed url="https://youtube.com/shorts/Ynv0ckOWnNI" %}
+Résultat attendu
+{% endembed %}
+
