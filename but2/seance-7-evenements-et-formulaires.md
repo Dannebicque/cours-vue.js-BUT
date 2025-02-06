@@ -1,4 +1,4 @@
-# Séance 7 - Evenements et formulaires
+# Séance 7 : Evénements et Formulaires
 
 {% hint style="info" %}
 Cette partie est une traduction/adaptation de la documentation officielle située : [https://fr.vuejs.org/guide/essentials/forms.html](https://fr.vuejs.org/guide/essentials/forms.html)
@@ -167,18 +167,14 @@ Dans la partie script, ajouter une variable _recherche_ qui sera une chaîne de 
 
 #### Étape 3
 
-Dans la partie script, ajouter une méthode _filtrer_ qui va filtrer la liste des pays en fonction de la saisie de l'utilisateur. 
-On pourrait faire un nouvel appel API pour récupérer les pays en fonction de la saisie de l'utilisateur, mais on va faire un filtre en JavaScript sur cette exercice.
-Pour cela, on va utiliser la méthode `filter()` de JavaScript. Cette méthode prend en paramètre une fonction qui sera appelée pour chaque élément du tableau (léquivalent de faire une boucle sur toutes les réponses et comparer les valeurs). Cette fonction prend en paramètre un élément du tableau et doit retourner un booléen. Si le booléen est `true`, l'élément est conservé dans le tableau, sinon il est supprimé.
+Dans la partie script, ajouter une méthode _filtrer_ qui va filtrer la liste des pays en fonction de la saisie de l'utilisateur. On pourrait faire un nouvel appel API pour récupérer les pays en fonction de la saisie de l'utilisateur, mais on va faire un filtre en JavaScript sur cette exercice. Pour cela, on va utiliser la méthode `filter()` de JavaScript. Cette méthode prend en paramètre une fonction qui sera appelée pour chaque élément du tableau (léquivalent de faire une boucle sur toutes les réponses et comparer les valeurs). Cette fonction prend en paramètre un élément du tableau et doit retourner un booléen. Si le booléen est `true`, l'élément est conservé dans le tableau, sinon il est supprimé.
 
 {% hint style="info" %}
-* La méthode `filter()` retourne un nouveau tableau, elle ne modifie pas le tableau d'origine. [https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-
+* La méthode `filter()` retourne un nouveau tableau, elle ne modifie pas le tableau d'origine. [https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/Array/filter](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 * La méthode `toLowerCase()` permet de transformer une chaîne de caractères en minuscules. La comparaison est sensible à la casse, donc on va transformer les chaînes de caractères en minuscules pour comparer les valeurs. [https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/String/toLowerCase](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase)
 {% endhint %}
 
 * La méthode `includes()` permet de savoir si une chaîne de caractères est incluse dans une autre chaîne de caractères. [https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global\_Objects/String/includes](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/String/includes)
-{% endhint %}
 
 #### Étape 4
 
@@ -191,3 +187,7 @@ Modifiez le code précédent pour que la recherche se fasse en temps réel, c'es
 ### Exercice 3
 
 On va ajouter une vue Recherche.vue (et le menu qui va avec) qui va permettre de rechercher des pays en fonction de la saisie de l'utilisateur. Cette fois, comme aucune donnée n'est chargée dès le début, on va utiliser l'API [https://restcountries.com/v3.1/name/....](https://restcountries.com/v3.1/name/...) pour récupérer les pays en fonction de la saisie de l'utilisateur. Il faut remplacer le `...` par la saisie de l'utilisateur.
+
+{% embed url="https://youtu.be/vDddUkCY5Vs" %}
+Exemple de rendu
+{% endembed %}
