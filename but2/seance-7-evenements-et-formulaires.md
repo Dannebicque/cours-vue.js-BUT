@@ -184,10 +184,10 @@ Si vous testez votre code à ce stade et que vous avez remplacé la variable dat
 
 Modifiez le code précédent pour que la recherche se fasse en temps réel, c'est à dire dès que l'utilisateur tape quelque chose dans le champ de saisie, la liste des pays sera filtrée.
 
-### Exercice 3
-
-On va ajouter une vue Recherche.vue (et le menu qui va avec) qui va permettre de rechercher des pays en fonction de la saisie de l'utilisateur. Cette fois, comme aucune donnée n'est chargée dès le début, on va utiliser l'API [https://restcountries.com/v3.1/name/....](https://restcountries.com/v3.1/name/...) pour récupérer les pays en fonction de la saisie de l'utilisateur. Il faut remplacer le `...` par la saisie de l'utilisateur.
-
 {% embed url="https://youtu.be/vDddUkCY5Vs" %}
 Exemple de rendu
 {% endembed %}
+
+### Exercice 3
+
+On va ajouter une vue Recherche.vue (et le menu qui va avec) qui va permettre de rechercher des pays en fonction de la saisie de l'utilisateur. Cette fois, comme aucune donnée n'est chargée dès le début, on va utiliser l'API [https://restcountries.com/v3.1/name/....](https://restcountries.com/v3.1/name/...) pour récupérer les pays en fonction de la saisie de l'utilisateur. Il faut remplacer le `...` par la saisie de l'utilisateur.
