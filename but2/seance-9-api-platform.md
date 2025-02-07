@@ -133,7 +133,7 @@ Malgré le format et les données supplémentaires, cette réponse se manipule c
 
 ```javascript
 let fournisseur = JSON.parse(response);
-console.log(fournisseur['hydra:member'][0].libelle);
+console.log(fournisseur['member'][0].libelle);
 ```
 
 ### A vous de jouer
