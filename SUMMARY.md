@@ -23,4 +23,4 @@
 
 ## BUT3
 
-* [Page 1](but3/page-1.md)
+* [Support de cours en BUT3](but3/page-1.md)
