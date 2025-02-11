@@ -55,6 +55,8 @@ La première permet de retourner la variable à surveiller, et la seconde est la
 * Passer cette valeur aux composants enfants (**CardPays.vue**) pour qu'il puisse afficher ou non les images des drapeaux en fonction de la valeur du checkbox.
 * Utiliser la propriété **watch** pour surveiller les changements de cette valeur dans le composant **CardPays.vue**.
 
+{% embed url="https://youtu.be/YVa936s_tsY" %}
+
 ## Événements
 
 De manière un peu similaire, comment un composant enfant peut-il communiquer avec un composant parent ? Par exemple, comment un composant enfant peut-il demander à son parent de faire quelque chose ou de se mettre à jour en fonction d'une action ?
@@ -133,3 +135,5 @@ Dans cet exemple, le composant parent écoute l'événement `emitEvent` émis pa
 * Dans le composant **Pays.vue**, écouter cet événement et afficher le nombre de pays selectionnés.
 * Gérer le cas où je déselectionne un pays.
 * Dans le composant **Pays.vue**, écouter cet événement et afficher un message indiquant que le pays est sélectionné.
+
+{% embed url="https://youtu.be/u4e9NVpch04" %}
