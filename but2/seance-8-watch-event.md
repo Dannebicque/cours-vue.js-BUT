@@ -141,3 +141,7 @@ Dans cet exemple, le composant parent écoute l'événement `emitEvent` émis pa
 * Dans le composant **Pays.vue**, écouter cet événement et afficher un message indiquant que le pays est sélectionné.
 
 {% embed url="https://youtu.be/u4e9NVpch04" %}
+
+Question Bonus
+
+* Ajouter un checkbox pour pré-selectionner l'ensemble des pays. Si un pays est désélectionné, ce checkbox doit se décocher, et de nouveau être coché si tous les pays sont sélectionnés.
