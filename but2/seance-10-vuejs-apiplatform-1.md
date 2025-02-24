@@ -4,10 +4,10 @@
 
 Vous allez ajouter une nouvelle vue pour afficher la liste des fournisseurs. Pour cela, en vous basant sur les séances précédentes, suivez les étapes suivantes :
 
-* Créer une vue `Fournisseurs.vue` dans le dossier `src/views`
+* Créer une vue `FournisseursView.vue` dans le dossier `src/views`
 * Ajouter la route associée
 * Ajouter le lien dans le menu
-* Ajouter dans Fournisseurs.vue, une variable `data` qui contiendra la liste des fournisseurs, et une méthode `onMounted` qui appellera l'API pour récupérer la liste des fournisseurs. Regardez dans ApiPlatform, l'URL à utiliser.
+* Ajouter dans FournisseursView.vue, une variable `data` qui contiendra la liste des fournisseurs, et une méthode `onMounted` qui appellera l'API pour récupérer la liste des fournisseurs. Regardez dans ApiPlatform, l'URL à utiliser.
 * Affichez les fournisseurs : Libellé et adresse. Attention, l'adresse pourrait être vide/null, il faut donc vérifier avant d'afficher l'adresse.
 
 ## Ajouter un fournisseur
@@ -28,7 +28,7 @@ Avec fetch cela pourrait ressembler à ça :
 await fetch('http://127.0.0.1:8000/api/fournisseurs', {
     method: 'POST',
     headers: {
-       'Content-Type': 'application/json'
+       'Content-Type': 'application/ld+json'
     },
     body: JSON.stringify({
        libelle: libelle.value
@@ -48,9 +48,9 @@ await axios.post('http://127.0.0.1:8000/api/fournisseurs', {
 
 Mettre en place le formulaire et la méthode pour ajouter un fournisseur.
 
-## Raffraichir la liste des fournisseurs
+## Rafraîchir la liste des fournisseurs
 
-Comme vous pouvez le constater, le fournisseur est ajouté dans la base de données, mais ce n'est pas visible dans la liste des fournisseurs. Pour cela, il faut raffraichir la liste des fournisseurs.
+Comme vous pouvez le constater, le fournisseur est ajouté dans la base de données, mais ce n'est pas visible dans la liste des fournisseurs. Pour cela, il faut rafraîchir la liste des fournisseurs.
 
 Pour cela, une fois le fournisseur ajouté, il faudrait actualiser la liste des fournisseurs. On pourrait reprendre un code similaire à celui de la méthode `onMounted` pour récupérer la liste des fournisseurs. Mais il y a un problème : la méthode `onMounted` est appelée une seule fois, au chargement de la page. Il faut donc trouver une autre solution.
 
@@ -72,7 +72,7 @@ onMounted(async () => {
 
 ### Exercice
 
-Mettre en place le raffraichissement de la liste des fournisseurs lors de l'ajout d'un nouveau fournisseur.
+Mettre en place le rafraîchissement de la liste des fournisseurs lors de l'ajout d'un nouveau fournisseur.
 
 ## Ajouter l'adresse
 
