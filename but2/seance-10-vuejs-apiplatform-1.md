@@ -10,6 +10,58 @@ Vous allez ajouter une nouvelle vue pour afficher la liste des fournisseurs. Pou
 * Ajouter dans FournisseursView.vue, une variable `data` qui contiendra la liste des fournisseurs, et une méthode `onMounted` qui appellera l'API pour récupérer la liste des fournisseurs. Regardez dans ApiPlatform, l'URL à utiliser.
 * Affichez les fournisseurs : Libellé et adresse. Attention, l'adresse pourrait être vide/null, il faut donc vérifier avant d'afficher l'adresse.
 
+
+
+{% hint style="warning" %}
+Il est assez probable (si vous avez la version 4 d'ApiPlatform), que la ville se résume à une IRI du type : /api/adresse/1. C'est normal ! ApiPlatform V4 ne diffuse plus les données d'une relation de manière automatique.
+{% endhint %}
+
+#### Configurer ApiPlatform pour intégrer les données d'une relation
+
+Il faut paramétrer le contexte de normalisation, c'est à dire les données envoyées dans le Json ([https://api-platform.com/docs/core/serialization/](https://api-platform.com/docs/core/serialization/))
+
+Concrétement nous devons dans notre fichier Fournisseur.php (de notre partie back) définir le contexte et préciser l'ensemble des propriétés (ou méthodes) à intégrer, ainsi que dans la relation Adresse.
+
+Le fichier Fournisseur.php deviendrait donc :&#x20;
+
+
+
+```php
+// le code existant
+#[ApiResource(
+    normalizationContext: ['groups' => ['fournisseur:read']],
+)]
+class Fournisseur
+{
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    #[Groups(['fournisseur:read'])]
+    private ?int $id = null;
+
+    #[ORM\Column(length: 255)]
+    #[Groups(['fournisseur:read'])]
+    private ?string $libelle = null;
+
+    #[ORM\ManyToOne(inversedBy: 'fournisseurs', cascade: ['persist'])]
+    #[Groups(['fournisseur:read'])]
+    private ?Adresse $adresse = null;
+//le reste du code
+```
+
+où&#x20;
+
+* `normalizationContext: ['groups' => ['fournisseur:read']],)]` : permet de définir les "groupes" pris en compte dans la transformation en json (normalisation). Un groupe étant une chaine de caractère lire pour identifier les éléments à prendre en compte. Plusieurs groupes peuvent être définis
+* `#[Groups(['fournisseur:read'])]` : pour définir les propriétés ou méthodes à intégrer. Attention aux choix et à ne pas créer des références circulaires
+
+Il faut faire de même sur Adresse.php avec les champs que vous souhaitez intégrer
+
+
+
+{% hint style="danger" %}
+Une référence circulaire est un parcours infini sur des entités lors du processus de normalisation. Exemple un fournisseur à une adresse, les adresses on des fournisseurs, un fournisseur à une adresse, ... Il convient donc d'être vigilant aux éléments mis dans un groupe lors de la normalisation.
+{% endhint %}
+
 ## Ajouter un fournisseur
 
 Vous allez maintenant ajouter un formulaire pour ajouter un nouveau fournisseur. Dans un premier temps, nous allons ajouter simple le libellé du fournisseur.
