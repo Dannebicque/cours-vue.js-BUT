@@ -131,3 +131,6 @@ Ces classes sont automatiquements ajoutées par VueJs lors de l'ajout ou de la s
 Ajouter une transition entre la vue Regions et la vue FicheRegion. Utilisez la transition "fade" de la documentation.
 
 Ceci est un aperçu très rapide de la partie transition/animation. VueJs propose de nombreuses autres possibilités. Il est aussi assez simple de gérer des effets avec des animations en CSS. Vous trouverez des éléments dans la documentation : [https://vuejs.org/guide/extras/animation.html](https://vuejs.org/guide/extras/animation.html).
+
+{% embed url="https://youtu.be/13Jd0ERi0JQ" %}
+
