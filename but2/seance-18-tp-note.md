@@ -1,3 +1,5 @@
 # Séance 18 : TP Noté
 
-24 mars, 15h30-18h30
+ABCD : 24 mars, 15h30-18h30
+
+EF : 28 avril 15h30-18h30
