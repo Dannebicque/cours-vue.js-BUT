@@ -112,13 +112,13 @@ async function ajouter() {
       rue: rue.value,
       ...
     },
-  })
+  }) //ou fournisseur.value si c'est un objet Json
 
   if (id.value !== '') {
     await fetch(..url.., {
-      method: 'PUT',
+      method: 'PATCH',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/merge-patch+json',
       },
       body: dataPost,
     })
@@ -141,7 +141,7 @@ async function ajouter() {
   })
 
   if (id.value !== '') {
-    await axios.put(`http://symfony.mmi-troyes.fr:8313/api/fournisseurs/${lid.value}`, { libelle: libelle.value })
+    await axios.patch(`http://symfony.mmi-troyes.fr:8313/api/fournisseurs/${lid.value}`, { libelle: libelle.value })
   } else {
     ...le code d'ajout vu précédemment...
   }
