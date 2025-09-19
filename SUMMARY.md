@@ -24,3 +24,15 @@
 ## BUT3
 
 * [Page 1](but3/page-1.md)
+* [Séance 1 : Introduction & rappel Vue](but3/seance-1-introduction-rappel-vue.md)
+* [Séance 2 : Architecture et composables](but3/seance-2-architecture-et-composables.md)
+* [Séance 3 : Communication avec API](but3/seance-3-communication-avec-api.md)
+* [Séance 4 : Router et navigation](but3/seance-4-router-et-navigation.md)
+* [Séance 5 : State avancé (Pinia)](but3/seance-5-state-avance-pinia.md)
+* [Séance 6 : Introduction à Nuxt 3](but3/seance-6-introduction-a-nuxt-3.md)
+* [Séance 7 : Nuxt & API](but3/seance-7-nuxt-api.md)
+* [Séance 8 : Nuxt avancé & SEO](but3/seance-8-nuxt-avance-seo.md)
+* [Séance 9 : Tests front](but3/seance-9-tests-front.md)
+* [Séance 10 : Projet – Kick-off réseau social](but3/seance-10-projet-kick-off-reseau-social.md)
+* [Séance 11 : Projet – Développement](but3/seance-11-projet-developpement.md)
+* [Séance 12 : Projet – Finalisation](but3/seance-12-projet-finalisation.md)
