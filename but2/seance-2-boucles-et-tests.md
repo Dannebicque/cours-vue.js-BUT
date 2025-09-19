@@ -24,10 +24,18 @@ Vous pouvez utiliser la directive `v-else` pour indiquer un bloc "sinon" lié à
 
 {% code lineNumbers="true" %}
 ```html
+<script setup>
+import { ref } from 'vue'
+
+const awesome = ref(true) //déclaration et initialisation de la variable
+</script>
+
+<template>
 <button @click="awesome = !awesome">Basculer</button>
 
 <h1 v-if="awesome">Vue est magnifique!</h1>
 <h1 v-else>Oh non 😢</h1>
+</template>
 ```
 {% endcode %}
 
@@ -40,6 +48,33 @@ Dans cet extrait de code la ligne 1 contient la notation `@click` (qu'on peut au
 ### Exercice
 
 * Testez le code ci-dessus avec le bouton.
+
+## Réactivité
+
+{% hint style="info" %}
+Cela ne concerne que l'approche par "composition" de Vue.js 3. La source de cette partie est la traduction de la documentation ici : [https://vuejs.org/guide/essentials/reactivity-fundamentals.html](https://vuejs.org/guide/essentials/reactivity-fundamentals.html)
+{% endhint %}
+
+La réactivité est l'une des fonctionnalités les plus puissantes de Vue.js. Elle permet de déclarer des dépendances entre les données de l'application et les éléments du DOM, et de mettre à jour automatiquement le DOM lorsque les données changent.
+
+Exemple, nous souhaitons avoir une partie de notre page qui s'affiche ou se masque en fonction d'une variable. Nous pourrions écrire le code suivant :
+
+```html
+<template>
+  <button @click="isVisible = !isVisible">
+    Toggle
+  </button>
+  <p v-if="isVisible">
+    Now you see me
+  </p>
+</template>
+
+<script setup>
+const isVisible = ref(true)
+</script>
+```
+
+Dans cet exemple, nous utilisons la directive `v-if` pour afficher ou masquer un élément en fonction de la valeur de `isVisible`. Lorsque le bouton est cliqué, la valeur de `isVisible` est inversée, ce qui entraîne la mise à jour de l'élément du DOM.
 
 ### `v-else-if`
 
@@ -223,3 +258,4 @@ Comme le modèle `v-if`, vous pouvez aussi utiliser une balise `<template>` avec
 * Définir un tableau en JavaScript et l'afficher avec une boucle dans le template.
 * Générez un tableau de 10 variables en JavaScript, et l'afficher dans le template
   * Pour chaque note indiquer si elle est supérieure à 10 (en ajoutant une class green pour la couleur de la texte) ou red pour une note inférieure à 10.
+

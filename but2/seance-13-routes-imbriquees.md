@@ -1,4 +1,4 @@
-# Séance 13 : Routes imbriquées et Transitions
+# Séance 12 : Routes imbriquées // Animations et transitions
 
 ## Objectifs
 
@@ -6,8 +6,7 @@ L'objectif de cette séance est de mettre en place des routes imbriquées et de 
 
 ## Contexte
 
-Nous allons ajouter une nouvelle route et vue associée afin de pouvoir lister les pays par région du monde (Europe, Asie, ...).
-Dans cette même page, nous afficherons la liste des pays à chaque changement de région (on pourrait imaginer un système d'onglets par exemple).
+Nous allons ajouter une nouvelle route et vue associée afin de pouvoir lister les pays par région du monde (Europe, Asie, ...). Dans cette même page, nous afficherons la liste des pays à chaque changement de région (on pourrait imaginer un système d'onglets par exemple).
 
 Nous aurons donc une partie de la page qui restera fixe (la liste des régions) et une autre qui changera en fonction de la région sélectionnée.
 
@@ -40,9 +39,11 @@ En reprenant les éléments des précédentes séances mettre en place les élé
 * Une route et un lien dans le menu principal pour accéder à cette vue.
 * Une vue FicheRegion qui contiendra la liste des pays pour une région donnée. La liste sera récupérée depuis l'API, et utilisera le composant CardPays déjà créé.
 
+{% embed url="https://youtu.be/GS4HA7ospxA" %}
+
 ## Ajout des routes imbriquées.
 
-Une route imbriquée comme son nom l'indique est une route qui est imbriquée dans une autre route. Cela signifie que la route enfant est accessible à partir de la route parente. 
+Une route imbriquée comme son nom l'indique est une route qui est imbriquée dans une autre route. Cela signifie que la route enfant est accessible à partir de la route parente.
 
 Cela se traduit donc dans le router par un tableau `children` dans la route parente.
 
@@ -92,6 +93,8 @@ Nous devons donc ajouter un watcher sur le changement de route, pour mettre à j
 * Ajouter un watch sur le paramètre (voir séance 8) pour mettre à jour la donnée de la région.
 * Simplifier le code pour n'avoir qu'une seule fonction qui fait l'appel API et la réutiliser dans le watch et dans le mounted.
 
+{% embed url="https://youtu.be/s1FoTKTO6U8" %}
+
 ## Transitions
 
 Nous allons maintenant ajouter des transitions entre les différentes vues. Pour cela, nous allons utiliser les transitions de VueJs.
@@ -128,3 +131,6 @@ Ces classes sont automatiquements ajoutées par VueJs lors de l'ajout ou de la s
 Ajouter une transition entre la vue Regions et la vue FicheRegion. Utilisez la transition "fade" de la documentation.
 
 Ceci est un aperçu très rapide de la partie transition/animation. VueJs propose de nombreuses autres possibilités. Il est aussi assez simple de gérer des effets avec des animations en CSS. Vous trouverez des éléments dans la documentation : [https://vuejs.org/guide/extras/animation.html](https://vuejs.org/guide/extras/animation.html).
+
+{% embed url="https://youtu.be/13Jd0ERi0JQ" %}
+

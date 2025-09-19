@@ -189,7 +189,7 @@ Si on utilise vue en mode "composant" ([https://fr.vuejs.org/guide/scaling-up/sf
 * style : optionnel, pour contenir le CSS propre au composant.
 
 {% hint style="info" %}
-#### Pourquoi les composants monofichiers (SFC)[#](https://fr.vuejs.org/guide/scaling-up/sfc.html#why-sfc) <a href="#why-sfc" id="why-sfc"></a>
+**Pourquoi les composants monofichiers (SFC)**[**#**](https://fr.vuejs.org/guide/scaling-up/sfc.html#why-sfc)
 
 Si les SFC nécessitent une étape de compilation, les avantages sont nombreux en contrepartie :
 
@@ -399,5 +399,3 @@ const isVisible = ref(true)
 ```
 
 Dans cet exemple, nous utilisons la directive `v-if` pour afficher ou masquer un élément en fonction de la valeur de `isVisible`. Lorsque le bouton est cliqué, la valeur de `isVisible` est inversée, ce qui entraîne la mise à jour de l'élément du DOM.
-
-

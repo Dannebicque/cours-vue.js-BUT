@@ -49,11 +49,17 @@ Vous noterez la syntaxe particulière de la fonction `watch` qui prend une fonct
 
 La première permet de retourner la variable à surveiller, et la seconde est la fonction appelée lors du changement de cette variable.
 
+{% hint style="info" %}
+L'utilisation de watch est nécessaire si le changement de valeur d'une props doit déclencher une action dans votre composant enfant (un appel Api, une mise à jour d'autres variables, ...). Dans le cas contrainte, la partie "vue" va réagir directement à la modification de la props. Les props sont réactives.
+{% endhint %}
+
 ### Exercice 1
 
 * Dans le composant **Pays.vue**, ajouter un checkbox avec un v-model associé qui va déterminer si les images des drapeaux sont affichées ou non.
 * Passer cette valeur aux composants enfants (**CardPays.vue**) pour qu'il puisse afficher ou non les images des drapeaux en fonction de la valeur du checkbox.
-* Utiliser la propriété **watch** pour surveiller les changements de cette valeur dans le composant **CardPays.vue**.
+* Utiliser la propriété **watch** pour surveiller les changements de cette valeur dans le composant **CardPays.vue** et afficher un message dans la console.
+
+{% embed url="https://youtu.be/YVa936s_tsY" %}
 
 ## Événements
 
@@ -133,3 +139,9 @@ Dans cet exemple, le composant parent écoute l'événement `emitEvent` émis pa
 * Dans le composant **Pays.vue**, écouter cet événement et afficher le nombre de pays selectionnés.
 * Gérer le cas où je déselectionne un pays.
 * Dans le composant **Pays.vue**, écouter cet événement et afficher un message indiquant que le pays est sélectionné.
+
+{% embed url="https://youtu.be/u4e9NVpch04" %}
+
+Question Bonus
+
+* Ajouter un checkbox pour pré-selectionner l'ensemble des pays. Si un pays est désélectionné, ce checkbox doit se décocher, et de nouveau être coché si tous les pays sont sélectionnés.

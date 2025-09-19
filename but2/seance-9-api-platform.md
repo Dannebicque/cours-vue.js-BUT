@@ -91,8 +91,8 @@ Par défaut, API Platform propose un format enrichi du [JSON (Json-LD)](https://
     "@context": "/api/contexts/Fournisseur",
     "@id": "/api/fournisseurs",
     "@type": "hydra:Collection",
-    "hydra:totalItems": 1,
-    "hydra:member": [
+    "totalItems": 1,
+    "member": [
         {
             "@id": "/api/fournisseurs/1",
             "@type": "Fournisseur",
@@ -133,7 +133,7 @@ Malgré le format et les données supplémentaires, cette réponse se manipule c
 
 ```javascript
 let fournisseur = JSON.parse(response);
-console.log(fournisseur['hydra:member'][0].libelle);
+console.log(fournisseur['member'][0].libelle);
 ```
 
 ### A vous de jouer
@@ -141,7 +141,23 @@ console.log(fournisseur['hydra:member'][0].libelle);
 * Testez depuis ApiPlatform :
   * l'URL pour obtenir les informations d'un fournisseur,
   * l'URL pour ajouter un fournisseur
-  * l'URL pour modifier un fournisseur.
+
+
+
+{% code title="Exemple de données à envoyer en post" %}
+```json
+{
+  "libelle": "Fournisseur 1",
+  "adresse": {
+    "rue": "9 rue de Québec",
+    "codepostal": "10000",
+    "ville": "Troyes"
+  }
+}
+```
+{% endcode %}
+
+* l'URL pour modifier un fournisseur.
 * A vous de jouer encore
   * Ajoutez l'entité Article dans Api Platform.
   * Testez les différentes URL pour obtenir les articles, un article, ajouter un article, modifier un article, supprimer un article.

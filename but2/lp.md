@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # LP
 
 ## Pour les "experts" de Vue.js
@@ -5,7 +9,7 @@
 En utilisant une API de votre choix (suffisament complexe), par exemple :&#x20;
 
 * [https://restcountries.com/](https://restcountries.com/)
-* [https://developer.marvel.com/docs#!/public/getCreatorCollection\_get\_0](https://developer.marvel.com/docs#!/public/getCreatorCollection\_get\_0)
+* [https://developer.marvel.com/docs#!/public/getCreatorCollection\_get\_0](https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0)
 * [https://openweathermap.org/api](https://openweathermap.org/api) (dans une moindre mesure par rapport aux consignes)
 * ...
 

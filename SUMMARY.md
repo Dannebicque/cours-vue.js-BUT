@@ -14,12 +14,13 @@
 * [Séance 10 : VueJs et ApiPlatform (1)](but2/seance-10-vuejs-apiplatform-1.md)
 * [Séance 11 : VueJs et ApiPlatform (2)](but2/seance-11-vuejs-apiplatform-1.md)
 * [Séance 12 : TP Noté 1](but2/seance-12-tp-note.md)
-* [Mini projet : Site e-commerce](but2/mini-projet-site-e-commerce.md)
-* [Séance 13 : Routes imbriquées // Animations et transitions](but2/seance-13-routes-imbriquees.md)
+* [Séance 12 : Routes imbriquées // Animations et transitions](but2/seance-13-routes-imbriquees.md)
 * [Séance 15-16 : Pour réviser](but2/seance-15-16-securite-login.md)
 * [Séance 18 : TP Noté](but2/seance-18-tp-note.md)
+* [Séance 19 : Evaluation écrite](but2/seance-19-evaluation-ecrite.md)
 * [Quelques sources](but2/quelques-sources.md)
 * [LP](but2/lp.md)
+* [Mini projet : Site e-commerce](but2/mini-projet-site-e-commerce.md)
 
 ## BUT3
 
