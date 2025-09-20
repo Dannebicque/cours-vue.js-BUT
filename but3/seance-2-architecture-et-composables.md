@@ -1,8 +1,7 @@
 # Séance 2 – Architecture et composables
 
 ## 🎯 Objectifs
-- Comprendre la structuration d’un projet Vue.
-- Découvrir la factorisation de logique avec les composables.
+- Comprendre la struc### Composables
 
 ## 📖 Partie théorique
 
@@ -77,10 +76,386 @@ mon-projet-vue/
   - `services/` : accès aux API et logique métier
   - `views/` : pages principales de l’application
 
-### Composables
+
+
+#### Tableau de synthèse des dossiers principaux
+
+| Dossier | Rôle | Contenu | Exemple | Réutilisabilité | Gestion d'état |
+|---------|------|---------|---------|-----------------|----------------|
+| `components/` | Interface utilisateur | Composants Vue avec template, script, style | `TaskCard.vue`, `Button.vue` | ✅ Haute | État local uniquement |
+| `stores/` | État global partagé | Stores Pinia avec state, getters, actions | `useAuthStore.js`, `useTaskStore.js` | ✅ Globale | ✅ État global réactif |
+| `composables/` | Logique métier réutilisable | Fonctions avec réactivité Vue | `useTasks.js`, `useAuth.js` | ✅ Très haute | État réactif local |
+| `services/` | Accès aux données | Classes/fonctions pour API et logique | `taskService.js`, `apiClient.js` | ✅ Moyenne | ❌ Pas d'état |
+| `views/` | Pages de l'application | Composants de page/route | `HomePage.vue`, `ProfilePage.vue` | ❌ Faible | État local de page |
+
+#### Détail des responsabilités
+
+**`components/` - Composants Vue réutilisables**
+- **Rôle** : Éléments d'interface utilisateur
+- **Contenu** : Template, logique d'affichage, styles
+- **Exemples** : `TaskCard.vue`, `Modal.vue`, `Button.vue`
+- **Communication** : Props (entrée) et emits (sortie)
+
+**`stores/` - Gestion d'état globale (Pinia)**
+- **Rôle** : Centraliser l'état partagé entre composants
+- **Contenu** : State, getters, actions
+- **Exemples** : `useAuthStore.js`, `useTaskStore.js`
+- **Avantages** : Persistance, réactivité globale, DevTools
+
+**`composables/` - Fonctions réactives réutilisables**
+- **Rôle** : Factoriser la logique métier avec réactivité
+- **Contenu** : Fonctions utilisant ref, computed, watch
+- **Exemples** : `useTasks.js`, `useLocalStorage.js`
+- **Avantages** : Testabilité, réutilisabilité, séparation des préoccupations
+
+**`services/` - Accès aux API et logique métier**
+- **Rôle** : Interaction avec APIs et traitements de données
+- **Contenu** : Classes/fonctions sans réactivité Vue
+- **Exemples** : `taskService.js`, `authService.js`, `apiClient.js`
+- **Avantages** : Abstraction des APIs, logique pure
+
+**`views/` - Pages principales de l'application**
+- **Rôle** : Composants de niveau page liés au routing
+- **Contenu** : Layout de page, orchestration de composants
+- **Exemples** : `HomePage.vue`, `TaskListPage.vue`
+- **Particularité** : Souvent connectés aux routes du routerfixe `use` (ex: `useCounter`, `useAuth`)
+
+
+
+
+### Les composables
+
+#### Qu'est-ce qu'un composable ?
 
 - Fonctions réutilisables exploitant la réactivité de Vue.
-- Permettent de factoriser la logique métier et d’éviter la duplication de code.
+- Permettent de factoriser la logique métier et d'éviter la duplication de code.
+
+#### Exemple complet : useTasks
+
+**Créer `src/composables/useTasks.js` :**
+
+```javascript
+import { ref, computed } from 'vue'
+
+export function useTasks() {
+  // État réactif
+  const tasks = ref([
+    {
+      id: 1,
+      title: 'Apprendre Vue 3',
+      description: 'Maîtriser la Composition API',
+      priority: 'High',
+      completed: false,
+      createdAt: new Date('2024-09-01')
+    },
+    {
+      id: 2,
+      title: 'Créer un projet',
+      description: 'Développer une application complète',
+      priority: 'Medium',
+      completed: true,
+      createdAt: new Date('2024-09-15')
+    }
+  ])
+
+  const loading = ref(false)
+  const error = ref(null)
+
+  // Computed properties
+  const totalTasks = computed(() => tasks.value.length)
+  
+  const completedTasks = computed(() => 
+    tasks.value.filter(task => task.completed)
+  )
+  
+  const pendingTasks = computed(() => 
+    tasks.value.filter(task => !task.completed)
+  )
+  
+  const highPriorityTasks = computed(() =>
+    tasks.value.filter(task => task.priority === 'High')
+  )
+
+  const completionRate = computed(() => {
+    if (totalTasks.value === 0) return 0
+    return Math.round((completedTasks.value.length / totalTasks.value) * 100)
+  })
+
+  // Méthodes
+  const addTask = (taskData) => {
+    const newTask = {
+      id: Date.now(),
+      title: taskData.title,
+      description: taskData.description,
+      priority: taskData.priority || 'Medium',
+      completed: false,
+      createdAt: new Date()
+    }
+    tasks.value.push(newTask)
+  }
+
+  const deleteTask = (taskId) => {
+    tasks.value = tasks.value.filter(task => task.id !== taskId)
+  }
+
+  const toggleComplete = (taskId) => {
+    const task = tasks.value.find(task => task.id === taskId)
+    if (task) {
+      task.completed = !task.completed
+    }
+  }
+
+  const updateTask = (taskId, updates) => {
+    const taskIndex = tasks.value.findIndex(task => task.id === taskId)
+    if (taskIndex !== -1) {
+      tasks.value[taskIndex] = { ...tasks.value[taskIndex], ...updates }
+    }
+  }
+
+  const getTasksByPriority = (priority) => {
+    return computed(() => 
+      tasks.value.filter(task => task.priority === priority)
+    )
+  }
+
+  const clearCompletedTasks = () => {
+    tasks.value = tasks.value.filter(task => !task.completed)
+  }
+
+  // Simuler un appel API
+  const fetchTasks = async () => {
+    try {
+      loading.value = true
+      error.value = null
+      
+      // Simulation d'un appel API
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      // En réalité, on ferait : 
+      // const response = await fetch('/api/tasks')
+      // tasks.value = await response.json()
+      
+      console.log('Tâches chargées depuis l\'API (simulé)')
+    } catch (err) {
+      error.value = 'Erreur lors du chargement des tâches'
+      console.error(err)
+    } finally {
+      loading.value = false
+    }
+  }
+
+  // Retourner l'état et les méthodes
+  return {
+    // État
+    tasks: tasks.value, // ou tasks si on veut la réactivité complète
+    loading,
+    error,
+    
+    // Computed
+    totalTasks,
+    completedTasks,
+    pendingTasks,
+    highPriorityTasks,
+    completionRate,
+    
+    // Méthodes
+    addTask,
+    deleteTask,
+    toggleComplete,
+    updateTask,
+    getTasksByPriority,
+    clearCompletedTasks,
+    fetchTasks
+  }
+}
+```
+
+#### Utilisation du composable dans un composant
+
+**Dans `TaskManager.vue` :**
+
+```vue
+<template>
+  <div class="task-manager">
+    <div class="stats">
+      <h2>📊 Statistiques</h2>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">{{ totalTasks }}</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ completedTasks.length }}</span>
+          <span class="stat-label">Terminées</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ pendingTasks.length }}</span>
+          <span class="stat-label">En cours</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">{{ completionRate }}%</span>
+          <span class="stat-label">Progression</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-form">
+      <h3>Ajouter une tâche</h3>
+      <input v-model="newTaskTitle" placeholder="Titre">
+      <textarea v-model="newTaskDescription" placeholder="Description"></textarea>
+      <select v-model="newTaskPriority">
+        <option value="Low">Basse</option>
+        <option value="Medium">Moyenne</option>
+        <option value="High">Haute</option>
+      </select>
+      <button @click="handleAddTask">Ajouter</button>
+    </div>
+
+    <div class="task-list">
+      <div v-if="loading" class="loading">Chargement...</div>
+      <div v-if="error" class="error">{{ error }}</div>
+      
+      <div v-for="task in pendingTasks" :key="task.id" class="task-item">
+        <h4>{{ task.title }}</h4>
+        <p>{{ task.description }}</p>
+        <div class="task-actions">
+          <button @click="toggleComplete(task.id)">
+            {{ task.completed ? 'Rouvrir' : 'Terminer' }}
+          </button>
+          <button @click="deleteTask(task.id)" class="danger">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <button @click="clearCompletedTasks" v-if="completedTasks.length > 0">
+      Effacer les tâches terminées ({{ completedTasks.length }})
+    </button>
+  </div>
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useTasks } from '@/composables/useTasks'
+
+// Utilisation du composable
+const {
+  tasks,
+  loading,
+  error,
+  totalTasks,
+  completedTasks,
+  pendingTasks,
+  completionRate,
+  addTask,
+  deleteTask,
+  toggleComplete,
+  clearCompletedTasks,
+  fetchTasks
+} = useTasks()
+
+// État local du formulaire
+const newTaskTitle = ref('')
+const newTaskDescription = ref('')
+const newTaskPriority = ref('Medium')
+
+// Méthodes locales
+const handleAddTask = () => {
+  if (newTaskTitle.value.trim()) {
+    addTask({
+      title: newTaskTitle.value,
+      description: newTaskDescription.value,
+      priority: newTaskPriority.value
+    })
+    
+    // Reset du formulaire
+    newTaskTitle.value = ''
+    newTaskDescription.value = ''
+    newTaskPriority.value = 'Medium'
+  }
+}
+
+// Charger les tâches au montage du composant
+onMounted(() => {
+  fetchTasks()
+})
+</script>
+```
+
+#### Avantages des composables
+
+1. **Réutilisabilité** : Logique partagée entre plusieurs composants
+2. **Testabilité** : Fonctions isolées faciles à tester
+3. **Lisibilité** : Composants plus propres et focalisés sur l'UI
+4. **Maintenance** : Logique centralisée et organiséetion d’un projet Vue.
+- Découvrir la factorisation de logique avec les composables.
+
+
+### Les services
+
+#### Qu'est-ce qu'un service ?
+
+- Classes ou fonctions dédiées à l'accès aux API et à la logique métier.
+- Séparent la logique de données de l'interface utilisateur.
+
+#### Exemples de services
+
+1. **Service API** : Gère les appels HTTP vers une API externe.
+   ```js
+   // src/services/api.js
+   import axios from 'axios'
+
+   const apiClient = axios.create({
+     baseURL: 'https://api.example.com',
+     headers: {
+       'Content-Type': 'application/json'
+     }
+   })
+
+   export default {
+     getTasks() {
+       return apiClient.get('/tasks')
+     },
+     createTask(task) {
+       return apiClient.post('/tasks', task)
+     },
+     // Autres méthodes...
+   }
+   ```
+
+2. **Service de gestion des tâches** : Contient la logique métier liée aux tâches.
+   ```js
+   // src/services/taskService.js
+   import api from './api'
+
+   export const fetchTasks = async () => {
+     const response = await api.getTasks()
+     return response.data
+   }
+
+   export const createTask = async (task) => {
+     const response = await api.createTask(task)
+     return response.data
+   }
+
+   // Autres méthodes...
+   ```
+
+#### Avantages des services
+
+- **Séparation des préoccupations** : Distingue la logique métier de l'UI.
+- **Réutilisabilité** : Services utilisables dans différents composants ou composables.
+- **Testabilité** : Logique métier isolée, facilitant les tests unitaires.
+- **Maintenance** : Centralisation de la logique métier et des interactions API.
+- **Scalabilité** : Facilité d'ajout de nouvelles fonctionnalités sans impacter l'UI.
+- **Abstraction** : Masque les détails d'implémentation des API.
+- **Gestion des erreurs** : Centralise la gestion des erreurs liées aux API.
+- **Performance** : Optimise les appels API (caching, batching).
+- **Documentation** : Facilite la compréhension de la logique métier.
+- **Collaboration** : Simplifie le travail en équipe en définissant des interfaces claires.
+- **Flexibilité** : Permet de changer l'implémentation sans affecter les consommateurs.
+
 
 ### Design patterns
 
@@ -90,19 +465,6 @@ mon-projet-vue/
 - Container vs Presentational components :
   - Container : connectés au store, gèrent la logique
   - Presentational : affichent l’UI, reçoivent les props
-
-## 💻 Exemples
-```js
-export function useCounter() {
-  const count = ref(0)
-  const inc = () => count.value++
-  return { count, inc }
-}
-```
-```vue
-<!-- Smart: Board.vue -->
-<TaskCard v-for="t in tasks" :task="t" />
-```
 
 ## 📝 Travaux pratiques
 - Refactor TP précédent avec un composable `useTasks`.
