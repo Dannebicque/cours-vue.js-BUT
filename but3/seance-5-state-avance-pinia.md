@@ -6,6 +6,15 @@
 
 ## 📖 Partie théorique
 
+### Rôle d’un store global
+- Permet d'éviter le prop drilling (passage de props sur plusieurs niveaux).
+- Centralise l'état partagé entre plusieurs composants.
+
+### Introduction Pinia et comparaison avec Vuex
+- Pinia : store officiel pour Vue 3, basé sur la Composition API.
+- Plus simple, typé, et performant que Vuex.
+- Vuex : historique, utilisé avec l'Option API, moins adapté à Vue 3.
+
 ### Stores complexes
 
 - Actions asynchrones pour gérer les appels API.
