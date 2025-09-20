@@ -54,7 +54,7 @@ mon-projet-vue/
 
 **Conventions de nommage :**
 
-```vue
+```javascript
 <!-- PascalCase pour les composants -->
 <TaskCard />
 <UserProfile />
@@ -274,7 +274,7 @@ export function useTasks() {
 
 **Dans `TaskManager.vue` :**
 
-```vue
+```javascript
 <template>
   <div class="task-manager">
     <div class="stats">
@@ -465,6 +465,205 @@ onMounted(() => {
 - Container vs Presentational components :
   - Container : connectés au store, gèrent la logique
   - Presentational : affichent l’UI, reçoivent les props
+
+#### Smart vs Dumb components
+
+
+**Smart Component (TaskManager.vue)**
+- Gère la logique métier : utilise le composable useTasks()
+- État local : formulaire avec newTaskTitle
+- Computed properties : completedTasks, completionRate
+- Méthodes avec logique : addNewTask(), handleToggleComplete(), handleDeleteTask()
+- Orchestration : coordonne plusieurs TaskCard
+
+**Dumb Component (TaskCard.vue)**
+- Affichage pur : reçoit uniquement task via props
+- Aucune logique métier : juste présentation des données
+- Émissions d'événements : toggle-complete, delete sans traitement
+- Validation de props : assure la structure des données reçues
+- Styles intégrés : focus sur l'apparence
+
+**Avantages expliqués**
+1. Réutilisabilité : TaskCard peut être utilisé partout
+2. Testabilité : Logique séparée, tests plus faciles
+3. Maintenance : Responsabilités claires
+4. Lisibilité : Code mieux organisé
+  
+Le pattern montre clairement la séparation entre :
+
+**Smart** = Logique + Données + État
+**Dumb** = Affichage + Props + Events
+
+#### Container vs Presentational Components
+
+Pattern similaire mais avec une approche plus axée sur la séparation des données.
+
+**Container Components**
+- Connectés aux sources de données (store, API, composables)
+- Gèrent les effets de bord et la logique d'état
+- Fournissent les données aux composants présentationnels
+
+**Exemple de Container Component :**
+```javascript
+<!-- TaskListContainer.vue (Container) -->
+<template>
+  <TaskListPresentation
+    :tasks="tasks"
+    :loading="loading"
+    :error="error"
+    :filters="availableFilters"
+    :current-filter="currentFilter"
+    @filter-change="updateFilter"
+    @task-action="handleTaskAction"
+  />
+</template>
+
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useTaskStore } from '@/stores/taskStore'
+import TaskListPresentation from './TaskListPresentation.vue'
+
+// Connexion au store (source de données)
+const taskStore = useTaskStore()
+const { tasks, loading, error } = taskStore
+
+// État local du container
+const currentFilter = ref('all')
+const availableFilters = [
+  { value: 'all', label: 'Toutes' },
+  { value: 'pending', label: 'En cours' },
+  { value: 'completed', label: 'Terminées' }
+]
+
+// Logique de gestion des données
+const updateFilter = (newFilter) => {
+  currentFilter.value = newFilter
+  taskStore.filterTasks(newFilter)
+}
+
+const handleTaskAction = ({ action, taskId }) => {
+  switch (action) {
+    case 'complete':
+      taskStore.completeTask(taskId)
+      break
+    case 'delete':
+      taskStore.deleteTask(taskId)
+      break
+    case 'edit':
+      taskStore.startEditTask(taskId)
+      break
+  }
+}
+
+// Chargement initial des données
+onMounted(() => {
+  taskStore.fetchTasks()
+})
+</script>
+```
+
+**Presentational Components**
+- Reçoivent toutes les données via props
+- Émettent des événements pour toute interaction
+- Aucune connaissance du contexte métier
+
+**Exemple de Presentational Component :**
+```javascript
+<!-- TaskListPresentation.vue (Presentational) -->
+<template>
+  <div class="task-list-wrapper">
+    <!-- Filtres -->
+    <div class="filter-bar">
+      <button
+        v-for="filter in filters"
+        :key="filter.value"
+        @click="$emit('filter-change', filter.value)"
+        :class="{ active: filter.value === currentFilter }"
+      >
+        {{ filter.label }}
+      </button>
+    </div>
+
+    <!-- États de chargement/erreur -->
+    <div v-if="loading" class="loading-state">
+      <span class="spinner"></span>
+      Chargement des tâches...
+    </div>
+
+    <div v-else-if="error" class="error-state">
+      <span class="error-icon">⚠️</span>
+      {{ error }}
+    </div>
+
+    <!-- Liste des tâches -->
+    <div v-else-if="tasks.length" class="task-grid">
+      <div
+        v-for="task in tasks"
+        :key="task.id"
+        class="task-item"
+        @click="$emit('task-action', { action: 'view', taskId: task.id })"
+      >
+        <h4>{{ task.title }}</h4>
+        <p>{{ task.description }}</p>
+        
+        <div class="task-actions" @click.stop>
+          <button @click="$emit('task-action', { action: 'complete', taskId: task.id })">
+            {{ task.completed ? 'Rouvrir' : 'Terminer' }}
+          </button>
+          <button @click="$emit('task-action', { action: 'edit', taskId: task.id })">
+            Modifier
+          </button>
+          <button @click="$emit('task-action', { action: 'delete', taskId: task.id })">
+            Supprimer
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- État vide -->
+    <div v-else class="empty-state">
+      <span class="empty-icon">📝</span>
+      <h3>Aucune tâche</h3>
+      <p>Commencez par créer votre première tâche !</p>
+    </div>
+  </div>
+</template>
+
+<script setup>
+// Props pures (pas de logique métier)
+defineProps({
+  tasks: Array,
+  loading: Boolean,
+  error: String,
+  filters: Array,
+  currentFilter: String
+})
+
+// Événements émis (délégation vers le container)
+defineEmits(['filter-change', 'task-action'])
+</script>
+
+<style scoped>
+.task-list-wrapper { /* styles */ }
+.filter-bar button.active { background: #007bff; color: white; }
+.loading-state, .error-state, .empty-state { 
+  text-align: center; 
+  padding: 2rem; 
+}
+</style>
+```
+
+#### Avantages de ces patterns
+
+**Pour Smart/Dumb :**
+- **Réutilisabilité** : Les Dumb components sont facilement réutilisables
+- **Testabilité** : Logique séparée de l'affichage
+- **Maintenance** : Responsabilités claires
+
+**Pour Container/Presentational :**
+- **Séparation des préoccupations** : Données vs présentation
+- **Flexibilité** : Changement de source de données sans impact sur l'UI
+- **Performance** : Optimisations possibles au niveau container(images, CSS, fonts)
 
 ## 📝 Travaux pratiques
 - Refactor TP précédent avec un composable `useTasks`.
