@@ -12,7 +12,7 @@
 
 Les **directives** sont des attributs spéciaux avec le préfixe `v-` qui appliquent un comportement réactif au DOM.
 
-```vue
+```javascript
 <template>
   <div>
     <!-- v-if : affichage conditionnel -->
@@ -87,7 +87,7 @@ const handleEnter = () => {
 
 `ref()` crée une référence réactive pour les valeurs primitives (string, number, boolean).
 
-```vue
+```javascript
 <template>
   <div>
     <p>Compteur : {{ count }}</p>
@@ -110,7 +110,7 @@ const increment = () => {
 
 `reactive()` rend un objet entièrement réactif, toutes ses propriétés deviennent réactives.
 
-```vue
+```javascript
 <template>
   <div>
     <p>{{ user.name }} - {{ user.age }} ans</p>
@@ -136,7 +136,7 @@ const birthday = () => {
 
 `computed()` crée des valeurs dérivées qui se mettent à jour automatiquement quand leurs dépendances changent.
 
-```vue
+```javascript
 <template>
   <div>
     <input v-model="firstName" placeholder="Prénom">
@@ -161,7 +161,7 @@ const fullName = computed(() => {
 
 `watch()` permet d'exécuter du code quand une valeur réactive change.
 
-```vue
+```javascript
 <script setup>
 import { ref, watch } from 'vue'
 
@@ -191,7 +191,7 @@ watch(count, (newVal) => {
 
 Les hooks de cycle de vie permettent d'exécuter du code à des moments précis de la vie du composant.
 
-```vue
+```javascript
 <template>
   <div>
     <p>{{ data }}</p>
@@ -242,7 +242,7 @@ const fetchData = async () => {
 
 Les **props** permettent de passer des données du composant parent vers le composant enfant.
 
-```vue
+```javascript
 <!-- TaskCard.vue (composant enfant) -->
 <template>
   <div class="task-card">
@@ -276,7 +276,7 @@ const priorityClass = computed(() => {
 </script>
 ```
 
-```vue
+```javascript
 <!-- TaskList.vue (composant parent) -->
 <template>
   <div>
@@ -306,7 +306,7 @@ const tasks = [
 
 Les **emits** permettent au composant enfant de notifier le parent d'un événement.
 
-```vue
+```javascript
 <!-- TaskCard.vue (composant enfant) -->
 <template>
   <div class="task-card">
@@ -347,7 +347,7 @@ const editTask = () => {
 </script>
 ```
 
-```vue
+```javascript
 <!-- TaskList.vue (composant parent) -->
 <template>
   <div>
@@ -392,7 +392,7 @@ Les **slots** permettent de créer des composants avec du contenu personnalisabl
 
 **Slot simple :**
 
-```vue
+```javascript
 <!-- Modal.vue -->
 <template>
   <div class="modal-overlay" v-if="show">
@@ -422,7 +422,7 @@ const close = () => emit('close')
 </script>
 ```
 
-```vue
+```javascript
 <!-- Utilisation du Modal -->
 <template>
   <div>
@@ -461,7 +461,7 @@ const confirmDelete = () => {
 
 **Slots nommés :**
 
-```vue
+```javascript
 <!-- LayoutComponent.vue -->
 <template>
   <div class="layout">
@@ -478,7 +478,7 @@ const confirmDelete = () => {
 </template>
 ```
 
-```vue
+```javascript
 <!-- Parent.vue -->
 <template>
   <LayoutComponent>
@@ -509,7 +509,7 @@ Cette combinaison permet une communication flexible et maintenable entre les com
 
 **Structuration des composants :**
 
-```vue
+```javascript
 <!-- Ordre recommandé dans un composant Vue -->
 <template>
   <!-- Template clair et lisible -->
@@ -575,7 +575,7 @@ const MAX_RETRY_ATTEMPTS = 3
 
 #### Performance et réactivité
 
-```vue
+```javascript
 <script setup>
 import { ref, computed, shallowRef, markRaw } from 'vue'
 
@@ -610,7 +610,7 @@ const thirdPartyLibrary = markRaw(new SomeLibrary())
 
 #### Gestion des erreurs
 
-```vue
+```javascript
 <script setup>
 import { ref } from 'vue'
 
@@ -641,7 +641,7 @@ const fetchData = async () => {
 
 #### Accessibilité et UX
 
-```vue
+```javascript
 <template>
   <!-- ✅ Bon : attributs d'accessibilité -->
   <button 
