@@ -568,9 +568,6 @@ const MAX_RETRY_ATTEMPTS = 3
 
 // Composants : PascalCase
 // TaskCard.vue, UserProfile.vue, NavigationMenu.vue
-
-// Fichiers : kebab-case
-// user-service.js, task-helpers.js, api-config.js
 ```
 
 #### Performance et réactivité
@@ -696,6 +693,47 @@ npm run dev
 - ✅ Playwright → Non
 - ✅ ESLint → Oui
 
+{% hint style="info" %}
+**📋 Aparté : Qu'est-ce qu'ESLint ?**
+
+**ESLint** est un outil d'analyse statique de code (linter) pour JavaScript et TypeScript qui permet de :
+
+**🎯 Objectifs principaux :**
+- **Détecter les erreurs** : Variables non déclarées, code mort, erreurs de syntaxe
+- **Uniformiser le style** : Indentation, quotes, points-virgules, espaces
+- **Appliquer les bonnes pratiques** : Conventions de nommage, patterns recommandés
+- **Améliorer la maintenabilité** : Code plus lisible et cohérent en équipe
+
+Toutes les informations et règles : https://eslint.org/
+
+**⚙️ Comment ça fonctionne :**
+```bash
+# Vérifier le code
+npm run lint
+
+# Corriger automatiquement ce qui peut l'être
+npm run lint -- --fix
+```
+
+**🔧 Exemples de règles ESLint :**
+- `no-unused-vars` : Signale les variables non utilisées
+- `no-console` : Interdit les console.log en production  
+- `indent` : Force une indentation cohérente (2 ou 4 espaces)
+- `quotes` : Impose simple ou double quotes
+- `semi` : Gère les points-virgules obligatoires/interdits
+
+**🎨 Configuration Vue.js :**
+ESLint pour Vue inclut des règles spécifiques :
+- `vue/multi-word-component-names` : Noms de composants multi-mots
+- `vue/no-unused-components` : Composants importés mais non utilisés
+- `vue/order-in-components` : Ordre des options dans les composants
+
+**💡 Intérêt en équipe :**
+- Code homogène entre développeurs
+- Réduction des erreurs silencieuses  
+- Facilite la relecture de code (code reviews)
+- Intégration continue (CI/CD) pour bloquer le code non conforme
+{% endhint %}
 
 ### Étape  : Test et amélioration
 
