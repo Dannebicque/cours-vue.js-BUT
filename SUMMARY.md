@@ -24,7 +24,8 @@
 
 ## BUT3
 
-* [Page 1](but3/page-1.md)
+
+* [Séance 0 : Présentation de la ressource en BUT3](but3/seance-0-presentation.md)
 * [Séance 1 : Introduction & rappel Vue](but3/seance-1-introduction-rappel-vue.md)
 * [Séance 2 : Architecture et composables](but3/seance-2-architecture-et-composables.md)
 * [Séance 3 : Communication avec API](but3/seance-3-communication-avec-api.md)
@@ -37,3 +38,4 @@
 * [Séance 10 : Projet – Kick-off réseau social](but3/seance-10-projet-kick-off-reseau-social.md)
 * [Séance 11 : Projet – Développement](but3/seance-11-projet-developpement.md)
 * [Séance 12 : Projet – Finalisation](but3/seance-12-projet-finalisation.md)
+* [Rappels et anciens supports](but3/page-1.md)
