@@ -1,7 +1,9 @@
 # Séance 2 – Architecture et composables
 
 ## 🎯 Objectifs
-- Comprendre la struc### Composables
+- Comprendre la structure d'un projet Vue.js 
+- Comprendre l'utilisation des composables et des services pour découper et organiser le code
+- Découvrir la factorisation de logique avec les composables.
 
 ## 📖 Partie théorique
 
