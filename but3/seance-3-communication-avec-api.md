@@ -9,23 +9,167 @@
 ### Architecture client/serveur
 
 - Vue/Nuxt côté client, API côté serveur.
-- Communication via HTTP (REST, JSON).
+- Communication via HTTP (REST, JSON, voire GraphQL).
 
 ### Fetch API vs Axios
 
+#### Fetch
 - `fetch` : natif, simple, mais moins de fonctionnalités.
+
+**Exemple :**
+
+```javascript
+fetch('http://localhost:3001/tasks')
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+  });
+```
+
+#### Axios
+
 - `axios` : plus complet, gestion des interceptors, requêtes simplifiées.
+
+**Exemple :**
+
+```javascript
+import axios from 'axios';
+
+axios.get('http://localhost:3001/tasks')
+  .then(response => {
+    console.log(response.data);
+  });
+```
 
 ### Gestion des erreurs
 
 - Utilisation de `try/catch` pour capturer les erreurs réseau ou API.
-- Affichage de messages d’erreur à l’utilisateur.
 
-### DTO, normalisation et typage
+**Exemple avec Fetch :**
 
-- DTO (Data Transfer Object) : structure des données échangées.
-- Normalisation : uniformiser les données reçues.
-- Typage : sécuriser les échanges et faciliter la maintenance.
+```javascript
+async function fetchTasks() {
+  try {
+    const response = await fetch('http://localhost:3001/tasks');
+    if (!response.ok) {
+      throw new Error('Erreur lors de la récupération des tâches');
+    }
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    // Affichage d’un message d’erreur à l’utilisateur
+    alert('Une erreur est survenue : ' + error.message);
+  }
+}
+```
+
+Dans cet exemple, si la requête échoue (problème réseau, serveur indisponible, etc.), le bloc `catch` permet d’afficher un message d’erreur à l’utilisateur.
+
+**Exemple simple en Vue.js :**
+
+```javascript
+<template>
+  <div>
+    <button @click="fetchTasks">Charger les tâches</button>
+    <div v-if="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+    <ul v-if="tasks.length">
+      <li v-for="task in tasks" :key="task.id">{{ task.title }}</li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const tasks = ref([])
+const errorMessage = ref('')
+
+async function fetchTasks() {
+  errorMessage.value = ''
+  try {
+    const response = await fetch('http://localhost:3001/tasks')
+    if (!response.ok) {
+      throw new Error('Erreur lors de la récupération des tâches')
+    }
+    tasks.value = await response.json()
+  } catch (error) {
+    errorMessage.value = 'Une erreur est survenue : ' + error.message
+  }
+}
+</script>
+
+<style>
+.error {
+  color: red;
+  margin: 1em 0;
+}
+</style>
+```
+
+Cet exemple affiche un message d’erreur à l’utilisateur si la récupération des tâches échoue.
+
+### Loaders
+
+Pour afficher un loader pendant l'appel à l'API, il suffit d'ajouter une variable d'état `isLoading` et de l'utiliser dans le template :
+
+```javascript
+<template>
+  <div>
+    <button @click="fetchTasks">Charger les tâches</button>
+    <div v-if="isLoading" class="loader">Chargement...</div>
+    <div v-if="errorMessage" class="error">
+      {{ errorMessage }}
+    </div>
+    <ul v-if="tasks.length && !isLoading">
+      <li v-for="task in tasks" :key="task.id">{{ task.title }}</li>
+    </ul>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+
+const tasks = ref([])
+const errorMessage = ref('')
+const isLoading = ref(false)
+
+async function fetchTasks() {
+  errorMessage.value = ''
+  isLoading.value = true
+  try {
+    const response = await fetch('http://localhost:3001/tasks')
+    if (!response.ok) {
+      throw new Error('Erreur lors de la récupération des tâches')
+    }
+    tasks.value = await response.json()
+  } catch (error) {
+    errorMessage.value = 'Une erreur est survenue : ' + error.message
+  } finally {
+    isLoading.value = false
+  }
+}
+</script>
+
+<style>
+.loader {
+  color: #007bff;
+  font-weight: bold;
+  margin: 1em 0;
+}
+.error {
+  color: red;
+  margin: 1em 0;
+}
+</style>
+```
+
+Ici, le loader s'affiche tant que la requête est en cours (`isLoading` à `true`), puis disparaît dès que la réponse est reçue ou qu'une erreur survient.
+
+### Services dédiés
+
+- Création d'un service API pour centraliser les appels HTTP.
 
 ## 📝 Travaux pratiques
 

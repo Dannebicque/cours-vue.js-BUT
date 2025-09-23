@@ -122,9 +122,6 @@ mon-projet-vue/
 - **Exemples** : `HomePage.vue`, `TaskListPage.vue`
 - **Particularité** : Souvent connectés aux routes du routerfixe `use` (ex: `useCounter`, `useAuth`)
 
-
-
-
 ### Les composables
 
 #### Qu'est-ce qu'un composable ?
@@ -391,8 +388,6 @@ onMounted(() => {
 2. **Testabilité** : Fonctions isolées faciles à tester
 3. **Lisibilité** : Composants plus propres et focalisés sur l'UI
 4. **Maintenance** : Logique centralisée et organiséetion d’un projet Vue.
-- Découvrir la factorisation de logique avec les composables.
-
 
 ### Les services
 
@@ -427,6 +422,7 @@ onMounted(() => {
    ```
 
 2. **Service de gestion des tâches** : Contient la logique métier liée aux tâches.
+   
    ```js
    // src/services/taskService.js
    import api from './api'
@@ -458,7 +454,6 @@ onMounted(() => {
 - **Collaboration** : Simplifie le travail en équipe en définissant des interfaces claires.
 - **Flexibilité** : Permet de changer l'implémentation sans affecter les consommateurs.
 
-
 ### Design patterns
 
 - Smart vs Dumb components :
@@ -470,8 +465,8 @@ onMounted(() => {
 
 #### Smart vs Dumb components
 
-
 **Smart Component (TaskManager.vue)**
+
 - Gère la logique métier : utilise le composable useTasks()
 - État local : formulaire avec newTaskTitle
 - Computed properties : completedTasks, completionRate
@@ -479,6 +474,7 @@ onMounted(() => {
 - Orchestration : coordonne plusieurs TaskCard
 
 **Dumb Component (TaskCard.vue)**
+
 - Affichage pur : reçoit uniquement task via props
 - Aucune logique métier : juste présentation des données
 - Émissions d'événements : toggle-complete, delete sans traitement
@@ -486,6 +482,7 @@ onMounted(() => {
 - Styles intégrés : focus sur l'apparence
 
 **Avantages expliqués**
+
 1. Réutilisabilité : TaskCard peut être utilisé partout
 2. Testabilité : Logique séparée, tests plus faciles
 3. Maintenance : Responsabilités claires
@@ -494,6 +491,7 @@ onMounted(() => {
 Le pattern montre clairement la séparation entre :
 
 **Smart** = Logique + Données + État
+
 **Dumb** = Affichage + Props + Events
 
 #### Container vs Presentational Components
@@ -501,11 +499,13 @@ Le pattern montre clairement la séparation entre :
 Pattern similaire mais avec une approche plus axée sur la séparation des données.
 
 **Container Components**
+
 - Connectés aux sources de données (store, API, composables)
 - Gèrent les effets de bord et la logique d'état
 - Fournissent les données aux composants présentationnels
 
 **Exemple de Container Component :**
+
 ```javascript
 <!-- TaskListContainer.vue (Container) -->
 <template>
@@ -565,11 +565,13 @@ onMounted(() => {
 ```
 
 **Presentational Components**
+
 - Reçoivent toutes les données via props
 - Émettent des événements pour toute interaction
 - Aucune connaissance du contexte métier
 
 **Exemple de Presentational Component :**
+
 ```javascript
 <!-- TaskListPresentation.vue (Presentational) -->
 <template>
@@ -658,11 +660,13 @@ defineEmits(['filter-change', 'task-action'])
 #### Avantages de ces patterns
 
 **Pour Smart/Dumb :**
+
 - **Réutilisabilité** : Les Dumb components sont facilement réutilisables
 - **Testabilité** : Logique séparée de l'affichage
 - **Maintenance** : Responsabilités claires
 
 **Pour Container/Presentational :**
+
 - **Séparation des préoccupations** : Données vs présentation
 - **Flexibilité** : Changement de source de données sans impact sur l'UI
 - **Performance** : Optimisations possibles au niveau container(images, CSS, fonts)
