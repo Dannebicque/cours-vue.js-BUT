@@ -245,21 +245,13 @@ npm install --save-dev json-server
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "api": "json-server --watch db.json --port 3001",
-    "dev:full": "concurrently \"npm run dev\" \"npm run api\""
+    "api": "json-server --watch db.json --port 3001"
   }
 }
 ```
 
 **Pour exécuter simultanément Vue et l'API :**
 ```bash
-# Installer concurrently pour exécuter plusieurs commandes
-npm install --save-dev concurrently
-
-# Lancer Vue et l'API en même temps
-npm run dev:full
-
-# Ou séparément :
 # Terminal 1 : Vue
 npm run dev
 
