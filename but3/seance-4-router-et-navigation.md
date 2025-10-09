@@ -155,6 +155,9 @@ console.log(route.meta.title) // Titre de la page
 </script>
 ```
 
+Le meta peut aussi être utilisé pour des guards ou pour changer le titre de la page dynamiquement.
+
+
 ### Guards
 
 - Fonctions de contrôle d’accès (`beforeEach`, meta).
@@ -217,6 +220,16 @@ onBeforeRouteLeave((to, from, next) => {
   }
 })
 </script>
+```
+
+#### Mise à jour du title de la page
+
+```javascript
+router.afterEach((to) => {
+  if (to.meta.title) {
+    document.title = to.meta.title
+  }
+})
 ```
 
 ### Lazy loading (Chargement différé)

@@ -1,0 +1,227 @@
+
+### Étape 5 : Créer le service API
+
+**Créer `src/services/taskService.js` :**
+```javascript
+const API_BASE_URL = 'http://localhost:3001'
+
+class TaskService {
+  // Récupérer toutes les tâches
+  async getAllTasks() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tasks`)
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error('Erreur lors de la récupération des tâches:', error)
+      throw error
+    }
+  }
+
+  // Récupérer une tâche par ID
+  async getTaskById(id) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tasks/${id}`)
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error(`Erreur lors de la récupération de la tâche ${id}:`, error)
+      throw error
+    }
+  }
+
+  // Créer une nouvelle tâche
+  async createTask(taskData) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tasks`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...taskData,
+          createdAt: new Date().toISOString(),
+          completed: false
+        })
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error('Erreur lors de la création de la tâche:', error)
+      throw error
+    }
+  }
+
+  // Mettre à jour une tâche
+  async updateTask(id, updates) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(updates)
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error(`Erreur lors de la mise à jour de la tâche ${id}:`, error)
+      throw error
+    }
+  }
+
+  // Supprimer une tâche
+  async deleteTask(id) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tasks/${id}`, {
+        method: 'DELETE'
+      })
+      
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+      return true
+    } catch (error) {
+      console.error(`Erreur lors de la suppression de la tâche ${id}:`, error)
+      throw error
+    }
+  }
+
+  // Filtrer les tâches
+  async getTasksByStatus(completed) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/tasks?completed=${completed}`)
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}: ${response.statusText}`)
+      }
+      return await response.json()
+    } catch (error) {
+      console.error('Erreur lors du filtrage des tâches:', error)
+      throw error
+    }
+  }
+}
+
+// Exporter une instance singleton
+export default new TaskService()
+```
+
+### Étape 6 : Connecter la liste de tâches au service API
+
+**Modifier le composable `useTasks.js` :**
+```javascript
+import { ref } from 'vue'
+import taskService from '@/services/taskService'
+
+export function useTasks() {
+  const tasks = ref([])
+  const loading = ref(false)
+  const error = ref(null)
+
+  // Charger les tâches depuis l'API
+  const fetchTasks = async () => {
+    try {
+      loading.value = true
+      error.value = null
+      tasks.value = await taskService.getAllTasks()
+    } catch (err) {
+      error.value = 'Erreur lors du chargement des tâches'
+      console.error(err)
+    } finally {
+      loading.value = false
+    }
+  }
+
+  // Ajouter une tâche via l'API
+  const addTask = async (taskData) => {
+    try {
+      loading.value = true
+      const newTask = await taskService.createTask(taskData)
+      tasks.value.push(newTask)
+    } catch (err) {
+      error.value = 'Erreur lors de l\'ajout de la tâche'
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
+
+  // Supprimer une tâche via l'API
+  const deleteTask = async (taskId) => {
+    try {
+      loading.value = true
+      await taskService.deleteTask(taskId)
+      tasks.value = tasks.value.filter(task => task.id !== taskId)
+    } catch (err) {
+      error.value = 'Erreur lors de la suppression de la tâche'
+      throw err
+    } finally {
+      loading.value = false
+    }
+  }
+
+  // Marquer comme terminée via l'API
+  const toggleComplete = async (taskId) => {
+    try {
+      const task = tasks.value.find(t => t.id === taskId)
+      if (!task) return
+
+      const updatedTask = await taskService.updateTask(taskId, {
+        completed: !task.completed
+      })
+      
+      // Mettre à jour localement
+      const index = tasks.value.findIndex(t => t.id === taskId)
+      tasks.value[index] = updatedTask
+    } catch (err) {
+      error.value = 'Erreur lors de la mise à jour de la tâche'
+      throw err
+    }
+  }
+
+  return {
+    tasks,
+    loading,
+    error,
+    fetchTasks,
+    addTask,
+    deleteTask,
+    toggleComplete
+  }
+}
+```
+
+### Étape 7 : Utilisation dans les composants
+
+**Dans `App.vue` ou `TaskManager.vue` :**
+```vue
+<script setup>
+import { onMounted } from 'vue'
+import { useTasks } from '@/composables/useTasks'
+
+const { tasks, loading, error, fetchTasks, addTask } = useTasks()
+
+// Charger les tâches au démarrage
+onMounted(() => {
+  fetchTasks()
+})
+</script>
+```
+
+**Avantages de cette approche :**
+- API REST complète en quelques minutes
+- Données persistantes entre les rechargements
+- Comportement identique à une vraie API
+- Facilite les tests et le développement
+- Transition facile vers une vraie API plus tard
+

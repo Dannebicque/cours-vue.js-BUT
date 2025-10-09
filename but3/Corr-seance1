@@ -1,0 +1,70 @@
+### Étape 2 : Créer le composant TaskCard
+
+**Créer `src/components/TaskCard.vue` :**
+```vue
+<template>
+  <div class="task-card">
+    <h3>{{ task.title }}</h3>
+    <p>{{ task.description }}</p>
+    <div class="task-meta">
+      <span class="priority" :class="`priority-${task.priority.toLowerCase()}`">
+        {{ task.priority }}
+      </span>
+      <span class="status">{{ task.completed ? '✓ Terminée' : '⏳ En cours' }}</span>
+    </div>
+    <div class="task-actions">
+      <button 
+        v-if="!task.completed" 
+        @click="$emit('complete-task', task.id)"
+        class="btn-success"
+      >
+        Terminer
+      </button>
+      <button 
+        @click="$emit('delete-task', task.id)" 
+        class="btn-danger"
+      >
+        Supprimer
+      </button>
+    </div>
+  </div>
+</template>
+
+<script setup>
+// Props avec validation
+defineProps({
+  task: {
+    type: Object,
+    required: true,
+    validator: (task) => {
+      return task.id && task.title && task.description && task.priority
+    }
+  }
+})
+
+// Événements émis
+defineEmits(['complete-task', 'delete-task'])
+</script>
+
+<style scoped>
+.task-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background: white;
+}
+
+.priority-high { color: #dc3545; font-weight: bold; }
+.priority-medium { color: #fd7e14; font-weight: bold; }
+.priority-low { color: #28a745; font-weight: bold; }
+
+.btn-success { background: #28a745; color: white; }
+.btn-danger { background: #dc3545; color: white; }
+</style>
+```
+
+### Étape 3 : Modifier App.vue
+
+**Mettre à jour `src/App.vue` :**
+```vue
