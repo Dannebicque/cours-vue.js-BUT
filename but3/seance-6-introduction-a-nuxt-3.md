@@ -104,3 +104,14 @@ definePageMeta({
 })
 </script>
 ```
+
+## Exercice
+
+Migrer une application Vue 3 existante vers Nuxt 4 :
+
+1. Créer un nouveau projet Nuxt 4 (`npm create nuxt@latest`).
+2. Déplacer et adapter vos fichiers
+3. Les composables, services et stores Pinia doivent être placés dans `composables/`, `services/` et `stores/` respectivement.
+4. Les views (pages) doivent être placées dans `pages/` avec le routage automatique. Vous pourrez retirer les imports et configurations de Vue Router.
+
+La sécurité, avec Nuxt, (authentification, autorisation) sera vue dans la séance suivante.
