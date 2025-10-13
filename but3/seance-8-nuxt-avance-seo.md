@@ -1,6 +1,7 @@
 # Séance 8 – Nuxt avancé & SEO
 
 ## 🎯 Objectifs
+
 - Approfondir middleware et SEO.
 - Optimiser application Nuxt.
 
