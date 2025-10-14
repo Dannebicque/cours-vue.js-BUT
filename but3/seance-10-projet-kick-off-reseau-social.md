@@ -36,14 +36,14 @@
 - Livrables : code source (sur un git), démonstration (capture vidéo).
 
 
-## Structure de l'API
+## Structure de l'API REST
 
-### Channel
+### Channel (/api/channels)
 
 - name : string
 - slug : string
 
-### Publication
+### Publication (/api/publications)
 
 - Auteur : Member
 - Channel : Channel
@@ -52,7 +52,7 @@
 - createdAt : datetime
 - updatedAt : datetime
 
-### Comment
+### Comment (/api/comments)
 
 - auteur : Member
 - Publication : Publication
@@ -60,7 +60,7 @@
 - createdAt : datetime
 - updatedAt : datetime
 
-### Member
+### Member (/api/members)
 
 - displayName : string
 - email : string
@@ -68,7 +68,7 @@
 - avatar : string (URL de l'avatar)
 - createdAt : datetime
 
-### Reaction
+### Reaction (/api/reactions)
 
 - type : string (like, love, etc.)
 - auteur : Member
@@ -76,7 +76,7 @@
 - comment : Comment (optionnel)
 - createdAt : datetime
 
-### Media
+### Media (/api/media)
 
 - owner : Member
 - originalName : string
