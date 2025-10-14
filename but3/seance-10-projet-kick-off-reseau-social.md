@@ -34,3 +34,55 @@
 
 - Critères : fonctionnalités, qualité du code, UI/UX, tests, accessibilité.
 - Livrables : code source (sur un git), démonstration (capture vidéo).
+
+
+## Structure de l'API
+
+### Channel
+
+- name : string
+- slug : string
+
+### Publication
+
+- Auteur : Member
+- Channel : Channel
+- titre : string
+- body : string (contenu)
+- createdAt : datetime
+- updatedAt : datetime
+
+### Comment
+
+- auteur : Member
+- Publication : Publication
+- body : string (contenu)
+- createdAt : datetime
+- updatedAt : datetime
+
+### Member
+
+- displayName : string
+- email : string
+- password : string (non retourné par l'API)
+- avatar : string (URL de l'avatar)
+- createdAt : datetime
+
+### Reaction
+
+- type : string (like, love, etc.)
+- auteur : Member
+- publication : Publication (optionnel)
+- comment : Comment (optionnel)
+- createdAt : datetime
+
+### Media
+
+- owner : Member
+- originalName : string
+- mimeType : string
+- size : integer (taille en octets)
+- path : string (URL du média)
+- createdAt : datetime
+- publication : Publication (optionnel)
+- comment : Comment (optionnel)
