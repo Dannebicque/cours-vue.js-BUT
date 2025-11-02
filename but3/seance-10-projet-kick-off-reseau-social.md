@@ -1,6 +1,7 @@
 # Séance 10 – Projet – Kick-off réseau social
 
 ## 🎯 Objectifs
+
 - Lancer projet Nuxt/VueJs Social App.
 - Mettre en place authentification + channels.
 
@@ -35,6 +36,17 @@
 - Critères : fonctionnalités, qualité du code, UI/UX, tests, accessibilité.
 - Livrables : code source (sur un git), démonstration (capture vidéo).
 
+## Lien de l'API fournie
+
+L'API est commune à tous les groupes et dispose des endpoints REST classiques pour chaque ressource. Ainsi pour gérer les accès sans mélanger vos données un "slug" unique vous sera attribué (fourni par l'enseignant) et à utiliser dans toutes les URLs
+
+- Base URL : `https://wra506d.davidannebicque.ovh/api/{votre-slug}/...`
+
+Un code d'inscription vous sera également fourni pour créer des comptes utilisateurs (à intégrer dans dans vos formulaires d'inscription).
+
+La base de données est pré-remplie avec des utilisateurs, channels et publications pour les tests. Libre à vous d'ajouter/modifier/supprimer des données via l'API.
+
+Une interface Swagger est également disponible pour explorer/tester l'API : `https://wra506d.davidannebicque.ovh/api` et une interface vous permet de récupérer un token JWT pour un utilisateur existant : `https://wra506d.davidannebicque.ovh/`.
 
 ## Structure de l'API REST
 
@@ -45,44 +57,44 @@
 
 ### Publication (/api/publications)
 
-- Auteur : Member
-- Channel : Channel
-- titre : string
+- Author : User (géré par l'API)
+- Channel : Channel (à transmettre sous forme d'IRI)
+- title : string
 - body : string (contenu)
-- createdAt : datetime
-- updatedAt : datetime
+- createdAt : datetime (géré par l'API)
+- updatedAt : datetime (géré par l'API)
 
 ### Comment (/api/comments)
 
-- auteur : Member
-- Publication : Publication
+- Author : User (géré par l'API)
+- Publication : Publication (à transmettre sous forme d'IRI)
 - body : string (contenu)
-- createdAt : datetime
-- updatedAt : datetime
+- createdAt : datetime (géré par l'API)
+- updatedAt : datetime (géré par l'API)
 
-### Member (/api/members)
+### User (/api/users)
 
 - displayName : string
 - email : string
 - password : string (non retourné par l'API)
 - avatar : string (URL de l'avatar)
-- createdAt : datetime
+- createdAt : datetime (géré par l'API)
 
 ### Reaction (/api/reactions)
 
 - type : string (like, love, etc.)
-- auteur : Member
+- Author : User (géré par l'API)
 - publication : Publication (optionnel)
 - comment : Comment (optionnel)
-- createdAt : datetime
+- createdAt : datetime (géré par l'API)
 
 ### Media (/api/media)
 
-- owner : Member
+- owner : User (géré par l'API)
 - originalName : string
 - mimeType : string
 - size : integer (taille en octets)
 - path : string (URL du média)
-- createdAt : datetime
+- createdAt : datetime (géré par l'API)
 - publication : Publication (optionnel)
 - comment : Comment (optionnel)

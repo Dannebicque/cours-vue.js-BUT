@@ -1,6 +1,7 @@
 # Séance 7 – Nuxt & API
 
 ## 🎯 Objectifs
+
 - Consommer des données dans Nuxt.
 - Gérer l’authentification avec middleware.
 
@@ -111,11 +112,9 @@ export default definePageMeta({
 
 Il est aussi possible d'utiliser des modules (https://nuxt.com/modules?category=Security&sortBy=stars) pour gérer l'authentification plus facilement ou de manière plus complète, en intégrant des providers OAuth, JWT, etc.
 
-
 ## 📝 Travaux pratiques
 
 - Reconnectér les appels API de l’application Vue 3 précédente en Nuxt.
 - Créer page `/login`.
 - Stocker token JWT dans Pinia/localStorage.
 - Protéger l'ajout d'une tâche avec middleware.
-

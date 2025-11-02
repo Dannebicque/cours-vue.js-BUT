@@ -20,10 +20,10 @@ Exemples :
 ```javascript
 // middleware/auth.global.js
 export default defineNuxtRouteMiddleware((to) => {
-	const user = useState('user')
-	if (!user.value) {
-		return navigateTo('/login')
-	}
+ const user = useState('user')
+ if (!user.value) {
+  return navigateTo('/login')
+ }
 })
 ```
 
@@ -45,16 +45,16 @@ Exemple : title, description, Open Graph :
 
 ```javascript
 export default {
-	setup() {
-		useHead({
-			title: 'Page Profil - Mon App',
-			meta: [
-				{ name: 'description', content: 'Profil utilisateur - Mon App' },
-				{ property: 'og:title', content: 'Profil utilisateur' },
-				{ property: 'og:description', content: 'Voir le profil de l\'utilisateur' }
-			]
-		})
-	}
+ setup() {
+  useHead({
+   title: 'Page Profil - Mon App',
+   meta: [
+    { name: 'description', content: 'Profil utilisateur - Mon App' },
+    { property: 'og:title', content: 'Profil utilisateur' },
+    { property: 'og:description', content: 'Voir le profil de l\'utilisateur' }
+   ]
+  })
+ }
 }
 ```
 
@@ -70,9 +70,9 @@ Exemple d'endpoint simple pour sitemap :
 ```javascript
 // server/api/sitemap.get.js
 export default defineEventHandler(() => {
-	const urls = [ '/', '/about', '/blog/post-1' ]
-	const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(u => `<url><loc>${u}</loc></url>`).join('')}</urlset>`
-	return sendNoContent(event) // placeholder – en pratique renvoyer xml avec bon header
+ const urls = [ '/', '/about', '/blog/post-1' ]
+ const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map(u => `<url><loc>${u}</loc></url>`).join('')}</urlset>`
+ return sendNoContent(event) // placeholder – en pratique renvoyer xml avec bon header
 })
 ```
 
@@ -86,7 +86,7 @@ Exemple lazy component :
 
 ```html
 <template>
-	<LazyComp v-if="show" />
+ <LazyComp v-if="show" />
 </template>
 
 <script setup>

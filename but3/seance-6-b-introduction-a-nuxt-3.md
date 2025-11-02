@@ -92,11 +92,11 @@ Voici quelques exemples :
 - `pages/dashboard/settings.vue` → `/dashboard/settings` (route imbriquée)
 - `pages/user/[...slug].vue` → `/user/*` (catch-all)
   
-`definePageMeta` pour configurer les meta‑tags SEO (https://nuxt.com/docs/4.x/api/utils/define-page-meta)
+`definePageMeta` pour configurer les meta‑tags SEO (https://nuxt.com/docs/4.x/getting-started/seo-meta#usehead)
 
 ```js
 <script setup>
-definePageMeta({
+useHead({ 
   title: 'Page Title',
   meta: [
 	{ name: 'description', content: 'Page description for SEO' }
@@ -104,6 +104,8 @@ definePageMeta({
 })
 </script>
 ```
+
+/!\ definePageMeta dans la version 3 de Nuxt.
 
 ## Exercice
 
