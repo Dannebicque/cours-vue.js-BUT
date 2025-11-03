@@ -105,3 +105,31 @@ Une interface Swagger est également disponible pour explorer/tester l'API : `ht
 - createdAt : datetime (géré par l'API)
 - publication : Publication (optionnel)
 - comment : Comment (optionnel)
+
+
+## Appel API avec un token JWT
+
+### en VueJs avec fetch
+
+```javascript
+const token = 'votre_token_jwt_ici';
+
+fetch('https://wra506d.davidannebicque.ovh/api/ws-xx/channels', {
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
+})
+.then(response => response.json())
+.then(data => console.log(data));
+```
+
+### en NuxtJs avec useFetch
+
+```javascript
+const token = 'votre_token_jwt_ici';
+
+const { data, error } = await useFetch('https://wra506d.davidannebicque.ovh/api/ws-xx/channels', {
+  headers: {
+    'Authorization': `Bearer ${token}`
+  }
+});
