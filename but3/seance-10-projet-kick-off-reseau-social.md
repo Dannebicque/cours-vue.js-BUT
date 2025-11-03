@@ -133,3 +133,4 @@ const { data, error } = await useFetch('https://wra506d.davidannebicque.ovh/api/
     'Authorization': `Bearer ${token}`
   }
 });
+```
