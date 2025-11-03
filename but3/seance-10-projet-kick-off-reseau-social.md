@@ -48,6 +48,12 @@ La base de données est pré-remplie avec des utilisateurs, channels et publicat
 
 Une interface Swagger est également disponible pour explorer/tester l'API : `https://wra506d.davidannebicque.ovh/api` et une interface vous permet de récupérer un token JWT pour un utilisateur existant : `https://wra506d.davidannebicque.ovh/`.
 
+## URL globales
+
+- **Connexion API** : `https://wra506d.davidannebicque.ovh/api/login` en envoyant en post les champs `email` et `password`, vous donnera un token JWT à utiliser dans les headers `Authorization: Bearer {token}` pour les appels suivants.
+- **Récupération de l'utilisateur courant** : `https://wra506d.davidannebicque.ovh/api/{slug}/user/me` avec le token JWT dans les headers, vous donnera les informations de l'utilisateur connecté.
+- **Inscription API** : `https://wra506d.davidannebicque.ovh/api/register` en envoyant en post les champs `displayName`, `email`, `password` et `codeInscription`, vous permettra de créer un nouvel utilisateur dans le bon workspace (slug).
+
 ## Structure de l'API REST
 
 ### Channel (/api/channels)
