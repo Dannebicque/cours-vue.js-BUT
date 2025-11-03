@@ -51,7 +51,7 @@ Une interface Swagger est également disponible pour explorer/tester l'API : `ht
 ## URL globales
 
 - **Connexion API** : `https://wra506d.davidannebicque.ovh/api/login` en envoyant en post les champs `email` et `password`, vous donnera un token JWT à utiliser dans les headers `Authorization: Bearer {token}` pour les appels suivants.
-- **Récupération de l'utilisateur courant** : `https://wra506d.davidannebicque.ovh/api/{slug}/user/me` avec le token JWT dans les headers, vous donnera les informations de l'utilisateur connecté.
+- **Récupération de l'utilisateur courant** : `https://wra506d.davidannebicque.ovh/api/{slug}/users/me` avec le token JWT dans les headers, vous donnera les informations de l'utilisateur connecté.
 - **Inscription API** (sans slug) : `https://wra506d.davidannebicque.ovh/api/register` en envoyant en post les champs `displayName`, `email`, `password` et `codeInscription`, vous permettra de créer un nouvel utilisateur dans le bon workspace (slug).
 - **Inscription API** (avec slug) : `https://wra506d.davidannebicque.ovh/api/{slug}/register` en envoyant en post les champs `displayName`, `email`, `password`, vous permettra de créer un nouvel utilisateur dans le bon workspace (slug).
 
