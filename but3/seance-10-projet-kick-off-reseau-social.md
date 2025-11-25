@@ -67,6 +67,9 @@ Une interface Swagger est également disponible pour explorer/tester l'API : `ht
 
 * name : string
 * slug : string
+* tags : tableau, optionnel
+* description: text, optionnel
+* image : text (url), optionnel
 
 ### Publication (/api/publications)
 
