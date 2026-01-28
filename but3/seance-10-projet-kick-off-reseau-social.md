@@ -36,7 +36,7 @@
 * Critères : fonctionnalités, qualité du code, UI/UX, tests, accessibilité.
   * Mise en place de tests unitaires (un service, un composant ou un store)
   * Mise en place d'un test ent-to-end (la page de login, l'ajout d'une publication)
-* Livrables : code source (sur un git), démonstration (capture vidéo).
+* Livrables : code source (sur un git), démonstration.
 
 {% hint style="danger" %}
 Rendu le 10 mars 2026 (évalution pendant la séance)
