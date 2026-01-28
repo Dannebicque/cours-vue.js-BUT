@@ -39,7 +39,7 @@
 * Livrables : code source (sur un git), démonstration (capture vidéo).
 
 {% hint style="danger" %}
-Rendu le 10 février 2026 (évalution pendant la séance)
+Rendu le 10 mars 2026 (évalution pendant la séance)
 {% endhint %}
 
 ## Lien de l'API fournie
