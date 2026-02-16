@@ -169,6 +169,8 @@ Ci-dessous figure le diagramme du cycle de vie d'une instance.
 
 <figure><img src="https://vuejs.org/assets/lifecycle.DLmSwRQE.png" alt=""><figcaption><p>Cycle de vue d'un composant (vuejs.org)</p></figcaption></figure>
 
+<figure><img src="https://vuejs.org/assets/lifecycle.MuZLBFAS.png" alt=""><figcaption></figcaption></figure>
+
 Chaque case rouge est un moment où il est possible d'intéragir avec le composant.
 
 ### Enregistrement des hooks du cycle de vie
@@ -324,6 +326,12 @@ Dans la vue Pays, ajoutez la méthode onMounted pour récupérer les données de
 
 {% hint style="info" %}
 Vous pouvez utiliser l'API suivante : [https://restcountries.com/v3.1/all](https://restcountries.com/v3.1/all)
+{% endhint %}
+
+{% hint style="warning" %}
+Suite à une restriction, vous devez préciser les champs dans l'appel API, par exemple : [https://restcountries.com/v3.1/all?fields=name,capital,currencies](https://restcountries.com/v3.1/all?fields=name,capital,currencies)
+
+Les champs disponibles sont : [https://gitlab.com/restcountries/restcountries/-/blob/master/FIELDS.md](https://gitlab.com/restcountries/restcountries/-/blob/master/FIELDS.md)
 {% endhint %}
 
 * Dans un premier temps affichez simplement la réponse dans votre template `{{ data }}` si votre variable se nomme `data`.
