@@ -1,18 +1,18 @@
-# Séance 15-16 : Pour réviser
+# Séance 9-10 : Pour réviser
 
 Cette séance vise à revoir l'ensemble des concepts vus sur le module VueJs.
 
-L'API utilisée sera : [https://docs.magicthegathering.io/#api\_v1cards\_list](https://docs.magicthegathering.io/#api\_v1cards\_list)
+L'API utilisée sera : [https://docs.magicthegathering.io/#api\_v1cards\_list](https://docs.magicthegathering.io/#api_v1cards_list)
 
 Le travail à faire est le suivant :
 
 * Installer un nouveau projet
-* Définir une navigation avec les routes suivantes :&#x20;
+* Définir une navigation avec les routes suivantes :
   * Accueil
   * Recherche
   * Afficher les cartes
   * Afficher les sets
-* Pour la recherche on pourra :&#x20;
+* Pour la recherche on pourra :
   * Recherche un texte libre sur les cartes
   * Filtrer les cartes par couleur
   * Une liste des types (en récupérant les types depuis l'API pour alimenter une liste déroulante
@@ -26,3 +26,16 @@ Le travail à faire est le suivant :
 * La page détaillée d'une carte comprendra les éléments.
   * Le choix d'une langue affichera le nom de la carte dans la langue choisie (et uniquement celle ci)
 * Afficher un panier des cartes sélectionnées
+
+
+
+A la fin des deux séances, compiler votre projet et le mettre en ligne sur votre VPS :&#x20;
+
+Pour compiler :&#x20;
+
+```bash
+npm run build
+```
+
+Sur votre VPS le chemin doit être : https://xxx/travaux/wr406D/
+
