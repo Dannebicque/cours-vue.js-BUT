@@ -4,9 +4,9 @@
 
 En utilisant la checklist proposée dans le PDF ci-dessous.
 
-{% file src="../.gitbook/assets/verifSeance12.pdf" %}
+{% file src="../.gitbook/assets/verifSeance12b.pdf" %}
 
-Ouvrez les 4 onglets dans votre navigateur pour un contrôle rapide.
+Ouvrez les 5 onglets dans votre navigateur pour un contrôle rapide.
 
 ## Afficher les fournisseurs
 
