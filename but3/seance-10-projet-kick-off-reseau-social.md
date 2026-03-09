@@ -53,7 +53,7 @@ Rendu le 15/03/2026, par mail :&#x20;
 | Tests E2E (page login + ajout d'une publication)           |   | 2                                                      |
 | Accessibilité (AA)                                         |   | 1                                                      |
 | UX (ergonomie, facilité d'utilisation, cohérence)          |   | 0. non/absent, 1. OK, dans la consigne. 2 Exceptionnel |
-| Authentification, création de compte, mot de passe perdu   |   | 2 (tout présent ou pas)                                |
+| Authentification, création de compte                       |   | 2 (tout présent ou pas)                                |
 | Ajouter, modification, suppression d'une publication       |   | 0. non/absent, 1. OK, dans la consigne. 2 Exceptionnel |
 | Gestion des réactions publications, commentaires           |   | 2                                                      |
 | Gestion des médias                                         |   | 2                                                      |
