@@ -10,6 +10,21 @@ Ouvrez les 5 onglets dans votre navigateur pour un contrôle rapide.
 
 ## Afficher les fournisseurs
 
+{% hint style="info" icon="triangle-exclamation" %}
+L'organisation doit être la suivante :&#x20;
+
+* MMI-World doit être sur le VDI et executé depuis le VDI
+* ApiPlatform (symfony.mmi-troyes.fr) doit être dans docket sur le VDI
+
+Node et Npm ne sont pas installés sur le VDI, vous devez donc executer le script suivant dans le terminal du VDI (Ubuntu) :&#x20;
+
+```bash
+bash -c "$(curl -fsSl https://mmi24b02.mmi-troyes.fr/share/scripts/install_node.sh)"
+```
+{% endhint %}
+
+
+
 Vous allez ajouter une nouvelle vue pour afficher la liste des fournisseurs. Pour cela, en vous basant sur les séances précédentes, suivez les étapes suivantes :
 
 * Créer une vue `FournisseursView.vue` dans le dossier `src/views`
