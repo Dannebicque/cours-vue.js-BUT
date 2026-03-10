@@ -23,7 +23,7 @@ bash -c "$(curl -fsSl https://mmi24b02.mmi-troyes.fr/share/scripts/install_node.
 ```
 {% endhint %}
 
-
+<figure><img src="../.gitbook/assets/illustrationseance12a.jpg" alt="Principe de fonctionnement vuejs-apiplatform"><figcaption><p>Lien entre les différents éléments</p></figcaption></figure>
 
 Vous allez ajouter une nouvelle vue pour afficher la liste des fournisseurs. Pour cela, en vous basant sur les séances précédentes, suivez les étapes suivantes :
 
