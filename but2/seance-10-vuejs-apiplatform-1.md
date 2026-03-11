@@ -19,7 +19,12 @@ L'organisation doit être la suivante :&#x20;
 Node et Npm ne sont pas installés sur le VDI, vous devez donc executer le script suivant dans le terminal du VDI (Ubuntu) :&#x20;
 
 ```bash
-bash -c "$(curl -fsSl https://mmi24b02.mmi-troyes.fr/share/scripts/install_node.sh)"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+
+// puis
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 ```
 {% endhint %}
 
