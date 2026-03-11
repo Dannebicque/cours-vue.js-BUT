@@ -55,6 +55,8 @@ Concrétement nous devons dans notre fichier Fournisseur.php (de notre partie ba
 Le fichier Fournisseur.php deviendrait donc :
 
 ```php
+use Symfony\Component\Serializer\Attribute\Groups;
+
 // le code existant
 #[ApiResource(
     normalizationContext: ['groups' => ['fournisseur:read']],
