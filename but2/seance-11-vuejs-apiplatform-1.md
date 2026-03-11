@@ -1,8 +1,8 @@
-# Séance 11 : VueJs et ApiPlatform (2)
+# Séance 13 : VueJs et ApiPlatform (2)
 
 ## Supprimer un fournisseur
 
-Pour cela, vous allez ajouter un bouton dans la liste des fournisseurs. Ce bouton va appeler une fonction (supprimer) qui va supprimer le fournisseur. Pour connaitre l'id du fournisseur, vous allez utiliser devoir passer à la méthode supprimer l'id du fournisseur. Vous noterez que dans ApiPlatform, vous avez deux "id" :
+Pour cela, vous allez ajouter un bouton dans la liste des fournisseurs. Ce bouton va appeler une fonction (supprimer) qui va supprimer le fournisseur. Pour connaitre l'id du fournisseur, vous allez devoir passer à la méthode supprimer l'id du fournisseur. Vous noterez que dans ApiPlatform, vous avez deux "id" :
 
 * id : un nombre (par défaut), qui correspondant à l'ID de votre entité dans la base de données
 * @id : une chaîne de caractères, qui correspond à l'URL (on parle même d'URI : _Uniform Ressource Identifier_) de votre entité.
