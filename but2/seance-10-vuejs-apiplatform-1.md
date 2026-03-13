@@ -20,15 +20,19 @@ Node et Npm ne sont pas installés sur le VDI, vous devez donc executer le scrip
 
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+nvm install node ## pour installer la dernière version de node
 
 ## puis
+nano /.bashrc ## Création du fichhier basrc (config dut erminal)
+
+## Copier/coller la ligne ci-dessous
 
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 ## puis
+source ~/.basr
 
-nvm install node ## pour installer la dernière version de node
 ```
 {% endhint %}
 
