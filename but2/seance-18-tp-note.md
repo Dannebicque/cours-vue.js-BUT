@@ -17,3 +17,5 @@ Vous disposez **d'une heure.**
 ## Partie 2 : Questionnaire
 
 Vous aurez ensuite un Questionnaire de **15 minutes** pour évaluer votre compréhension du sujet et du code produit. **Cette partie est sans document.**
+
+{% file src="../.gitbook/assets/TPNoteAB.pdf" %}
