@@ -27,13 +27,13 @@
 ## BUT3
 
 * [Séance 0 : Présentation de la ressource en BUT3](but3/seance-0-presentation.md)
+* [Séance 1-a : TypeScript](but3/seance-6-a-typescript.md)
+* [Séance 1-b : Introduction à Nuxt 4](but3/seance-6-b-introduction-a-nuxt-3.md)
 * [Séance 1 : Introduction & rappel Vue](but3/seance-1-introduction-rappel-vue.md)
 * [Séance 2 : Architecture et composables](but3/seance-2-architecture-et-composables.md)
 * [Séance 3 : Communication avec API](but3/seance-3-communication-avec-api.md)
 * [Séance 4 : Router et navigation](but3/seance-4-router-et-navigation.md)
 * [Séance 5 : State avancé (Pinia)](but3/seance-5-state-avance-pinia.md)
-* [Séance 6-a : TypeScript](but3/seance-6-a-typescript.md)
-* [Séance 6-b : Introduction à Nuxt 3](but3/seance-6-b-introduction-a-nuxt-3.md)
 * [Séance 7 : Nuxt & API](but3/seance-7-nuxt-api.md)
 * [Séance 8 : Nuxt avancé & SEO](but3/seance-8-nuxt-avance-seo.md)
 * [Séance 9 : Tests front](but3/seance-9-tests-front.md)

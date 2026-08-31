@@ -1,6 +1,6 @@
 # Séance 0 : Présentation de la ressource en BUT3
 
-## 🚀 Nuxt 3, TypeScript & Architecture Web Pro
+## 🚀 Nuxt 4, TypeScript & Architecture Web Pro
 
 Ce module de 24 séances de 1h30 a pour objectif  : vous faire basculer du statut d'étudiant développeur à celui de développeur front-end professionnel, capable de concevoir des applications robustes, testées et maintenables, tout en maîtrisant l'usage critique des intelligences artificielles.
 
@@ -8,7 +8,7 @@ Ce module de 24 séances de 1h30 a pour objectif  : vous faire basculer du statu
 
 | **Phase** | **Volume**      | **Format**                                | **Objectif Principal**                                                                |
 | --------- | --------------- | ----------------------------------------- | ------------------------------------------------------------------------------------- |
-| Partie 1  | Séances 1 à 6   | Cours & TP Guidés (Fil rouge "DevFlow")   | Poser les bases de Nuxt 3 et structurer le code avec TypeScript.                      |
+| Partie 1  | Séances 1 à 6   | Cours & TP Guidés (Fil rouge "DevFlow")   | Poser les bases de Nuxt 4 et structurer le code avec TypeScript.                      |
 | Partie 2  | Séances 7 à 12  | Cours & TP Guidés (Fil rouge "DevFlow")   | Maîtriser le Data Fetching, les API internes et la gestion d'état avec Pinia.         |
 | Partie 3  | Séances 13 à 14 | Ateliers Pratiques                        | Assurer la qualité via les tests unitaires (Vitest) et l'esprit critique face à l'IA. |
 | Partie 4  | Séances 15 à 24 | Projet en Autonomie ("Opération Phoenix") | Mettre en pratique l'ensemble sur un SaaS métier complet par équipes.                 |
@@ -41,7 +41,7 @@ Le projet final est rythmé par 4 points d'étape obligatoires :
 ## Ressources
 
 * [Documentation Vue 3](https://vuejs.org/guide/introduction.html)
-* [Documentation Nuxt 3](https://nuxt.com/docs/getting-started/introduction)
+* [Documentation Nuxt](https://nuxt.com/docs/getting-started/introduction)
 * [Documentation Api Platform](https://api-platform.com/docs/)
 * [Documentation Pinia](https://pinia.vuejs.org/)
 
@@ -53,7 +53,7 @@ Barème global : /20 points _(Découpé en 4 axes majeurs)_
 
 _Évalue la rigueur structurelle et la maîtrise du typage._
 
-* Respect des conventions Nuxt 3 (1.5 pt) : Arborescence irréprochable (séparation stricte entre `pages/`, `components/`, `composables/`, `server/`). Pas de logique métier fourrée dans les composants UI.
+* Respect des conventions Nuxt 4 (1.5 pt) : Arborescence irréprochable (séparation stricte entre `pages/`, `components/`, `composables/`, `server/`). Pas de logique métier fourrée dans les composants UI.
 * Maîtrise de TypeScript (2 pt) : Utilisation rigoureuse du dossier `types/`. Typage strict des props, des émits, des stores et des retours d'API. Absence totale de types `any` injustifiés.
 * Modularité & Composables (1.5 pt) : Extraction pertinente de la logique métier dans des composables réutilisables et propres.
 
