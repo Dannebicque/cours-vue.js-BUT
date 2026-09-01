@@ -100,12 +100,54 @@ useHead({
 
 /!\ definePageMeta dans la version 3 de Nuxt.
 
-## Exercice
+## Premier projet fil rouge : "DevFlow — Le Mini-Tracker de Tâches d'Équipe"
 
-Migrer une application Vue 3 existante vers Nuxt 4 :
+### Votre premier jour en tant que Développeur Front-End Junior.
+
+> _"Félicitations, vous venez d'être recrutés par l'agence web DevSquad ! Avant de vous confier les projets critiques de nos plus gros clients (ce sera votre projet final), le Lead Tech a une mission pour vous."_
+
+* Le Problème : L'agence gère ses projets sur Jira (c'est trop lourd) et sur Trello (c'est trop limité). Les équipes perdent du temps.
+* La Mission : L'agence a décidé de développer son propre outil interne de suivi de tâches. Un outil ultra-rapide, sur-mesure et pensé par des devs, pour des devs.
+
+#### 💡 Le Produit
+
+Nom de code : DevFlow — Le Mini-Tracker de Tâches d'Équipe.
+
+Pas question de faire une simple "To-Do list" d'étudiant de première année. Nous allons concevoir une véritable application métier web.
+
+* Rapide & Réactif : Zéro temps de chargement frustrant.
+* Pro & Ergonomique : Une interface moderne, épurée (et avec un mode sombre, évidemment).
+* Collaboratif : Des tâches assignées, des statuts qui évoluent, des filtres dynamiques pour retrouver son travail en un clic.
+
+#### 🛠️ Les Fonctionnalités (Votre carnet de commandes)
+
+Pendant les prochaines semaines, voici ce que nous allons implémenter étape par étape :
+
+1. L'Espace Public & Sécurisé : Une page de connexion et un tableau de bord verrouillé pour les membres de l'équipe.
+2. Le Dashboard Dynamique : Affichage des tâches sous forme de cartes avec priorités et catégories.
+3. Le Moteur de Filtrage : Trier instantanément les tâches par utilisateur, par statut (À faire, En cours, Terminé) ou par urgence.
+4. La Gestion d'État : Sauvegarder les préférences de l'utilisateur et maintenir l'application fluide sans recharger la page à chaque clic.
+
+#### 🎯 La Philosophie (Pourquoi DevFlow ?)
+
+DevFlow est votre terrain d'entraînement (Onboarding).
+
+L'objectif de l'agence n'est pas seulement que l'outil fonctionne, mais qu'il soit bien construit. À travers la conception de DevFlow, vous allez apprendre les standards industriels actuels :
+
+* Fini le code brouillon : place à une architecture stricte et professionnelle.
+* Fini le "ça marche chez moi" : place à la rigueur (TypeScript) et aux tests.
+* Fini le code généré à l'aveugle : vous utiliserez l'IA comme un assistant, mais vous resterez les seuls pilotes à bord.
+
+> _"Une fois que vous maîtriserez la création de DevFlow avec nous, vous serez prêts à voler de vos propres ailes pour la grande mission de fin de semestre."_
+
+## Step 1...
+
+Mettre en place une application Nuxt 4 :
 
 1. Créer un nouveau projet Nuxt 4 (`npm create nuxt@latest`).
 2. Posez la structure et assurez vous d'avoir TypeScript en mode strict
 3. Définissez une première interface pour des User et ajouté une page pour les afficher
+4. Posez une interface pour une tâche
 
-La sécurité, avec Nuxt, (authentification, autorisation) sera vue dans la séance suivante.
+To be continued...&#x20;
+
