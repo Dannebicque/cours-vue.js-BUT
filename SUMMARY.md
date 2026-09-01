@@ -27,7 +27,7 @@
 ## BUT3
 
 * [Séance 0 : Présentation de la ressource en BUT3](but3/seance-0-presentation.md)
-* [Séance 1-a : TypeScript](but3/seance-6-a-typescript.md)
+* [Séance 1-a : TypeScript pour NuxtJs / VueJs](but3/seance-6-a-typescript.md)
 * [Séance 1-b : Introduction à Nuxt 4](but3/seance-6-b-introduction-a-nuxt-3.md)
 * [Séance 5 : State avancé (Pinia)](but3/seance-5-state-avance-pinia.md)
 * [Séance 7 : Nuxt & API](but3/seance-7-nuxt-api.md)

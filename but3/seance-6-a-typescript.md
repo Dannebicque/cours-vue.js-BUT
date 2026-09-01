@@ -1,22 +1,22 @@
-# Séance 6a – Introduction à TypeScript
+# Séance 1-a : TypeScript pour NuxtJs / VueJs
 
 ## 🎯 Objectifs
 
-- Comprendre les bases de TypeScript.
-- Ajouter du typage dans un projet Vue/Nuxt.
+* Comprendre les bases de TypeScript.
+* Ajouter du typage dans un projet Vue/Nuxt.
 
 ## 📖 Partie théorique
 
 ### Pourquoi TypeScript ?
 
-- Superset de JavaScript avec typage statique.
-  - Tout code JavaScript valide est aussi du TypeScript.
-  - On peut progressivement ajouter du typage.
-  - Pas besoin de tout réécrire.
-- Détection d’erreurs à la compilation.
-- Meilleure autocomplétion et documentation.
-- Adoption croissante dans l’écosystème JS.
-- Utilisé par des frameworks comme Angular, Vue, React.
+* Superset de JavaScript avec typage statique.
+  * Tout code JavaScript valide est aussi du TypeScript.
+  * On peut progressivement ajouter du typage.
+  * Pas besoin de tout réécrire.
+* Détection d’erreurs à la compilation.
+* Meilleure autocomplétion et documentation.
+* Adoption croissante dans l’écosystème JS.
+* Utilisé par des frameworks comme Angular, Vue, React.
 
 ### Approche de TypeScript
 
@@ -30,13 +30,13 @@ La documentation officielle est très complète : https://www.typescriptlang.org
 
 #### Types primitifs
 
-- `string`
-- `number`
-- `boolean`
-- `null`
-- `undefined`
-- `void`
-- `any`
+* `string`
+* `number`
+* `boolean`
+* `null`
+* `undefined`
+* `void`
+* `any`
 
 Exemples :
 
@@ -50,12 +50,16 @@ let noReturn: void = undefined
 let anything: any = 'Could be anything'
 ```
 
+{% hint style="info" %}
+#### Le typage ici, est  utile pour expliquer au compilateur comment vérifier les valeurs dans chacune des variables
+{% endhint %}
+
 #### Types complexes
 
-- `array` : `string[]` ou `Array<string>`
-- `tuple` : `[string, number]`
-- `enum` : énumérations
-- `object` : `{ key: value }`
+* `array` : `string[]` ou `Array<string>`
+* `tuple` : `[string, number]`
+* `enum` : énumérations
+* `object` : `{ key: value }`
 
 Exemples :
 
@@ -63,9 +67,10 @@ Exemples :
 let names: string[] = ['Alice', 'Bob']
 let user: [string, number] = ['Alice', 30]
 enum Role { Admin, User, Guest }
+type Status = 'draft' | 'published' | 'archived'
 let currentRole: Role = Role.Admin
 let person: { name: string; age: number } = { name: 'Alice', age: 30 }
-``` 
+```
 
 #### Fonctions
 
@@ -84,6 +89,7 @@ interface User {
     name: string
     email?: string // optionnel
 }
+
 type ID = string | number // union de types
 ```
 
@@ -94,6 +100,41 @@ let user: User = { id: 1, name: 'Alice' }
 let userId: ID = 123
 userId = 'abc' // aussi valide
 ```
+
+ou encore, pour un "ref" en VueJs
+
+```typescript
+interface User {
+id: number
+name: string
+}
+const user = ref<User | null>(null)
+```
+
+### Attention au type any / unknown
+
+```typescript
+let data: any
+data.foo.bar() // TypeScript ne protège plus rien
+```
+
+contre :
+
+```typescript
+let data: unknown
+data.foo // erreur
+```
+
+Puis :
+
+```typescript
+if (  typeof data === 'object'  && data !== null  && 'name' in data) 
+{  
+    // on commence à préciser ce que contient data
+}
+```
+
+`unknown` est justement conçu comme l'alternative sûre à `any` : il oblige à vérifier ou raffiner la donnée avant son utilisation.
 
 ### Le fichier de configuration `tsconfig.json`
 
@@ -115,6 +156,82 @@ Exemple minimal :
   "include": ["src/**/*.ts", "src/**/*.vue"],
   "exclude": ["node_modules"]
 }
+```
+
+### Cas concrets avec VueJs/Nuxt
+
+```typescript
+<script setup>
+const props = defineProps({
+  title: String,
+  count: Number
+})
+</script>
+```
+
+et arriver à :
+
+```typescript
+<script setup lang="ts">
+interface Props {
+  title: string
+  count?: number
+}
+
+const props = defineProps<Props>()
+</script>
+```
+
+Puis :
+
+```typescript
+const emit = defineEmits<{
+  select: [id: number]
+  delete: [id: number]
+}>()
+```
+
+Et évidemment :
+
+```typescript
+const count = ref(0)
+```
+
+contre :
+
+```typescript
+const user = ref<User | null>(null)
+const users = ref<User[]>([])
+```
+
+ainsi que :
+
+```typescript
+const selected = computed<User | null>(() => {
+  return users.value.find(user => user.id === selectedId.value) ?? null
+})
+```
+
+### Appel API typé
+
+Avant :
+
+```typescript
+const response = await fetch('/api/users')
+const users = await response.json()
+```
+
+Après :
+
+```typescript
+interface User {
+  id: number
+  name: string
+  email: string
+}
+
+const response = await fetch('/api/users')
+const users: User[] = await response.json()
 ```
 
 ### Ajouter TypeScript à un projet Vue/Nuxt
@@ -139,4 +256,3 @@ const description = ref<string>('This is a Vue component with TypeScript')
 /* styles */
 </style>
 ```
-
