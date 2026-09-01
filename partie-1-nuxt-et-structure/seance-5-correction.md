@@ -107,6 +107,10 @@ const closeModal = () => {
 
 ***
 
+{% hint style="info" %}
+[https://nuxt.com/docs/4.x/api/components/teleports](https://nuxt.com/docs/4.x/api/components/teleports)
+{% endhint %}
+
 ## 🛠️ 2. Composant `app/components/tasks/TaskCard.vue`
 
 ```vue
@@ -294,7 +298,7 @@ const emit = defineEmits<{
 
     <div class="column-content">
       <TransitionGroup name="task-list" tag="div" class="cards-list">
-        <TaskCard
+        <TasksTaskCard
           v-for="task in tasks"
           :key="task.id"
           :task="task"
@@ -363,6 +367,10 @@ const emit = defineEmits<{
 ***
 
 ## 🛠️ 4. Assemblage Final `app/pages/tasks/index.vue`
+
+{% hint style="info" %}
+Attention ! Les composants précédents étant dans des sous-dossiers de components, il faut préfixer le nom du composant par le nom du dossier. Ainsi `AppModal` qui est dans `common`, doit se nommer `CommonAppModal :` [`https://nuxt.com/docs/4.x/directory-structure/app/components`](https://nuxt.com/docs/4.x/directory-structure/app/components)
+{% endhint %}
 
 ```vue
 <!-- app/pages/tasks/index.vue -->
@@ -433,28 +441,28 @@ const doneTasks = computed(() => filteredTasks.value.filter(t => t.status === 'd
 
     <!-- Grille Kanban -->
     <main class="kanban-board">
-      <TaskColumn
+      <TasksTaskColumn
         status="todo"
         title="📌 À Faire"
         :tasks="todoTasks"
         @update-status="updateTaskStatus"
         @delete="deleteTask"
       />
-      <TaskColumn
+      <TasksTaskColumn
         status="in_progress"
         title="⚡ En Cours"
         :tasks="inProgressTasks"
         @update-status="updateTaskStatus"
         @delete="deleteTask"
       />
-      <TaskColumn
+      <TasksTaskColumn
         status="in_review"
         title="👀 En Revue"
         :tasks="inReviewTasks"
         @update-status="updateTaskStatus"
         @delete="deleteTask"
       />
-      <TaskColumn
+      <TasksTaskColumn
         status="done"
         title="✅ Terminé"
         :tasks="doneTasks"
@@ -464,7 +472,7 @@ const doneTasks = computed(() => filteredTasks.value.filter(t => t.status === 'd
     </main>
 
     <!-- Modal de création avec defineModel -->
-    <AppModal v-model:isOpen="isModalOpen" title="Créer une nouvelle tâche">
+    <CommonAppModal v-model:isOpen="isModalOpen" title="Créer une nouvelle tâche">
       <form @submit.prevent="handleCreateTask" class="task-form">
         <div class="form-group">
           <label>Titre de la tâche *</label>
@@ -506,7 +514,7 @@ const doneTasks = computed(() => filteredTasks.value.filter(t => t.status === 'd
           </button>
         </div>
       </form>
-    </AppModal>
+    </CommonAppModal>
   </div>
 </template>
 
