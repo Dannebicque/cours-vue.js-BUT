@@ -26,14 +26,19 @@
 
 ## BUT3
 
-* [Séance 0 : Présentation de la ressource en BUT3](but3/seance-0-presentation.md)
-* [Séance 1-a : TypeScript pour NuxtJs / VueJs](but3/seance-6-a-typescript.md)
-* [Séance 1-b : Introduction à Nuxt 4](but3/seance-6-b-introduction-a-nuxt-3.md)
-* [Séance 2 : Bonnes pratiques ? SOLID](but3/seance-2-bonnes-pratiques-solid.md)
-* [Séance 5 : State avancé (Pinia)](but3/seance-5-state-avance-pinia.md)
-* [Séance 7 : Nuxt & API](but3/seance-7-nuxt-api.md)
-* [Séance 8 : Nuxt avancé & SEO](but3/seance-8-nuxt-avance-seo.md)
-* [Séance 9 : Tests front](but3/seance-9-tests-front.md)
+***
+
+* [Séance 0 : Présentation de la ressource en BUT3](seance-0-presentation.md)
+
+## Partie 1 : Nuxt et structure
+
+* [Séance 1-a : TypeScript pour NuxtJs / VueJs](partie-1-nuxt-et-structure/seance-6-a-typescript.md)
+* [Séance 1-b : Introduction à Nuxt 4](partie-1-nuxt-et-structure/seance-6-b-introduction-a-nuxt-3.md)
+* [Séance 5 : State avancé (Pinia)](partie-1-nuxt-et-structure/seance-5-state-avance-pinia.md)
+* [Séance 7 : Nuxt & API](partie-1-nuxt-et-structure/seance-7-nuxt-api.md)
+* [Séance 8 : Nuxt avancé & SEO](partie-1-nuxt-et-structure/seance-8-nuxt-avance-seo.md)
+* [Séance 9 : Tests front](partie-1-nuxt-et-structure/seance-9-tests-front.md)
+* [Séance 2 : Bonnes pratiques ? SOLID](partie-1-nuxt-et-structure/seance-2-bonnes-pratiques-solid.md)
 
 ## Ancien BUT3
 
