@@ -102,9 +102,8 @@ Nuxt 4 auto-importe automatiquement les fonctions et composants essentiels. Vous
 
 1. **Initialiser le projet Nuxt 4** avec la commande officielle `nuxi init devflow`.
 2. **Configurer `nuxt.config.ts`** :
-   * Activer Nuxt 4 via `future: { compatibilityVersion: 4 }`.
    * Activer le typage strict (`typescript: { strict: true, typeCheck: true }`).
-   * Configurer les métadonnées HTML de base (`title`, `description`, `lang: 'fr'`).
+   * Configurer les métadonnées HTML de base, de manière globale, (`title`, `description`, `lang: 'fr'`).
    * Activer les DevTools Nuxt.
 3. **Créer l'arborescence `app/`** et configurer `app/app.vue` avec `<NuxtLayout>` et `<NuxtPage />`.
 4. **Lancer le serveur de développement** (`npm run dev`) et explorer l'interface des **Nuxt DevTools** (`Shift + Alt + D`).

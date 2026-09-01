@@ -24,7 +24,7 @@ Un **Composable** est une fonction JavaScript/TypeScript qui exploite la Composi
 │                    Anatomie d'un Composable                │
 ├────────────────────────────────────────────────────────────┤
 │  1. État réactif privé ou partagé (ref, reactive)          │
-│  2. Propriétés dérivées / sélecteurs (computed)           │
+│  2. Propriétés dérivées / sélecteurs (computed)            │
 │  3. Actions / Méthodes manipulant l'état                   │
 │  4. Retour d'un contrat typé et sécurisé (readonly)        │
 └────────────────────────────────────────────────────────────┘
@@ -37,8 +37,8 @@ Un **Composable** est une fonction JavaScript/TypeScript qui exploite la Composi
 | Concept | Rôle principal | Réactivité Vue | Portée (Scope) | Exemple type |
 | :--- | :--- | :---: | :--- | :--- |
 | **Composable** (`useTasks`) | Factoriser de la logique métier réactive ou des comportements UI. | ✅ Oui (`ref`, `computed`) | Local par défaut, ou partagé par invocation. | `useTaskFilters()`, `usePagination()`, `useClipboard()` |
-| **Store Pinia** (`useAuthStore`) | Maintenir un état global unique partagé entre toutes les pages (Source Unique de Vérité). | ✅ Oui (`state`, `getters`, `actions`) | Global (durée de vie de la session SPA). | Authentification, panier d'achat, cache de données global. |
-| **Service API** (`taskService`) | Communiquer avec les APIs backend de manière pure et déconnectée de l'UI. | ❌ Non (fonctions pures, Promises) | Stateless (pas d'état conservé). | `apiClient.get('/tasks')`, `authService.login()` |
+| **Store Pinia** (`useAuthStore`) - séance 7 | Maintenir un état global unique partagé entre toutes les pages (Source Unique de Vérité). | ✅ Oui (`state`, `getters`, `actions`) | Global (durée de vie de la session SPA). | Authentification, panier d'achat, cache de données global. |
+| **Service API** (`taskService`) - séance 8 | Communiquer avec les APIs backend de manière pure et déconnectée de l'UI. | ❌ Non (fonctions pures, Promises) | Stateless (pas d'état conservé). | `apiClient.get('/tasks')`, `authService.login()` |
 
 ---
 
