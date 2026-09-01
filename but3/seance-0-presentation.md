@@ -1,5 +1,9 @@
 # Séance 0 : Présentation de la ressource en BUT3
 
+{% hint style="success" %}
+## Ce cours est co-rédigé avec une IA, sur une idée et une proposition humaine. L'usage de l'IA est autorisé dans ce module.
+{% endhint %}
+
 ## 🚀 Nuxt 4, TypeScript & Architecture Web Pro
 
 Ce module de 24 séances de 1h30 a pour objectif  : vous faire basculer du statut d'étudiant développeur à celui de développeur front-end professionnel, capable de concevoir des applications robustes, testées et maintenables, tout en maîtrisant l'usage critique des intelligences artificielles.
