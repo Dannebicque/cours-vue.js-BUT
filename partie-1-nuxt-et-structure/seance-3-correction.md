@@ -257,7 +257,55 @@ const handleLogin = async () => {
 
 ***
 
-## 🛠️ 4. Page d'Erreur Personnalisée (`app/error.vue`)
+## 🛠️ 4. Page Détail d'une Tâche avec SEO Dynamique (`app/pages/tasks/[id].vue`)
+
+```vue
+<!-- app/pages/tasks/[id].vue -->
+<script setup lang="ts">
+const route = useRoute()
+const taskId = computed(() => route.params.id as string)
+
+// Métadonnées SEO dynamiques recalculées automatiquement
+useSeoMeta({
+  title: () => `Tâche ${taskId.value} — DevFlow`,
+  ogTitle: () => `Détail de la tâche ${taskId.value}`,
+  description: () => `Consultez les détails et l'avancement de la tâche ${taskId.value} sur DevFlow.`,
+  ogImage: '/images/og-task-preview.png'
+})
+</script>
+
+<template>
+  <div class="task-detail-page">
+    <header class="detail-header">
+      <NuxtLink to="/tasks" class="back-link">← Retour au tableau Kanban</NuxtLink>
+      <h2>Détail de la tâche : {{ taskId }}</h2>
+    </header>
+
+    <div class="detail-content">
+      <p class="placeholder-text">
+        Les informations complètes de la tâche seront reliées aux composables dans la Séance 4.
+      </p>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.task-detail-page { display: flex; flex-direction: column; gap: 20px; }
+.back-link { color: #38bdf8; text-decoration: none; font-size: 0.9rem; }
+.back-link:hover { text-decoration: underline; }
+.detail-content {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 24px;
+}
+.placeholder-text { color: #94a3b8; }
+</style>
+```
+
+---
+
+## 🛠️ 5. Page d'Erreur Personnalisée (`app/error.vue`)
 
 ```vue
 <!-- app/error.vue -->

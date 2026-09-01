@@ -3,12 +3,12 @@
 ## 🎯 Objectifs de la séance
 
 * Maîtriser le système de **routage automatique** de Nuxt 4 basé sur l'arborescence du dossier `app/pages/`.
-* Concevoir des **Layouts** de mise en page modulaires (`layouts/default.vue`, `layouts/auth.vue`).
 * Naviguer efficacement avec le composant natif **`<NuxtLink>`**, le préchargement automatique et les styles actifs.
 * Manipuler les paramètres de route avec `useRoute()`, `useRouter()` et effectuer des redirections programmatiques avec `navigateTo()`.
-* Définir des métadonnées de page avec `definePageMeta()` et `useSeoMeta()`.
+* Configurer le **référencement naturel (SEO)** et les métadonnées de page avec **`useSeoMeta()`** et **`useHead()`**.
+* Concevoir des **Layouts** de mise en page modulaires (`layouts/default.vue`, `layouts/auth.vue`).
 * Gérer les erreurs et concevoir une page 404/500 sur-mesure (`app/error.vue`).
-* **Atelier Fil rouge DevFlow (Étape 1)** : Mettre en place l'ossature de navigation complète de l'application.
+* **Atelier Fil rouge DevFlow (Étape 1)** : Mettre en place l'ossature de navigation complète et le SEO de l'application.
 
 ---
 
@@ -89,13 +89,73 @@ const taskId = computed(() => route.params.id as string)
 
 ---
 
-## 📐 4. Les Layouts (Gabarits de Mise en Page)
+## 🔍 4. Référencement Naturel & Métadonnées SEO (`useSeoMeta` & `useHead`)
+
+L'un des avantages majeurs de Nuxt (via le rendu SSR) est de pouvoir générer des pages dont les balises `<head>` sont immédiatement lisibles par les moteurs de recherche (Google, Bing) et les réseaux sociaux (aperçus de liens Open Graph sur Discord, LinkedIn, Slack).
+
+### A. Déclaration déclarative avec `useSeoMeta()`
+
+`useSeoMeta()` est la méthode recommandée pour déclarer l'ensemble des balises méta standards, Open Graph et Twitter Cards avec un typage TypeScript strict :
+
+```vue
+<!-- app/pages/tasks/index.vue -->
+<script setup lang="ts">
+useSeoMeta({
+  title: 'Tableau de bord des tâches — DevFlow',
+  description: 'Suivi en temps réel des développements de l\'agence DevSquad.',
+  ogTitle: 'Tableau de bord — DevFlow',
+  ogDescription: 'Gérez et priorisez les tâches de votre équipe.',
+  ogImage: '/images/og-devflow-dashboard.png',
+  twitterCard: 'summary_large_image'
+})
+</script>
+```
+
+### B. Métadonnées dynamiques (liées aux paramètres d'URL ou aux données)
+
+Lorsque le titre ou la description dépendent d'une donnée dynamique (ex: le titre d'une tâche chargée depuis l'URL), passez des fonctions fléchées (*getters*) à `useSeoMeta()` :
+
+```vue
+<!-- app/pages/tasks/[id].vue -->
+<script setup lang="ts">
+const route = useRoute()
+const taskId = computed(() => route.params.id as string)
+
+// Les getters permettent à Nuxt de recalculer le titre dès que taskId change
+useSeoMeta({
+  title: () => `Tâche ${taskId.value} — DevFlow`,
+  ogTitle: () => `Détail de la tâche ${taskId.value}`,
+  description: () => `Consultez les détails, assignations et commentaires de la tâche ${taskId.value}.`,
+  ogImage: '/images/og-task-card.png'
+})
+</script>
+```
+
+### C. Gestion avancée du `<head>` avec `useHead()`
+
+Pour injecter des scripts externes, des polices web ou des feuilles de styles spécifiques à une page :
+
+```typescript
+useHead({
+  htmlAttrs: {
+    lang: 'fr'
+  },
+  link: [
+    { rel: 'canonical', href: 'https://devflow.devsquad.pro/tasks' }
+  ]
+})
+```
+
+---
+
+## 📐 5. Les Layouts (Gabarits de Mise en Page)
 
 Les Layouts situés dans `app/layouts/` permettent de factoriser la structure récurrente des pages (Barre de navigation, Header, Footer, Sidebar).
 
 Pour appliquer un layout non-défaut à une page :
 
 ```vue
+<!-- app/pages/login.vue -->
 <script setup lang="ts">
 definePageMeta({
   layout: 'auth'
@@ -105,13 +165,13 @@ definePageMeta({
 
 ---
 
-## 🚫 5. Gestion des Erreurs : `app/error.vue`
+## 🚫 6. Gestion des Erreurs : `app/error.vue`
 
 Nuxt intercepte automatiquement les erreurs non gérées et les 404 pour afficher `app/error.vue`. La fonction `clearError({ redirect: '/...' })` permet de réinitialiser l'état d'erreur et de rediriger l'utilisateur proprement.
 
 ---
 
-## 🛠️ 6. Atelier Pratique : Fil Rouge "DevFlow" (Étape 1)
+## 🛠️ 7. Atelier Pratique : Fil Rouge "DevFlow" (Étape 1)
 
 ### Votre mission chez DevSquad :
 
@@ -119,11 +179,11 @@ Nuxt intercepte automatiquement les erreurs non gérées et les 404 pour affiche
    * `default.vue` : Sidebar avec logo DevFlow, liens `<NuxtLink>` vers `/tasks` et `/team`, encart utilisateur connecté, zone principale `<slot />`.
    * `auth.vue` : Mise en page épurée, centrée sur fond dégradé sombre avec une boîte de dialogue `<slot />`.
 
-2. **Créer les pages principales** dans `app/pages/` :
+2. **Créer les pages principales avec leur SEO** dans `app/pages/` :
    * `app/pages/index.vue` : Page d'accueil avec redirection automatique vers `/tasks`.
-   * `app/pages/login.vue` : Formulaire de connexion utilisant le layout `auth` via `definePageMeta({ layout: 'auth' })`.
-   * `app/pages/tasks/index.vue` : Page principale du tracker avec un titre et un placeholder du futur tableau de bord.
-   * `app/pages/tasks/[id].vue` : Page de détail d'une tâche affichant l'identifiant dynamique issu de `useRoute().params.id`.
+   * `app/pages/login.vue` : Formulaire de connexion utilisant le layout `auth` via `definePageMeta({ layout: 'auth' })` et un `useSeoMeta` adapté.
+   * `app/pages/tasks/index.vue` : Page principale du tracker avec métadonnées SEO complètes.
+   * `app/pages/tasks/[id].vue` : Page de détail d'une tâche affichant l'identifiant dynamique et un titre SEO calculé dynamiquement.
    * `app/pages/team.vue` : Page présentant la liste statique des membres de l'équipe de l'agence.
 
 3. **Créer la page d'erreur personnalisée** dans `app/error.vue` (gestion des codes 404 et 500 avec bouton de retour à l'accueil via `clearError`).
@@ -137,6 +197,7 @@ La solution détaillée et commentée de cet atelier est disponible dans la page
 ## 🎯 Auto-évaluation & Checklist
 
 * [ ] Je sais comment créer une route dynamique avec la syntaxe `[param].vue`.
+* [ ] Je sais configurer des métadonnées SEO statiques et dynamiques avec `useSeoMeta()`.
 * [ ] Je sais basculer d'un layout à un autre avec `definePageMeta({ layout: '...' })`.
 * [ ] J'utilise `<NuxtLink>` pour toutes mes navigations internes.
 * [ ] J'ai implémenté `app/error.vue` avec la fonction `clearError()`.
