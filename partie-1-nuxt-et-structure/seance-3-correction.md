@@ -1,8 +1,12 @@
+---
+hidden: true
+---
+
 # Séance 3 (correction) : Squelette et Layouts DevFlow
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 3**.
 
----
+***
 
 ## 🛠️ 1. Layout Principal (`app/layouts/default.vue`)
 
@@ -118,7 +122,7 @@ Ce document présente la correction détaillée de l'atelier pratique de la **S�
 </style>
 ```
 
----
+***
 
 ## 🛠️ 2. Layout Authentification (`app/layouts/auth.vue`)
 
@@ -153,7 +157,7 @@ Ce document présente la correction détaillée de l'atelier pratique de la **S�
 </style>
 ```
 
----
+***
 
 ## 🛠️ 3. Page de Connexion (`app/pages/login.vue`)
 
@@ -251,7 +255,7 @@ const handleLogin = async () => {
 </style>
 ```
 
----
+***
 
 ## 🛠️ 4. Page d'Erreur Personnalisée (`app/error.vue`)
 

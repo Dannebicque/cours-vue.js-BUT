@@ -1,8 +1,12 @@
-# Séance 4 (correction) : `useTasks` & `useTaskFilters`
+---
+hidden: true
+---
+
+# Séance 4 (correction) : useTasks & useTaskFilters
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 4**.
 
----
+***
 
 ## 🛠️ 1. Composable Métier `app/composables/useTasks.ts`
 
@@ -140,7 +144,7 @@ export function useTasks() {
 }
 ```
 
----
+***
 
 ## 🛠️ 2. Composable de Filtrage `app/composables/useTaskFilters.ts`
 
@@ -188,7 +192,7 @@ export function useTaskFilters(tasks: Ref<readonly Task[] | Task[]>) {
 }
 ```
 
----
+***
 
 ## 🛠️ 3. Intégration dans `app/pages/tasks/index.vue`
 

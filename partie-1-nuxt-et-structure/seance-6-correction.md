@@ -1,8 +1,12 @@
+---
+hidden: true
+---
+
 # Séance 6 (correction) : Refactoring SOLID de DevFlow
 
 Ce document présente la correction détaillée de l'atelier pratique de refactoring de la **Séance 6**.
 
----
+***
 
 ## 🛠️ 1. Refactoring SOLID du composant `TaskCard`
 
@@ -133,7 +137,7 @@ const handleStatusChange = (event: Event) => {
 </style>
 ```
 
----
+***
 
 ## 🛠️ 2. Mise en place de l'Adapter de Stockage (LSP & DIP)
 

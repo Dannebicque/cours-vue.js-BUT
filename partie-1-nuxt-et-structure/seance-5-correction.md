@@ -1,8 +1,12 @@
+---
+hidden: true
+---
+
 # Séance 5 (correction) : Dashboard Kanban & Modals
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 5**.
 
----
+***
 
 ## 🛠️ 1. Composant Générique `app/components/common/AppModal.vue`
 
@@ -101,7 +105,7 @@ const closeModal = () => {
 </style>
 ```
 
----
+***
 
 ## 🛠️ 2. Composant `app/components/tasks/TaskCard.vue`
 
@@ -256,7 +260,7 @@ const statusOptions: { value: TaskStatus; label: string }[] = [
 </style>
 ```
 
----
+***
 
 ## 🛠️ 3. Composant `app/components/tasks/TaskColumn.vue`
 
@@ -356,7 +360,7 @@ const emit = defineEmits<{
 </style>
 ```
 
----
+***
 
 ## 🛠️ 4. Assemblage Final `app/pages/tasks/index.vue`
 

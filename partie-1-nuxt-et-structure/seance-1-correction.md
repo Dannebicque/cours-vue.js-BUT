@@ -1,8 +1,12 @@
+---
+hidden: true
+---
+
 # Séance 1 (correction) : Types et Avatar DevFlow
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 1**.
 
----
+***
 
 ## 🛠️ Exercice 1 : Modélisation des types métier (`types/devflow.ts`)
 
@@ -65,10 +69,11 @@ export interface TaskFilterOptions {
 ```
 
 ### 💡 Points clés d'architecture :
+
 * **Unions de chaînes plutôt qu'Enums numériques** : `type TaskPriority = 'low' | 'medium' | ...` est plus lisible dans les templates, dans le JSON des APIs et dans le débogueur que des enums numériques `TaskPriority.LOW = 0`.
 * **Assignee nullable (`User | null`)** : Une tâche peut être non assignée lors de sa création. L'utilisation explicite de `null` oblige le développeur à gérer ce cas lors de l'affichage.
 
----
+***
 
 ## 🛠️ Exercice 2 : Composant typé `UserAvatar.vue`
 

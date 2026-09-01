@@ -26,8 +26,6 @@
 
 ## BUT3
 
-***
-
 * [Séance 0 : Présentation de la ressource en BUT3](seance-0-presentation.md)
 
 ## Partie 1 : Nuxt 4, TypeScript et Architecture (S1 à S6)
@@ -59,15 +57,13 @@
 ## Partie 3 : Qualité, Tests et Ingénierie IA (S13 à S14)
 
 * [Séance 13 : Tests Front Unitaires & d'Intégration (Vitest)](partie-3-tests-et-qualite/seance-13-tests-front.md)
-* [Séance 14 : Tests E2E & Journal de Bord IA (AI_PROMPT_BOOK)](partie-3-tests-et-qualite/seance-14-e2e-ia-promptbook.md)
+* [Séance 14 : Tests E2E & Journal de Bord IA (AI\_PROMPT\_BOOK)](partie-3-tests-et-qualite/seance-14-e2e-ia-promptbook.md)
 
 ## Partie 4 : Projet SaaS "Opération Phoenix" (S15 à S24)
 
 * [Cahier des charges & Jalons du Projet](partie-4-projet-operation-phoenix/README.md)
 
 ## Ancien BUT3
-
-***
 
 * [Rappels et anciens supports](page-1.md)
 * [Séance 1 : Introduction & rappel Vue](seance-1-introduction-rappel-vue.md)

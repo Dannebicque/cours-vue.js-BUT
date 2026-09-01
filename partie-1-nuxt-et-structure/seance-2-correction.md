@@ -1,8 +1,12 @@
+---
+hidden: true
+---
+
 # Séance 2 (correction) : Initialisation et Setup Nuxt 4
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 2**.
 
----
+***
 
 ## 🛠️ Étape 1 : Initialisation du projet
 
@@ -17,7 +21,7 @@ cd devflow
 npm install
 ```
 
----
+***
 
 ## 🛠️ Étape 2 : Configuration `nuxt.config.ts`
 
@@ -60,7 +64,7 @@ export default defineNuxtConfig({
 })
 ```
 
----
+***
 
 ## 🛠️ Étape 3 : Composant racine `app/app.vue`
 
@@ -105,7 +109,7 @@ body {
 </style>
 ```
 
----
+***
 
 ## 🛠️ Étape 4 : Lancement et vérification
 
