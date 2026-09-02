@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Séance 4 (correction) : useTasks & useTaskFilters
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 4**.
