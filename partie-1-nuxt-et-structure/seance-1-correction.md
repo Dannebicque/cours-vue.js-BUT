@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Séance 1 (correction) : Types et Avatar DevFlow
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 1**.
