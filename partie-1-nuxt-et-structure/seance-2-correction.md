@@ -34,7 +34,7 @@ export default defineNuxtConfig({
   // Configuration TypeScript stricte
   typescript: {
     strict: true,
-    typeCheck: false
+    
   },
 
   // Configuration des balises méta globales
