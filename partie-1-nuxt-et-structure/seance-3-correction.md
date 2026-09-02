@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Séance 3 (correction) : Squelette et Layouts DevFlow
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 3**.
@@ -303,7 +299,7 @@ useSeoMeta({
 </style>
 ```
 
----
+***
 
 ## 🛠️ 5. Page d'Erreur Personnalisée (`app/error.vue`)
 
