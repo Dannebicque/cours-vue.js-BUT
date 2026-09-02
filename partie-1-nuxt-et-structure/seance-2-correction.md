@@ -1,7 +1,3 @@
----
-hidden: true
----
-
 # Séance 2 (correction) : Initialisation et Setup Nuxt 4
 
 Ce document présente la correction détaillée de l'atelier pratique de la **Séance 2**.
