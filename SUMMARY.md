@@ -30,6 +30,7 @@
 * [Agence 1](but3-projets/agence-1/sujet.md)
 * [Agence 2](but3-projets/agence-2/sujet.md)
 * [Agence 3](but3-projets/agence-3/sujet.md)
+* [Support : gitFlow](but3-projets/gitflow.md)
 
 ## BUT3 (Supports de cours)
 
