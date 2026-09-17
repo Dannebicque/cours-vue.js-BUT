@@ -27,9 +27,9 @@
 ## BUT3 - Projets
 
 * [Contexte et objectifs](but3-projets/contexte-et-objectifs.md)
-* [Equipe 1 : DevFlow](but3-projets/agence-1/sujet.md)
-* [Equipe 2 : DevFlow](but3-projets/agence-2/sujet.md)
-* [Equipe 3 : DevFlow](but3-projets/agence-3/sujet.md)
+* [Agence 1](but3-projets/agence-1/sujet.md)
+* [Agence 2](but3-projets/agence-2/sujet.md)
+* [Agence 3](but3-projets/agence-3/sujet.md)
 
 ## BUT3 (Supports de cours)
 
