@@ -32,6 +32,7 @@
 * [Agence 3](but3-projets/agence-3/sujet.md)
 * [Support : gitFlow](but3-projets/gitflow.md)
 * [Support : Nitro Server](but3-projets/support-nitro-server.md)
+* [Support : Tests](but3-projets/support-tests.md)
 
 ## BUT3 (Supports de cours)
 
