@@ -30,6 +30,7 @@
 * [Agence 1](but3-projets/agence-1/sujet.md)
 * [Agence 2](but3-projets/agence-2/sujet.md)
 * [Agence 3](but3-projets/agence-3/sujet.md)
+* [Point étape](but3-projets/point-etape.md)
 * [Support : gitFlow](but3-projets/gitflow.md)
 * [Support : Nitro Server](but3-projets/support-nitro-server.md)
 * [Support : Tests](but3-projets/support-tests.md)
